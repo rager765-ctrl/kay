@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "inverse-surface": "#2f3131",
+                        "primary-fixed": "#e7e2d9",
+                        "on-error-container": "#93000a",
+                        "tertiary": "#1e201f",
+                        "inverse-on-surface": "#f0f1f1",
+                        "surface-tint": "#615e57",
+                        "outline-variant": "#cbc6bc",
+                        "outline": "#7a776e",
+                        "on-surface": "#1a1c1c",
+                        "on-background": "#1a1c1c",
+                        "on-primary-fixed-variant": "#494740",
+                        "surface-container": "#eeeeee",
+                        "tertiary-container": "#333534",
+                        "primary-fixed-dim": "#cbc6bd",
+                        "inverse-primary": "#cbc6bd",
+                        "secondary-fixed-dim": "#c7c6c4",
+                        "on-secondary-fixed": "#1b1c1a",
+                        "secondary-container": "#e1dfdd",
+                        "secondary": "#5e5e5d",
+                        "surface-dim": "#dadada",
+                        "surface-container-low": "#f3f3f4",
+                        "on-secondary-container": "#626361",
+                        "secondary-fixed": "#e4e2e0",
+                        "tertiary-fixed-dim": "#c6c7c5",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#1d1c16",
+                        "background": "#f9f9f9",
+                        "primary-container": "#37352f",
+                        "on-tertiary-fixed-variant": "#454746",
+                        "on-tertiary-fixed": "#1a1c1b",
+                        "primary": "#21201a",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "surface-container-highest": "#e2e2e2",
+                        "on-surface-variant": "#49473f",
+                        "tertiary-fixed": "#e2e3e1",
+                        "surface-container-high": "#e8e8e8",
+                        "on-tertiary-container": "#9d9e9c",
+                        "on-secondary-fixed-variant": "#464745",
+                        "on-primary-container": "#a19d95",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#f9f9f9",
+                        "surface-variant": "#e2e2e2",
+                        "surface": "#f9f9f9"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "container-max": "1200px",
+                        "bento-gap": "12px",
+                        "unit": "4px",
+                        "margin": "24px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-xl": ["EB Garamond"],
+                        "headline-lg-mobile": ["EB Garamond"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "button": ["Inter"],
+                        "label-mono": ["JetBrains Mono"],
+                        "headline-lg": ["EB Garamond"]
+                    },
+                    "fontSize": {
+                        "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                        "body-md": ["15px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "button": ["14px", {"lineHeight": "1", "fontWeight": "500"}],
+                        "label-mono": ["12px", {"lineHeight": "1.5", "letterSpacing": "0.05em", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #f9f9f9;
+            color: #1a1c1c;
+            -webkit-font-smoothing: antialiased;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 16px;
+        }
+        .ghost-border {
+            border: 1px solid #E9E9E7;
+        }
+        .inset-depth {
+            background-color: #F1F1EF;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md">
+<!-- TopNavBar -->
+<nav class="flex justify-between items-center w-full px-margin py-gutter max-w-container-max mx-auto sticky top-0 z-50 bg-surface border-b border-outline-variant">
+<div class="font-headline-lg text-headline-lg tracking-tight text-primary">Opoku Kelvin NanaYaw</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-primary border-b border-primary pb-1 font-label-mono text-label-mono" href="work.html">Work</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-mono text-label-mono" href="archive.html">Archive</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-mono text-label-mono" href="index.html">About</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-mono text-label-mono" href="mailto:opoku3765@gmail.com">Contact</a>
+</div>
+<div class="flex items-center gap-4">
+<button onclick="toggleInquiryModal(true)" class="hidden md:block bg-primary text-on-primary px-6 py-2 font-button text-button scale-100 active:scale-95 transition-transform">Inquire</button>
+<button onclick="toggleMobileMenu(true)" class="md:hidden flex items-center justify-center p-2 text-primary">
+    <span class="material-symbols-outlined text-[28px]">menu</span>
+</button>
+</div>
+</nav>
+<main class="max-w-container-max mx-auto px-margin py-16">
+<!-- Header Section -->
+<header class="mb-20">
+<div class="mb-4">
+<span class="font-label-mono text-label-mono uppercase tracking-widest text-on-surface-variant">— Academic Project</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl mb-8 max-w-4xl">Building a scalable Student Database Management System to reduce redundancy.</h1>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- TL;DR -->
+<div class="md:col-span-8 p-8 ghost-border rounded bg-surface">
+<p class="font-label-mono text-label-mono mb-4 text-on-surface-variant">TL;DR</p>
+<p class="font-body-lg text-body-lg text-primary">Designed and implemented a relational database with 5 normalized tables managing 500+ student records. Wrote 20+ SQL queries, automated attendance tracking, and improved query efficiency by 30% through indexing.</p>
+</div>
+<!-- Metrics -->
+<div class="md:col-span-4 p-8 ghost-border rounded bg-surface flex flex-col justify-between">
+<div>
+<div class="mb-4">
+<p class="font-label-mono text-label-mono text-on-surface-variant">ROLE</p>
+<p class="font-body-md text-body-md text-primary">Database Developer</p>
+</div>
+<div class="mb-4">
+<p class="font-label-mono text-label-mono text-on-surface-variant">TIMELINE</p>
+<p class="font-body-md text-body-md text-primary">October 2024</p>
+</div>
+<div>
+<p class="font-label-mono text-label-mono text-on-surface-variant">IMPACT</p>
+<p class="font-body-md text-body-md text-primary">40% Redundancy Reduction</p>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Hero Visual -->
+<section class="mb-20">
+<div class="w-full aspect-[21/9] rounded overflow-hidden ghost-border relative">
+<img alt="" class="w-full h-full object-cover" data-alt="A sophisticated, minimalist user interface displayed on a high-end monitor in a brightly lit, clean studio environment. The UI features elegant data visualizations and a monochromatic palette with subtle warm gray tones, reflecting the 'Paper' design aesthetic. Soft morning light streams through a window, creating natural highlights and a professional, calm atmosphere for high-stakes financial technology." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0d8DddqQXajcpM5pFgRp2Eadi-gwvYTxER9NTCmGJJayCdcgZJg1DaE214hcuElc-EThgdFtI7ecj0-ThTU-kTOngn8SK1s1_v34OHjvSwMyuX1RYsqVjra77LsnLO2rs2ETxV07cI0nrce4EmYK1AZqBg_w-fAqNP0KZyuPIeCkJ_DzFi_SIqN9nMR-X8B3BX6cjfZJmtp8YXYopIXCJ8dlmubK6Lt0HzPDF6dTUzxHRlsB8VLfh7p_ECM4-fcSr97nw7frMViV_"/>
+</div>
+</section>
+<!-- The Challenge -->
+<section class="mb-20">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<div class="md:col-span-4">
+<h2 class="font-headline-lg text-headline-lg sticky top-32">The Challenge</h2>
+</div>
+<div class="md:col-span-8">
+<div class="space-y-6 max-w-2xl">
+<p class="font-body-lg text-body-lg">Academic institutions often struggle with fragmented data storage. Spreadsheets and legacy systems create data silos, making it difficult to generate reports and track student attendance accurately.</p>
+<ul class="space-y-4 font-body-md text-body-md">
+<li class="flex gap-4"><span class="text-on-surface-variant">—</span> High data redundancy causing inconsistencies.</li>
+<li class="flex gap-4"><span class="text-on-surface-variant">—</span> Slow query performance for large datasets.</li>
+<li class="flex gap-4"><span class="text-on-surface-variant">—</span> Tedious manual data entry for daily attendance.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- The Solution (Bento Grid) -->
+<section class="mb-20">
+<div class="mb-8">
+<h2 class="font-headline-lg text-headline-lg">The Solution</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+<div class="md:col-span-7 h-[400px] ghost-border p-8 rounded bg-surface relative overflow-hidden group">
+<div class="relative z-10">
+<p class="font-label-mono text-label-mono mb-2 uppercase text-on-surface-variant">01 / Database Design</p>
+<h3 class="font-headline-lg text-headline-lg mb-4">Data Normalization</h3>
+<p class="font-body-md text-body-md max-w-sm">Designed and mapped 5 relational tables to reduce data anomalies and ensure referential integrity.</p>
+</div>
+<img class="absolute bottom-0 right-0 w-3/4 translate-y-12 translate-x-12 group-hover:translate-y-8 group-hover:translate-x-8 transition-transform duration-500" data-alt="A macro detail shot of a clean digital interface showing a chronological list of financial transactions. The text is crisp and set in a premium sans-serif typeface, with subtle icons and a palette of soft grays and deep charcoals. The lighting is diffused, giving the screen a paper-like, tactile quality that avoids glare and emphasizes readability and functional honesty." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTunOI40i2g02TZ4tLxFU7yjJAVxni7nIYCs0qYjyy6fxPutZ9M6yqhQxRrFEtbggEnzOLGUoULSkF2My3Q1iaTahNhevsgpLD65KIBJLayQ_wqKBQlAvywl3-jv6CsYJSb_nTzncOeKgUkJOJDisF81kqZVYhTqStTiweL9SLHMOT6jt2yJEKOyWZ057ItCyufFRHUlzC20oi3KcH67TlucxvNrMefhuKuzAQEULC3CZDAM-odmM88A7_v7U60zVa1xg8bp0TIPkr"/>
+</div>
+<div class="md:col-span-5 h-[400px] ghost-border p-8 rounded bg-surface-container flex flex-col justify-end">
+<div class="mb-auto self-end">
+<span class="material-symbols-outlined text-4xl text-primary" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<div>
+<p class="font-label-mono text-label-mono mb-2 uppercase text-on-surface-variant">02 / Query Optimization</p>
+<h3 class="font-headline-lg text-headline-lg mb-4">Indexing Strategies</h3>
+<p class="font-body-md text-body-md">Implemented indexing on primary and foreign keys, resulting in a 30% faster data retrieval rate.</p>
+</div>
+</div>
+<div class="md:col-span-5 h-[400px] ghost-border p-8 rounded bg-surface flex flex-col">
+<p class="font-label-mono text-label-mono mb-2 uppercase text-on-surface-variant">03 / Automation</p>
+<h3 class="font-headline-lg text-headline-lg mb-4">Attendance Script</h3>
+<div class="mt-4 flex-grow inset-depth rounded flex items-center justify-center">
+<span class="font-label-mono text-label-mono text-on-surface-variant">Automated Tracking Module</span>
+</div>
+</div>
+<div class="md:col-span-7 h-[400px] ghost-border p-8 rounded bg-surface relative overflow-hidden group">
+<div class="relative z-10">
+<p class="font-label-mono text-label-mono mb-2 uppercase text-on-surface-variant">04 / Reporting</p>
+<h3 class="font-headline-lg text-headline-lg mb-4">Complex Queries</h3>
+<p class="font-body-md text-body-md max-w-sm">Wrote 20+ advanced SQL queries utilizing JOINs and subqueries to automatically generate term reports.</p>
+</div>
+<img class="absolute top-1/2 -right-1/4 -translate-y-1/2 w-3/4 opacity-50 grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="A professional design specification sheet showcasing a variety of typographic weights and scales. The layout is strictly modular and mathematical, featuring 'Inter' and 'EB Garamond' fonts in a monochromatic setting. The background is a very light warm gray, and the overall composition feels like a high-end architectural drawing or an editorial design system overview." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsw0VOcvHxYKfQXn5yTdYHykFVXH5IzgYA07fvzb8wbLGNu6zLlVzU8mDlAz8d9rYkZoeBa8Iy7OLWJOl_W9CQTQz0FGE2iXa6IX8lAXpxbfPLGWwXkVd1Fml1-BxOerzCIx4t61xSXftP8vyG_Gz4oLmheZc4EVyCptmxXVasNXQONQczhtpIJhf6_SjdqF1bLEBf9gBFNiDRLHruAgJk1vbPlJNfl3BFikw0aRRv0iXndN66wHh29v82EbN7FoJTFjyOKKp8lCPT"/>
+</div>
+</div>
+</section>
+<!-- Results -->
+<section class="mb-20 pt-20 border-t border-outline-variant">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<div class="md:col-span-4">
+<h2 class="font-headline-lg text-headline-lg">Results &amp; Impact</h2>
+</div>
+<div class="md:col-span-8">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-12">
+<div>
+<p class="font-headline-xl text-headline-xl mb-2">40%</p>
+<p class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-widest">Reduced Redundancy</p>
+<p class="mt-4 font-body-md text-body-md">Data integrity was vastly improved through proper normalization up to 3NF.</p>
+</div>
+<div>
+<p class="font-headline-xl text-headline-xl mb-2">60%</p>
+<p class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-widest">Time Saved</p>
+<p class="mt-4 font-body-md text-body-md">Automated attendance tracking replaced manual data entry workflows.</p>
+</div>
+</div>
+<div class="p-8 ghost-border rounded bg-primary-container text-on-primary-container italic">
+<p class="font-headline-lg text-headline-lg mb-6">"This database system fundamentally changed how the institution processes daily records. It transformed an error-prone manual task into an automated, efficient pipeline."</p>
+<p class="font-label-mono text-label-mono uppercase">— Academic Project Evaluator</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Next Project Call to Action -->
+<section class="py-24 text-center border-t border-outline-variant">
+<p class="font-label-mono text-label-mono text-on-surface-variant mb-6 uppercase tracking-widest">Next Project</p>
+<a class="group inline-block" href="work.html">
+<h2 class="font-headline-xl text-headline-xl mb-4 group-hover:italic transition-all">Python Data Analysis Scripts →</h2>
+</a>
+</section>
+</main>
+<!-- Footer -->
+<footer class="border-t border-outline-variant py-12 px-margin max-w-container-max mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-center gap-gutter">
+<div class="font-label-mono text-label-mono uppercase tracking-widest text-primary">OPOKU KELVIN NANAYAW</div>
+<p class="text-on-surface-variant font-body-md text-body-md">© 2024 Opoku Kelvin. Built with HTML, CSS, JavaScript.</p>
+<div class="flex gap-6">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-mono text-label-mono" href="https://linkedin.com">LinkedIn</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-mono text-label-mono" href="https://read.cv">Read.cv</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-mono text-label-mono" href="https://instagram.com">Instagram</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-mono text-label-mono" href="https://github.com">GitHub</a>
+</div>
+</div>
+</footer>
+
+<!-- Inquiry Modal -->
+<div id="inquiry-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/50 backdrop-blur-sm p-4">
+  <div class="bg-white border border-outline-variant max-w-md w-full p-8 rounded-lg relative shadow-xl">
+    <button onclick="toggleInquiryModal(false)" class="absolute right-4 top-4 text-outline hover:text-primary flex items-center justify-center">
+      <span class="material-symbols-outlined">close</span>
+    </button>
+    <h3 class="font-headline-lg text-headline-lg mb-6">Send an Inquiry</h3>
+    <form onsubmit="handleInquirySubmit(event)" class="space-y-6">
+      <div class="space-y-1">
+        <label class="font-label-mono text-label-mono uppercase text-outline">Your Name</label>
+        <input id="modal-name" required class="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-primary font-body-md py-2 px-0" placeholder="John Doe" type="text" />
+      </div>
+      <div class="space-y-1">
+        <label class="font-label-mono text-label-mono uppercase text-outline">Your Phone Number (For Response)</label>
+        <input id="modal-phone" required class="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-primary font-body-md py-2 px-0" placeholder="+233..." type="tel" />
+      </div>
+      <div class="space-y-1">
+        <label class="font-label-mono text-label-mono uppercase text-outline">Message</label>
+        <textarea id="modal-message" required class="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-primary font-body-md py-2 px-0" placeholder="Tell me about your project..." rows="3"></textarea>
+      </div>
+      <button type="submit" class="w-full bg-primary text-on-primary py-3 rounded font-button text-button hover:bg-tertiary transition-colors flex items-center justify-center gap-2">
+        Send on WhatsApp
+        <span class="material-symbols-outlined text-[18px]">send</span>
+      </button>
+    </form>
+  </div>
+</div>
+
+<script>
+  // Strict Chrome Enforcement for Samsung Internet Users
+  document.addEventListener("DOMContentLoaded", () => {
+    const ua = navigator.userAgent;
+    const isSamsung = ua.indexOf("SamsungBrowser") > -1;
+    if (isSamsung) {
+      const overlay = document.createElement("div");
+      overlay.className = "fixed inset-0 z-[200] bg-black/80 backdrop-blur-md flex items-center justify-center p-6 text-center";
+      overlay.innerHTML = `
+        <div class="bg-surface border border-outline-variant max-w-md w-full p-8 rounded shadow-2xl flex flex-col items-center">
+          <span class="material-symbols-outlined text-[64px] text-primary mb-4 animate-bounce">chrome_reader_mode</span>
+          <h3 class="font-headline-lg text-headline-lg mb-4 text-on-surface">Please Open in Google Chrome</h3>
+          <p class="font-body-md text-body-md text-on-surface-variant mb-6 leading-relaxed">
+            It looks like you are browsing using <strong>Samsung Internet</strong>. For the best visual experience, premium animations, and interactive elements, please copy this link and open it in <strong>Google Chrome</strong>.
+          </p>
+          <button onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');" class="bg-primary text-on-primary px-6 py-3 font-button text-button hover:opacity-90 transition-all flex items-center gap-2 mb-4 w-full justify-center">
+            <span class="material-symbols-outlined text-[18px]">content_copy</span> Copy Link
+          </button>
+          <p class="font-label-mono text-[10px] text-outline uppercase">Optimized for Google Chrome &amp; Safari</p>
+        </div>
+      `;
+      document.body.appendChild(overlay);
+    }
+  });
+
+  function toggleInquiryModal(show) {
+    const modal = document.getElementById('inquiry-modal');
+    if (modal) {
+      modal.style.display = show ? 'flex' : 'none';
+    }
+  }
+  
+  function handleInquirySubmit(event) {
+    event.preventDefault();
+    const name = document.getElementById('modal-name').value;
+    const phone = document.getElementById('modal-phone').value;
+    const message = document.getElementById('modal-message').value;
+    
+    const formattedText = `Hello Opoku Kelvin, my name is ${name}.\n\nMessage: ${message}\n\nMy phone number is: ${phone}`;
+    const whatsappUrl = `https://wa.me/233509663058?text=${encodeURIComponent(formattedText)}`;
+    
+    window.open(whatsappUrl, '_blank');
+    toggleInquiryModal(false);
+  }
+
+  function toggleMobileMenu(show) {
+    const menu = document.getElementById('mobile-menu');
+    const drawer = document.getElementById('mobile-menu-drawer');
+    if (menu && drawer) {
+      if (show) {
+        menu.style.display = 'block';
+        setTimeout(() => {
+          drawer.classList.remove('translate-x-full');
+          drawer.classList.add('translate-x-0');
+        }, 10);
+      } else {
+        drawer.classList.remove('translate-x-0');
+        drawer.classList.add('translate-x-full');
+        setTimeout(() => {
+          menu.style.display = 'none';
+        }, 300);
+      }
+    }
+  }
+</script>
+
+<!-- Mobile Menu Drawer -->
+<div id="mobile-menu" class="fixed inset-0 z-[90] hidden bg-black/50 backdrop-blur-sm">
+  <div id="mobile-menu-drawer" class="fixed top-0 right-0 h-full w-64 bg-white border-l border-outline-variant p-8 flex flex-col justify-between transform translate-x-full transition-transform duration-300">
+    <div>
+      <div class="flex justify-between items-center mb-12">
+        <span class="font-label-mono text-label-mono uppercase tracking-widest text-primary">MENU</span>
+        <button onclick="toggleMobileMenu(false)" class="text-outline hover:text-primary flex items-center justify-center">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <nav class="flex flex-col gap-6">
+        <a class="font-headline-md text-headline-md text-on-surface-variant hover:text-primary transition-colors" href="work.html">Work</a>
+        <a class="font-headline-md text-headline-md text-on-surface-variant hover:text-primary transition-colors" href="archive.html">Archive</a>
+        <a class="font-headline-md text-headline-md text-on-surface-variant hover:text-primary transition-colors" href="index.html">About</a>
+        <a class="font-headline-md text-headline-md text-on-surface-variant hover:text-primary transition-colors" href="mailto:opoku3765@gmail.com">Contact</a>
+      </nav>
+    </div>
+    <div>
+      <button onclick="toggleMobileMenu(false); toggleInquiryModal(true);" class="w-full bg-primary text-on-primary py-3 rounded font-button text-button hover:bg-tertiary transition-colors flex items-center justify-center gap-2">
+        Inquire
+        <span class="material-symbols-outlined text-[18px]">send</span>
+      </button>
+    </div>
+  </div>
+</div>
+</body></html>

@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&amp;family=EB+Garamond:wght@500&amp;family=JetBrains+Mono:wght@400&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+                rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+                rel="stylesheet" />
+        <script id="tailwind-config">
+                tailwind.config = {
+                        darkMode: "class",
+                        theme: {
+                                extend: {
+                                        "colors": {
+                                                "on-primary": "#ffffff",
+                                                "on-tertiary": "#ffffff",
+                                                "inverse-surface": "#2f3131",
+                                                "primary-fixed": "#e7e2d9",
+                                                "on-error-container": "#93000a",
+                                                "tertiary": "#1e201f",
+                                                "inverse-on-surface": "#f0f1f1",
+                                                "surface-tint": "#615e57",
+                                                "outline-variant": "#cbc6bc",
+                                                "outline": "#7a776e",
+                                                "on-surface": "#1a1c1c",
+                                                "on-background": "#1a1c1c",
+                                                "on-primary-fixed-variant": "#494740",
+                                                "surface-container": "#eeeeee",
+                                                "tertiary-container": "#333534",
+                                                "primary-fixed-dim": "#cbc6bd",
+                                                "inverse-primary": "#cbc6bd",
+                                                "secondary-fixed-dim": "#c7c6c4",
+                                                "on-secondary-fixed": "#1b1c1a",
+                                                "secondary-container": "#e1dfdd",
+                                                "secondary": "#5e5e5d",
+                                                "surface-dim": "#dadada",
+                                                "surface-container-low": "#f3f3f4",
+                                                "on-secondary-container": "#626361",
+                                                "secondary-fixed": "#e4e2e0",
+                                                "tertiary-fixed-dim": "#c6c7c5",
+                                                "on-secondary": "#ffffff",
+                                                "on-primary-fixed": "#1d1c16",
+                                                "background": "#f9f9f9",
+                                                "primary-container": "#37352f",
+                                                "on-tertiary-fixed-variant": "#454746",
+                                                "on-tertiary-fixed": "#1a1c1b",
+                                                "primary": "#21201a",
+                                                "on-error": "#ffffff",
+                                                "error-container": "#ffdad6",
+                                                "surface-container-highest": "#e2e2e2",
+                                                "on-surface-variant": "#49473f",
+                                                "tertiary-fixed": "#e2e3e1",
+                                                "surface-container-high": "#e8e8e8",
+                                                "on-tertiary-container": "#9d9e9c",
+                                                "on-secondary-fixed-variant": "#464745",
+                                                "on-primary-container": "#a19d95",
+                                                "error": "#ba1a1a",
+                                                "surface-container-lowest": "#ffffff",
+                                                "surface-bright": "#f9f9f9",
+                                                "surface-variant": "#e2e2e2",
+                                                "surface": "#f9f9f9"
+                                        },
+                                        "borderRadius": {
+                                                "DEFAULT": "0.125rem",
+                                                "lg": "0.25rem",
+                                                "xl": "0.5rem",
+                                                "full": "0.75rem"
+                                        },
+                                        "spacing": {
+                                                "container-max": "1200px",
+                                                "bento-gap": "12px",
+                                                "unit": "4px",
+                                                "margin": "24px",
+                                                "gutter": "16px"
+                                        },
+                                        "fontFamily": {
+                                                "headline-xl": ["EB Garamond"],
+                                                "headline-lg-mobile": ["EB Garamond"],
+                                                "body-md": ["Inter"],
+                                                "body-lg": ["Inter"],
+                                                "button": ["Inter"],
+                                                "label-mono": ["JetBrains Mono"],
+                                                "headline-lg": ["EB Garamond"]
+                                        },
+                                        "fontSize": {
+                                                "headline-xl": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "500" }],
+                                                "headline-lg-mobile": ["28px", { "lineHeight": "1.2", "fontWeight": "500" }],
+                                                "body-md": ["15px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                                                "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                                                "button": ["14px", { "lineHeight": "1", "fontWeight": "500" }],
+                                                "label-mono": ["12px", { "lineHeight": "1.5", "letterSpacing": "0.05em", "fontWeight": "400" }],
+                                                "headline-lg": ["32px", { "lineHeight": "1.2", "fontWeight": "500" }]
+                                        }
+                                },
+                        },
+                }
+        </script>
+        <style>
+                .material-symbols-outlined {
+                        font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+                        font-size: 20px;
+                }
+
+                .bento-card {
+                        border: 1px solid #E9E9E7;
+                        background-color: #ffffff;
+                        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+                }
+
+                .bento-card:hover {
+                        border-color: #D1D1CF;
+                        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.03);
+                }
+
+                .timeline-dash::before {
+                        content: "—";
+                        position: absolute;
+                        left: -20px;
+                        color: #7a776e;
+                }
+        </style>
+</head>
+
+<body class="bg-background text-on-surface font-body-md antialiased">
+        <!-- TopNavBar -->
+        <header
+                class="bg-surface dark:bg-surface border-b border-outline-variant dark:border-outline sticky top-0 z-50">
+                <nav class="flex justify-between items-center w-full px-margin py-gutter max-w-container-max mx-auto">
+                        <div
+                                class="font-headline-lg text-headline-lg tracking-tight text-primary dark:text-primary-fixed-dim">
+                                Opoku Kelvin NanaYaw</div>
+                        <div class="hidden md:flex gap-8 items-center">
+                                <a class="font-label-mono text-label-mono text-on-surface-variant dark:text-on-secondary-container hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200 scale-100 active:scale-95 transition-transform"
+                                        href="work.html">Work</a>
+                                <a class="font-label-mono text-label-mono text-on-surface-variant dark:text-on-secondary-container hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200 scale-100 active:scale-95 transition-transform"
+                                        href="archive.html">Archive</a>
+                                <a class="font-label-mono text-label-mono text-primary dark:text-on-primary-fixed border-b border-primary dark:border-primary-fixed-dim pb-1"
+                                        href="index.html">About</a>
+                                <a class="font-label-mono text-label-mono text-on-surface-variant dark:text-on-secondary-container hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200 scale-100 active:scale-95 transition-transform"
+                                        href="mailto:opoku3765@gmail.com">Contact</a>
+                                <button onclick="toggleInquiryModal(true)"
+                                        class="bg-primary-container text-on-primary-container px-6 py-2 rounded-lg font-button text-button hover:opacity-90 transition-opacity">Inquire</button>
+                        </div>
+                        <div class="flex items-center gap-4 md:hidden">
+                                <button onclick="toggleMobileMenu(true)"
+                                        class="flex items-center justify-center p-2 text-primary">
+                                        <span class="material-symbols-outlined text-[28px]">menu</span>
+                                </button>
+                        </div>
+                </nav>
+        </header>
+        <main class="max-w-container-max mx-auto px-margin py-12">
+                <!-- Hero Section: Philosophy -->
+                <section class="grid grid-cols-1 md:grid-cols-12 gap-bento-gap mb-20">
+                        <div class="md:col-span-8 flex flex-col justify-center">
+                                <span
+                                        class="font-label-mono text-label-mono text-outline uppercase tracking-widest mb-2">About
+                                        Me</span>
+                                <h1 class="font-headline-xl text-headline-xl mb-3">Opoku Kelvin NanaYaw</h1>
+                                <h2 class="font-body-lg text-body-lg text-primary uppercase tracking-wider mb-6">— Data
+                                        Analyst & Junior IT Support</h2>
+                                <p
+                                        class="font-body-md text-body-md text-on-surface-variant max-w-2xl leading-relaxed mb-8">
+                                        I am a Business Information Technology student at KNUST, pioneering the
+                                        intersection of data-driven business intelligence and robust systems
+                                        engineering. As a developer and analyst, I build high-density, real-world
+                                        platforms—from precision geolocation trackers mapping physical farms, to
+                                        automated WhatsApp notification systems and AI-powered vehicle telemetry
+                                        dashboards.
+                                        <br><br>
+                                        My mission is simple: transform manual, error-prone business operations into
+                                        elegant, automated, and highly optimized digital assets.
+                                </p>
+                        </div>
+                        <div class="md:col-span-4 aspect-square bento-card overflow-hidden rounded-lg relative group">
+                                <!-- Carousel Track -->
+                                <div id="about-carousel"
+                                        class="w-full h-full flex transition-transform duration-500 ease-in-out">
+                                        <div class="w-full h-full flex-shrink-0">
+                                                <img class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                                                        data-alt="Portrait 1" src="1000509484.jpg" />
+                                        </div>
+                                        <div class="w-full h-full flex-shrink-0">
+                                                <img class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                                                        data-alt="Portrait 2" src="1000441044%20(2).png" />
+                                        </div>
+                                </div>
+
+                                <!-- Controls -->
+                                <button onclick="nextSlide(-1)"
+                                        class="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center rounded-full bg-background/80 text-on-surface opacity-0 group-hover:opacity-100 transition-opacity z-10 hover:bg-background shadow-sm">
+                                        <span class="material-symbols-outlined"
+                                                style="font-size: 18px;">arrow_back</span>
+                                </button>
+                                <button onclick="nextSlide(1)"
+                                        class="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center rounded-full bg-background/80 text-on-surface opacity-0 group-hover:opacity-100 transition-opacity z-10 hover:bg-background shadow-sm">
+                                        <span class="material-symbols-outlined"
+                                                style="font-size: 18px;">arrow_forward</span>
+                                </button>
+
+                                <!-- Indicators -->
+                                <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+                                        <button onclick="goToSlide(0)" id="dot-0"
+                                                class="w-2 h-2 rounded-full bg-primary transition-colors"></button>
+                                        <button onclick="goToSlide(1)" id="dot-1"
+                                                class="w-2 h-2 rounded-full bg-primary/30 transition-colors"></button>
+                                </div>
+                        </div>
+                </section>
+                <!-- Bento Grid: Experience & Details -->
+                <section class="grid grid-cols-1 md:grid-cols-12 gap-bento-gap mb-12">
+                        <!-- Education & Credentials Timeline -->
+                        <div class="md:col-span-7 bento-card p-margin rounded-lg flex flex-col justify-between">
+                                <div>
+                                        <h2 class="font-headline-lg text-headline-lg mb-8">Academic Foundation</h2>
+                                        <div class="space-y-8">
+                                                <div class="relative pl-4 border-l border-primary/20">
+                                                        <span
+                                                                class="font-label-mono text-label-mono text-outline block mb-1">2023
+                                                                — PRESENT (EXPECTED 2027)</span>
+                                                        <h3 class="font-body-lg font-medium text-primary">BSc Business
+                                                                Administration (Business Information Technology)</h3>
+                                                        <p class="font-body-sm text-outline mb-2">Kwame Nkrumah
+                                                                University of Science and Technology (KNUST)</p>
+                                                        <p class="font-body-md text-on-surface-variant leading-relaxed">
+                                                                Applying double-disciplinary frameworks of high-level
+                                                                management and systems engineering. Mastering database
+                                                                design, SQL queries, object-oriented programming, and
+                                                                business analytics. Built normalized database models
+                                                                handling 500+ student data matrices.
+                                                        </p>
+                                                        <div class="flex flex-wrap gap-2 mt-3">
+                                                                <span
+                                                                        class="px-2 py-0.5 bg-surface-container text-on-surface-variant font-label-mono text-[9px]">Database
+                                                                        Management</span>
+                                                                <span
+                                                                        class="px-2 py-0.5 bg-surface-container text-on-surface-variant font-label-mono text-[9px]">Business
+                                                                        Analytics</span>
+                                                                <span
+                                                                        class="px-2 py-0.5 bg-surface-container text-on-surface-variant font-label-mono text-[9px]">Information
+                                                                        Systems</span>
+                                                        </div>
+                                                </div>
+
+                                                <div class="relative pl-4 border-l border-primary/20">
+                                                        <span
+                                                                class="font-label-mono text-label-mono text-outline block mb-1">GRADUATED
+                                                                2023</span>
+                                                        <h3 class="font-body-lg font-medium text-primary">General Arts
+                                                        </h3>
+                                                        <p class="font-body-sm text-outline">St. Peter's Senior High
+                                                                School</p>
+                                                        <p class="font-body-md text-on-surface-variant leading-relaxed">
+                                                                Graduated with distinction. Built a strong early
+                                                                analytical foundation, public speaking prowess, and
+                                                                academic rigor in humanities and arts.
+                                                        </p>
+                                                </div>
+                                        </div>
+                                </div>
+
+                                <div class="mt-8 pt-6 border-t border-outline-variant/30">
+                                        <h4
+                                                class="font-label-mono text-label-mono text-outline uppercase tracking-wider mb-4">
+                                                Credentials &amp; Coursework</h4>
+                                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                                <div
+                                                        class="p-3 bg-surface-container/50 border border-outline-variant/30 rounded flex items-start gap-3">
+                                                        <span class="material-symbols-outlined text-primary mt-0.5"
+                                                                style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+                                                        <div>
+                                                                <h5 class="font-body-sm font-semibold text-primary">AI
+                                                                        Career Essentials</h5>
+                                                                <p class="font-label-mono text-[10px] text-outline">ALX
+                                                                        / 2025</p>
+                                                        </div>
+                                                </div>
+                                                <div
+                                                        class="p-3 bg-surface-container/50 border border-outline-variant/30 rounded flex items-start gap-3">
+                                                        <span class="material-symbols-outlined text-primary mt-0.5"
+                                                                style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+                                                        <div>
+                                                                <h5 class="font-body-sm font-semibold text-primary">
+                                                                        Financial Technology (Fintech)</h5>
+                                                                <p class="font-label-mono text-[10px] text-outline">
+                                                                        LinkedIn / 2025</p>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+
+                        <!-- Side Bento Column: Expertise & Philosophy -->
+                        <div class="md:col-span-5 flex flex-col gap-bento-gap">
+                                <!-- Competencies -->
+                                <div class="bento-card p-margin rounded-lg flex flex-col justify-between">
+                                        <div>
+                                                <h2 class="font-headline-lg text-headline-lg mb-6">Technical Spectrum
+                                                </h2>
+                                                <div class="space-y-4">
+                                                        <div>
+                                                                <span
+                                                                        class="font-label-mono text-[10px] text-outline uppercase block mb-1.5">Data
+                                                                        &amp; Analytics</span>
+                                                                <div class="flex flex-wrap gap-1.5">
+                                                                        <span
+                                                                                class="px-2.5 py-1 bg-primary text-on-primary font-label-mono text-[10px]">SQL</span>
+                                                                        <span
+                                                                                class="px-2.5 py-1 bg-primary text-on-primary font-label-mono text-[10px]">Python</span>
+                                                                        <span
+                                                                                class="px-2.5 py-1 bg-primary text-on-primary font-label-mono text-[10px]">Pandas</span>
+                                                                        <span
+                                                                                class="px-2.5 py-1 bg-primary text-on-primary font-label-mono text-[10px]">Power
+                                                                                BI</span>
+                                                                        <span
+                                                                                class="px-2.5 py-1 bg-primary text-on-primary font-label-mono text-[10px]">Excel</span>
+                                                                </div>
+                                                        </div>
+                                                        <div>
+                                                                <span
+                                                                        class="font-label-mono text-[10px] text-outline uppercase block mb-1.5">Development
+                                                                        &amp; Web</span>
+                                                                <div class="flex flex-wrap gap-1.5">
+                                                                        <span
+                                                                                class="px-2.5 py-1 bg-primary text-on-primary font-label-mono text-[10px]">HTML5
+                                                                                / CSS3</span>
+                                                                        <span
+                                                                                class="px-2.5 py-1 bg-primary text-on-primary font-label-mono text-[10px]">JavaScript
+                                                                                (ES6+)</span>
+                                                                        <span
+                                                                                class="px-2.5 py-1 bg-primary text-on-primary font-label-mono text-[10px]">Tailwind
+                                                                                CSS</span>
+                                                                        <span
+                                                                                class="px-2.5 py-1 bg-primary text-on-primary font-label-mono text-[10px]">PWA
+                                                                                Architecture</span>
+                                                                </div>
+                                                        </div>
+                                                        <div>
+                                                                <span
+                                                                        class="font-label-mono text-[10px] text-outline uppercase block mb-1.5">Infrastructure
+                                                                        &amp; Services</span>
+                                                                <div class="flex flex-wrap gap-1.5">
+                                                                        <span
+                                                                                class="px-2.5 py-1 bg-primary text-on-primary font-label-mono text-[10px]">Firebase</span>
+                                                                        <span
+                                                                                class="px-2.5 py-1 bg-primary text-on-primary font-label-mono text-[10px]">REST
+                                                                                APIs</span>
+                                                                        <span
+                                                                                class="px-2.5 py-1 bg-primary text-on-primary font-label-mono text-[10px]">Git
+                                                                                &amp; GitHub</span>
+                                                                        <span
+                                                                                class="px-2.5 py-1 bg-primary text-on-primary font-label-mono text-[10px]">Vercel
+                                                                                / Netlify</span>
+                                                                </div>
+                                                        </div>
+                                                </div>
+                                        </div>
+
+                                        <div
+                                                class="mt-8 pt-6 border-t border-outline-variant/30 flex items-center gap-3">
+                                                <span
+                                                        class="w-2.5 h-2.5 rounded-full bg-emerald-600 animate-pulse"></span>
+                                                <span
+                                                        class="font-label-mono text-[10px] text-on-surface uppercase font-medium">Ready
+                                                        for Internships &amp; IT Roles</span>
+                                        </div>
+                                </div>
+
+                                <!-- Professional Philosophy / Quote -->
+                                <div
+                                        class="bg-primary text-on-primary p-margin rounded-lg flex flex-col justify-between min-h-[220px]">
+                                        <div>
+                                                <span class="material-symbols-outlined text-[36px] text-on-primary-container mb-4 animate-pulse"
+                                                        style="font-variation-settings: 'FILL' 1;">terminal</span>
+                                                <h3 class="font-headline-lg text-headline-lg mb-2 text-primary-fixed">My
+                                                        Philosophy</h3>
+                                                <p class="font-body-md text-primary-fixed/80 italic leading-relaxed">
+                                                        "Data is only as valuable as the decisions it empowers, and
+                                                        technology is only as good as the friction it removes. I design
+                                                        clean, automated systems to turn operational chaos into elegant
+                                                        structures."
+                                                </p>
+                                        </div>
+                                </div>
+                        </div>
+                </section>
+                <!-- Contact Section -->
+                <section class="grid grid-cols-1 md:grid-cols-12 gap-bento-gap border-t border-outline-variant pt-12">
+                        <div class="md:col-span-5">
+                                <h2 class="font-headline-xl text-headline-xl mb-6">Get in touch.</h2>
+                                <p class="font-body-md text-on-surface-variant mb-12 max-w-sm">
+                                        Immediately available for internships or part-time roles during academic breaks.
+                                        Please reach out if you have opportunities in Data Analysis or IT Support.
+                                </p>
+                                <div class="space-y-4">
+                                        <div class="flex items-center gap-4">
+                                                <span
+                                                        class="material-symbols-outlined text-outline">alternate_email</span>
+                                                <span class="font-label-mono text-label-mono">opoku3765@gmail.com</span>
+                                        </div>
+                                        <div class="flex items-center gap-4">
+                                                <span class="material-symbols-outlined text-outline">call</span>
+                                                <span class="font-label-mono text-label-mono">+233 050 966 3058</span>
+                                        </div>
+                                        <div class="flex items-center gap-4">
+                                                <span class="material-symbols-outlined text-outline">location_on</span>
+                                                <span class="font-label-mono text-label-mono">Accra, Ghana</span>
+                                        </div>
+                                </div>
+                        </div>
+                        <div class="md:col-span-7 bento-card p-margin rounded-lg">
+                                <form class="space-y-8" onsubmit="handleAboutInquirySubmit(event)">
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                                <div class="space-y-2">
+                                                        <label
+                                                                class="font-label-mono text-label-mono uppercase text-outline">Name</label>
+                                                        <input id="about-name" required
+                                                                class="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-primary font-body-md py-2 px-0 placeholder:text-surface-container-highest"
+                                                                placeholder="John Doe" type="text" />
+                                                </div>
+                                                <div class="space-y-2">
+                                                        <label
+                                                                class="font-label-mono text-label-mono uppercase text-outline">Phone
+                                                                Number (Digits for Response)</label>
+                                                        <input id="about-phone" required
+                                                                class="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-primary font-body-md py-2 px-0 placeholder:text-surface-container-highest"
+                                                                placeholder="+233..." type="tel" />
+                                                </div>
+                                        </div>
+                                        <div class="space-y-2">
+                                                <label
+                                                        class="font-label-mono text-label-mono uppercase text-outline">Message</label>
+                                                <textarea id="about-message" required
+                                                        class="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-primary font-body-md py-2 px-0 placeholder:text-surface-container-highest"
+                                                        placeholder="Tell me about your project..." rows="4"></textarea>
+                                        </div>
+                                        <button class="bg-primary text-on-primary px-10 py-4 rounded-lg font-button text-button hover:bg-tertiary transition-colors flex items-center gap-2 group"
+                                                type="submit">
+                                                Send Inquiry on WhatsApp
+                                                <span
+                                                        class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                                        </button>
+                                </form>
+                        </div>
+                </section>
+        </main>
+        <!-- Footer -->
+        <footer class="border-t border-outline-variant dark:border-outline bg-surface dark:bg-surface mt-20">
+                <div
+                        class="flex flex-col md:flex-row justify-between items-center w-full px-margin py-12 max-w-container-max mx-auto gap-gutter">
+                        <div class="font-label-mono text-label-mono uppercase tracking-widest text-primary">OPOKU KELVIN
+                                NANAYAW</div>
+                        <div class="font-body-md text-body-md text-on-surface-variant dark:text-on-secondary-container">
+                                © 2024 Opoku
+                                Kelvin. Built with HTML, CSS, JavaScript.</div>
+                        <div class="flex gap-6">
+                                <a class="font-label-mono text-label-mono text-on-surface-variant dark:text-on-secondary-container hover:text-primary dark:hover:text-primary-fixed transition-colors opacity-100 hover:opacity-80"
+                                        href="https://linkedin.com">LinkedIn</a>
+                                <a class="font-label-mono text-label-mono text-on-surface-variant dark:text-on-secondary-container hover:text-primary dark:hover:text-primary-fixed transition-colors opacity-100 hover:opacity-80"
+                                        href="https://read.cv">Read.cv</a>
+                                <a class="font-label-mono text-label-mono text-on-surface-variant dark:text-on-secondary-container hover:text-primary dark:hover:text-primary-fixed transition-colors opacity-100 hover:opacity-80"
+                                        href="https://instagram.com">Instagram</a>
+                                <a class="font-label-mono text-label-mono text-on-surface-variant dark:text-on-secondary-container hover:text-primary dark:hover:text-primary-fixed transition-colors opacity-100 hover:opacity-80"
+                                        href="https://github.com">GitHub</a>
+                        </div>
+                </div>
+        </footer>
+
+        <script>
+                let currentSlide = 0;
+                const totalSlides = 2;
+
+                function updateCarousel() {
+                        const track = document.getElementById('about-carousel');
+                        if (track) {
+                                track.style.transform = `translateX(-${currentSlide * 100}%)`;
+                        }
+
+                        const dot0 = document.getElementById('dot-0');
+                        const dot1 = document.getElementById('dot-1');
+                        if (dot0 && dot1) {
+                                dot0.className = currentSlide === 0 ? "w-2 h-2 rounded-full bg-primary transition-colors" : "w-2 h-2 rounded-full bg-primary/30 transition-colors";
+                                dot1.className = currentSlide === 1 ? "w-2 h-2 rounded-full bg-primary transition-colors" : "w-2 h-2 rounded-full bg-primary/30 transition-colors";
+                        }
+                }
+
+                function nextSlide(direction) {
+                        currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+                        updateCarousel();
+                }
+
+                function goToSlide(index) {
+                        currentSlide = index;
+                        updateCarousel();
+                }
+
+                // Auto-play the carousel every 4 seconds
+                setInterval(() => {
+                        nextSlide(1);
+                }, 4000);
+
+                function handleAboutInquirySubmit(event) {
+                        event.preventDefault();
+                        const name = document.getElementById('about-name').value;
+                        const phone = document.getElementById('about-phone').value;
+                        const message = document.getElementById('about-message').value;
+
+                        const formattedText = `Hello Opoku Kelvin, my name is ${name}.\n\nMessage: ${message}\n\nMy phone number is: ${phone}`;
+                        const whatsappUrl = `https://wa.me/233509663058?text=${encodeURIComponent(formattedText)}`;
+
+                        window.open(whatsappUrl, '_blank');
+                }
+
+                // Strict Chrome Enforcement for Samsung Internet Users
+                document.addEventListener("DOMContentLoaded", () => {
+                        const ua = navigator.userAgent;
+                        const isSamsung = ua.indexOf("SamsungBrowser") > -1;
+                        if (isSamsung) {
+                                const overlay = document.createElement("div");
+                                overlay.className = "fixed inset-0 z-[200] bg-black/80 backdrop-blur-md flex items-center justify-center p-6 text-center";
+                                overlay.innerHTML = `
+          <div class="bg-surface border border-outline-variant max-w-md w-full p-8 rounded shadow-2xl flex flex-col items-center">
+            <span class="material-symbols-outlined text-[64px] text-primary mb-4 animate-bounce">chrome_reader_mode</span>
+            <h3 class="font-headline-lg text-headline-lg mb-4 text-on-surface">Please Open in Google Chrome</h3>
+            <p class="font-body-md text-body-md text-on-surface-variant mb-6 leading-relaxed">
+              It looks like you are browsing using <strong>Samsung Internet</strong>. For the best visual experience, premium animations, and interactive elements, please copy this link and open it in <strong>Google Chrome</strong>.
+            </p>
+            <button onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');" class="bg-primary text-on-primary px-6 py-3 font-button text-button hover:opacity-90 transition-all flex items-center gap-2 mb-4 w-full justify-center">
+              <span class="material-symbols-outlined text-[18px]">content_copy</span> Copy Link
+            </button>
+            <p class="font-label-mono text-[10px] text-outline uppercase">Optimized for Google Chrome &amp; Safari</p>
+          </div>
+        `;
+                                document.body.appendChild(overlay);
+                        }
+                });
+
+                function toggleInquiryModal(show) {
+                        const modal = document.getElementById('inquiry-modal');
+                        if (modal) {
+                                modal.style.display = show ? 'flex' : 'none';
+                        }
+                }
+
+                function handleInquirySubmit(event) {
+                        event.preventDefault();
+                        const name = document.getElementById('modal-name').value;
+                        const phone = document.getElementById('modal-phone').value;
+                        const message = document.getElementById('modal-message').value;
+
+                        const formattedText = `Hello Opoku Kelvin, my name is ${name}.\n\nMessage: ${message}\n\nMy phone number is: ${phone}`;
+                        const whatsappUrl = `https://wa.me/233509663058?text=${encodeURIComponent(formattedText)}`;
+
+                        window.open(whatsappUrl, '_blank');
+                        toggleInquiryModal(false);
+                }
+
+                function toggleMobileMenu(show) {
+                        const menu = document.getElementById('mobile-menu');
+                        const drawer = document.getElementById('mobile-menu-drawer');
+                        if (menu && drawer) {
+                                if (show) {
+                                        menu.style.display = 'block';
+                                        setTimeout(() => {
+                                                drawer.classList.remove('translate-x-full');
+                                                drawer.classList.add('translate-x-0');
+                                        }, 10);
+                                } else {
+                                        drawer.classList.remove('translate-x-0');
+                                        drawer.classList.add('translate-x-full');
+                                        setTimeout(() => {
+                                                menu.style.display = 'none';
+                                        }, 300);
+                                }
+                        }
+                }
+        </script>
+
+        <!-- Inquiry Modal -->
+        <div id="inquiry-modal"
+                class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/50 backdrop-blur-sm p-4">
+                <div class="bg-white border border-outline-variant max-w-md w-full p-8 rounded-lg relative shadow-xl">
+                        <button onclick="toggleInquiryModal(false)"
+                                class="absolute right-4 top-4 text-outline hover:text-primary flex items-center justify-center">
+                                <span class="material-symbols-outlined">close</span>
+                        </button>
+                        <h3 class="font-headline-lg text-headline-lg mb-6">Send an Inquiry</h3>
+                        <form onsubmit="handleInquirySubmit(event)" class="space-y-6">
+                                <div class="space-y-1">
+                                        <label class="font-label-mono text-label-mono uppercase text-outline">Your
+                                                Name</label>
+                                        <input id="modal-name" required
+                                                class="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-primary font-body-md py-2 px-0"
+                                                placeholder="John Doe" type="text" />
+                                </div>
+                                <div class="space-y-1">
+                                        <label class="font-label-mono text-label-mono uppercase text-outline">Your Phone
+                                                Number (For Response)</label>
+                                        <input id="modal-phone" required
+                                                class="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-primary font-body-md py-2 px-0"
+                                                placeholder="+233..." type="tel" />
+                                </div>
+                                <div class="space-y-1">
+                                        <label
+                                                class="font-label-mono text-label-mono uppercase text-outline">Message</label>
+                                        <textarea id="modal-message" required
+                                                class="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-primary font-body-md py-2 px-0"
+                                                placeholder="Tell me about your project..." rows="3"></textarea>
+                                </div>
+                                <button type="submit"
+                                        class="w-full bg-primary text-on-primary py-3 rounded font-button text-button hover:bg-tertiary transition-colors flex items-center justify-center gap-2">
+                                        Send on WhatsApp
+                                        <span class="material-symbols-outlined text-[18px]">send</span>
+                                </button>
+                        </form>
+                </div>
+        </div>
+
+        <!-- Mobile Menu Drawer -->
+        <div id="mobile-menu" class="fixed inset-0 z-[90] hidden bg-black/50 backdrop-blur-sm">
+                <div id="mobile-menu-drawer"
+                        class="fixed top-0 right-0 h-full w-64 bg-white border-l border-outline-variant p-8 flex flex-col justify-between transform translate-x-full transition-transform duration-300">
+                        <div>
+                                <div class="flex justify-between items-center mb-12">
+                                        <span
+                                                class="font-label-mono text-label-mono uppercase tracking-widest text-primary">MENU</span>
+                                        <button onclick="toggleMobileMenu(false)"
+                                                class="text-outline hover:text-primary flex items-center justify-center">
+                                                <span class="material-symbols-outlined">close</span>
+                                        </button>
+                                </div>
+                                <nav class="flex flex-col gap-6">
+                                        <a class="font-headline-md text-headline-md text-on-surface-variant hover:text-primary transition-colors"
+                                                href="work.html">Work</a>
+                                        <a class="font-headline-md text-headline-md text-on-surface-variant hover:text-primary transition-colors"
+                                                href="archive.html">Archive</a>
+                                        <a class="font-headline-md text-headline-md text-on-surface-variant hover:text-primary transition-colors"
+                                                href="index.html">About</a>
+                                        <a class="font-headline-md text-headline-md text-on-surface-variant hover:text-primary transition-colors"
+                                                href="mailto:opoku3765@gmail.com">Contact</a>
+                                </nav>
+                        </div>
+                        <div>
+                                <button onclick="toggleMobileMenu(false); toggleInquiryModal(true);"
+                                        class="w-full bg-primary text-on-primary py-3 rounded font-button text-button hover:bg-tertiary transition-colors flex items-center justify-center gap-2">
+                                        Inquire
+                                        <span class="material-symbols-outlined text-[18px]">send</span>
+                                </button>
+                        </div>
+                </div>
+        </div>
+</body>
+
+</html>
