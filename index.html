@@ -4,8 +4,13 @@
 
 <head>
         <meta charset="utf-8" />
-        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta name="google-site-verification" content="83ra1swc0n0FVlU57Ui44HnyFzxKjMeh9wYofRP99-I" />
+        <meta name="keywords" content="Opoku Kelvin NanaYaw, Mr Rager, Au_ra.rx, Jabari" />
         <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <!-- Supabase CDN and Client Config -->
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+        <script src="supabase-client.js"></script>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&amp;family=EB+Garamond:wght@500&amp;family=JetBrains+Mono:wght@400&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
                 rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
@@ -100,6 +105,10 @@
                 }
         </script>
         <style>
+                * {
+                        -webkit-tap-highlight-color: transparent !important;
+                        outline: none !important;
+                }
                 .material-symbols-outlined {
                         font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
                         font-size: 20px;
@@ -160,11 +169,10 @@
                                 <span
                                         class="font-label-mono text-label-mono text-outline uppercase tracking-widest mb-2">About
                                         Me</span>
-                                <h1 class="font-headline-xl text-headline-xl mb-3">Opoku Kelvin NanaYaw</h1>
-                                <h2 class="font-body-lg text-body-lg text-primary uppercase tracking-wider mb-6">— Data
-                                        Analyst & Junior IT Support</h2>
+                                <h1 class="font-headline-xl text-headline-xl mb-3" id="profile-name">Opoku Kelvin NanaYaw</h1>
+                                <h2 class="font-body-lg text-body-lg text-primary uppercase tracking-wider mb-6" id="profile-title">— Data Analyst & Junior IT Support</h2>
                                 <p
-                                        class="font-body-md text-body-md text-on-surface-variant max-w-2xl leading-relaxed mb-8">
+                                        class="font-body-md text-body-md text-on-surface-variant max-w-2xl leading-relaxed mb-8" id="profile-bio">
                                         I am a Business Information Technology student at KNUST, pioneering the
                                         intersection of data-driven business intelligence and robust systems
                                         engineering. As a developer and analyst, I build high-density, real-world
@@ -267,73 +275,8 @@
                                         <h4
                                                 class="font-label-mono text-label-mono text-outline uppercase tracking-wider mb-4">
                                                 Credentials &amp; Coursework</h4>
-                                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                                                <a href="CertificateOfCompletion_Introduction to Fintech.pdf" target="_blank"
-                                                        class="p-3 bg-surface-container/50 border border-outline-variant/30 rounded flex items-start gap-3 hover:border-primary transition-colors group">
-                                                        <span class="material-symbols-outlined text-primary mt-0.5"
-                                                                style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
-                                                        <div>
-                                                                <h5 class="font-body-sm font-semibold text-primary group-hover:underline">
-                                                                        Introduction to Fintech</h5>
-                                                                <p class="font-label-mono text-[10px] text-outline">
-                                                                        LinkedIn / 2026</p>
-                                                        </div>
-                                                </a>
-                                                <a href="CertificateOfCompletion_Digital Banking Fundamentals.pdf" target="_blank"
-                                                        class="p-3 bg-surface-container/50 border border-outline-variant/30 rounded flex items-start gap-3 hover:border-primary transition-colors group">
-                                                        <span class="material-symbols-outlined text-primary mt-0.5"
-                                                                style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
-                                                        <div>
-                                                                <h5 class="font-body-sm font-semibold text-primary group-hover:underline">
-                                                                        Digital Banking Fundamentals</h5>
-                                                                <p class="font-label-mono text-[10px] text-outline">
-                                                                        LinkedIn / 2026</p>
-                                                        </div>
-                                                </a>
-                                                <a href="UC-74cc5aa2-696b-4681-ac73-a15a95ccf1cc.jpg" target="_blank"
-                                                        class="p-3 bg-surface-container/50 border border-outline-variant/30 rounded flex items-start gap-3 hover:border-primary transition-colors group">
-                                                        <span class="material-symbols-outlined text-primary mt-0.5"
-                                                                style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
-                                                        <div>
-                                                                <h5 class="font-body-sm font-semibold text-primary group-hover:underline">
-                                                                        Mastering Power BI</h5>
-                                                                <p class="font-label-mono text-[10px] text-outline">
-                                                                        Udemy / 2025</p>
-                                                        </div>
-                                                </a>
-                                                <a href="UC-094f847c-3b51-49cf-9408-bf6f15e4a36a.jpg" target="_blank"
-                                                        class="p-3 bg-surface-container/50 border border-outline-variant/30 rounded flex items-start gap-3 hover:border-primary transition-colors group">
-                                                        <span class="material-symbols-outlined text-primary mt-0.5"
-                                                                style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
-                                                        <div>
-                                                                <h5 class="font-body-sm font-semibold text-primary group-hover:underline">
-                                                                        AI Essentials: Intro to AI</h5>
-                                                                <p class="font-label-mono text-[10px] text-outline">
-                                                                        Udemy / 2025</p>
-                                                        </div>
-                                                </a>
-                                                <a href="UC-b10473d2-e7cb-488d-9116-51de5c4a631a.jpg" target="_blank"
-                                                        class="p-3 bg-surface-container/50 border border-outline-variant/30 rounded flex items-start gap-3 hover:border-primary transition-colors group">
-                                                        <span class="material-symbols-outlined text-primary mt-0.5"
-                                                                style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
-                                                        <div>
-                                                                <h5 class="font-body-sm font-semibold text-primary group-hover:underline">
-                                                                        CyberSecurity: Ultimate Guide</h5>
-                                                                <p class="font-label-mono text-[10px] text-outline">
-                                                                        Udemy / 2025</p>
-                                                        </div>
-                                                </a>
-                                                <div
-                                                        class="p-3 bg-surface-container/50 border border-outline-variant/30 rounded flex items-start gap-3">
-                                                        <span class="material-symbols-outlined text-primary mt-0.5"
-                                                                style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
-                                                        <div>
-                                                                <h5 class="font-body-sm font-semibold text-primary">AI
-                                                                        Career Essentials</h5>
-                                                                <p class="font-label-mono text-[10px] text-outline">ALX
-                                                                        / 2025</p>
-                                                        </div>
-                                                </div>
+                                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4" id="certifications-grid">
+                                                <!-- Dynamic certifications will be loaded here -->
                                         </div>
                                 </div>
                         </div>
@@ -444,15 +387,15 @@
                                         <div class="flex items-center gap-4">
                                                 <span
                                                         class="material-symbols-outlined text-outline">alternate_email</span>
-                                                <span class="font-label-mono text-label-mono">opoku3765@gmail.com</span>
+                                                <span class="font-label-mono text-label-mono" id="contact-email">opoku3765@gmail.com</span>
                                         </div>
                                         <div class="flex items-center gap-4">
                                                 <span class="material-symbols-outlined text-outline">call</span>
-                                                <span class="font-label-mono text-label-mono">+233 050 966 3058</span>
+                                                <span class="font-label-mono text-label-mono" id="contact-phone">+233 050 966 3058</span>
                                         </div>
                                         <div class="flex items-center gap-4">
                                                 <span class="material-symbols-outlined text-outline">location_on</span>
-                                                <span class="font-label-mono text-label-mono">Accra, Ghana</span>
+                                                <span class="font-label-mono text-label-mono" id="contact-location">Accra, Ghana</span>
                                         </div>
                                 </div>
                         </div>
@@ -512,7 +455,8 @@
 
         <script>
                 let currentSlide = 0;
-                const totalSlides = 2;
+                let totalSlides = 2;
+                let whatsappNumber = "233509663058";
 
                 function updateCarousel() {
                         const track = document.getElementById('about-carousel');
@@ -520,11 +464,13 @@
                                 track.style.transform = `translateX(-${currentSlide * 100}%)`;
                         }
 
-                        const dot0 = document.getElementById('dot-0');
-                        const dot1 = document.getElementById('dot-1');
-                        if (dot0 && dot1) {
-                                dot0.className = currentSlide === 0 ? "w-2 h-2 rounded-full bg-primary transition-colors" : "w-2 h-2 rounded-full bg-primary/30 transition-colors";
-                                dot1.className = currentSlide === 1 ? "w-2 h-2 rounded-full bg-primary transition-colors" : "w-2 h-2 rounded-full bg-primary/30 transition-colors";
+                        // Re-create dots container or update existing dots dynamically
+                        const dotsContainer = document.querySelector('#about-carousel').parentNode.querySelector('.absolute.bottom-4');
+                        if (dotsContainer) {
+                                dotsContainer.innerHTML = Array.from({ length: totalSlides }).map((_, idx) => `
+                                        <button onclick="goToSlide(${idx})" id="dot-${idx}"
+                                                class="w-2 h-2 rounded-full ${currentSlide === idx ? 'bg-primary' : 'bg-primary/30'} transition-colors"></button>
+                                `).join('');
                         }
                 }
 
@@ -550,18 +496,87 @@
                         const message = document.getElementById('about-message').value;
 
                         const formattedText = `Hello Opoku Kelvin, my name is ${name}.\n\nMessage: ${message}\n\nMy phone number is: ${phone}`;
-                        const whatsappUrl = `https://wa.me/233509663058?text=${encodeURIComponent(formattedText)}`;
+                        const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(formattedText)}`;
 
                         window.open(whatsappUrl, '_blank');
                 }
 
                 // Strict Chrome Enforcement for Samsung Internet Users
-                document.addEventListener("DOMContentLoaded", () => {
+                document.addEventListener("DOMContentLoaded", async () => {
+                        // Hidden Admin Access Gesture (3 clicks on the header logo)
+                        const logo = document.querySelector("nav .font-headline-lg");
+                        if (logo) {
+                                let clickCount = 0;
+                                let clickTimeout;
+                                logo.style.cursor = "pointer";
+                                logo.addEventListener("click", () => {
+                                        clickCount++;
+                                        clearTimeout(clickTimeout);
+                                        if (clickCount === 3) {
+                                                window.location.href = "admin.html";
+                                        }
+                                        clickTimeout = setTimeout(() => {
+                                                clickCount = 0;
+                                        }, 1000);
+                                });
+                        }
+
+                        // Fetch Dynamic Profile Data from Supabase
+                        const profile = await getProfile();
+                        if (profile) {
+                                document.getElementById('profile-name').innerText = profile.name;
+                                document.getElementById('profile-title').innerText = "— " + profile.title;
+                                document.getElementById('profile-bio').innerHTML = profile.bio.replace(/\n/g, '<br>');
+                                document.getElementById('contact-email').innerText = profile.email;
+                                document.getElementById('contact-phone').innerText = profile.phone;
+                                document.getElementById('contact-location').innerText = profile.location;
+                                if (profile.whatsapp) {
+                                        whatsappNumber = profile.whatsapp.replace(/\+/g, '').replace(/\s/g, '');
+                                }
+
+                                // If profile has dynamic images, rebuild the carousel tracks
+                                if (profile.profile_images && profile.profile_images.length > 0) {
+                                        const track = document.getElementById('about-carousel');
+                                        if (track) {
+                                                track.innerHTML = profile.profile_images.map((imgUrl, i) => `
+                                                        <div class="w-full h-full flex-shrink-0">
+                                                                <img class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                                                                        data-alt="Portrait ${i + 1}" src="${imgUrl}" />
+                                                        </div>
+                                                `).join('');
+                                                totalSlides = profile.profile_images.length;
+                                                updateCarousel();
+                                        }
+                                }
+                        }
+
+                        // Fetch Dynamic Certifications Data from Supabase
+                        const certs = await getCertifications();
+                        const certsGrid = document.getElementById('certifications-grid');
+                        if (certsGrid) {
+                                certsGrid.innerHTML = certs.map(cert => {
+                                        const wrapperStart = cert.url ? `<a href="${cert.url}" target="_blank"` : `<div`;
+                                        const wrapperEnd = cert.url ? `</a>` : `</div>`;
+                                        return `
+                                                ${wrapperStart} class="p-3 bg-surface-container/50 border border-outline-variant/30 rounded flex items-start gap-3 hover:border-primary transition-colors group">
+                                                        <span class="material-symbols-outlined text-primary mt-0.5"
+                                                                style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+                                                        <div>
+                                                                <h5 class="font-body-sm font-semibold text-primary ${cert.url ? 'group-hover:underline' : ''}">
+                                                                        ${cert.name}</h5>
+                                                                <p class="font-label-mono text-[10px] text-outline">
+                                                                        ${cert.issuer} / ${cert.year}</p>
+                                                        </div>
+                                                ${wrapperEnd}
+                                        `;
+                                }).join('');
+                        }
+
                         const ua = navigator.userAgent;
                         const isSamsung = ua.indexOf("SamsungBrowser") > -1;
                         if (isSamsung) {
                                 const overlay = document.createElement("div");
-                                overlay.className = "fixed inset-0 z-[200] bg-black/80 backdrop-blur-md flex items-center justify-center p-6 text-center";
+                                overlay.className = "fixed inset-0 z-[200] bg-black/90 flex items-center justify-center p-6 text-center";
                                 overlay.innerHTML = `
           <div class="bg-surface border border-outline-variant max-w-md w-full p-8 rounded shadow-2xl flex flex-col items-center">
             <span class="material-symbols-outlined text-[64px] text-primary mb-4 animate-bounce">chrome_reader_mode</span>
@@ -593,7 +608,7 @@
                         const message = document.getElementById('modal-message').value;
 
                         const formattedText = `Hello Opoku Kelvin, my name is ${name}.\n\nMessage: ${message}\n\nMy phone number is: ${phone}`;
-                        const whatsappUrl = `https://wa.me/233509663058?text=${encodeURIComponent(formattedText)}`;
+                        const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(formattedText)}`;
 
                         window.open(whatsappUrl, '_blank');
                         toggleInquiryModal(false);
@@ -622,7 +637,7 @@
 
         <!-- Inquiry Modal -->
         <div id="inquiry-modal"
-                class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/50 backdrop-blur-sm p-4">
+                class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/60 p-4">
                 <div class="bg-white border border-outline-variant max-w-md w-full p-8 rounded-lg relative shadow-xl">
                         <button onclick="toggleInquiryModal(false)"
                                 class="absolute right-4 top-4 text-outline hover:text-primary flex items-center justify-center">
@@ -661,7 +676,7 @@
         </div>
 
         <!-- Mobile Menu Drawer -->
-        <div id="mobile-menu" class="fixed inset-0 z-[90] hidden bg-black/50 backdrop-blur-sm">
+        <div id="mobile-menu" class="fixed inset-0 z-[90] hidden bg-black/60">
                 <div id="mobile-menu-drawer"
                         class="fixed top-0 right-0 h-full w-64 bg-white border-l border-outline-variant p-8 flex flex-col justify-between transform translate-x-full transition-transform duration-300">
                         <div>

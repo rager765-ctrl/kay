@@ -2,12 +2,21 @@
 
 <html class="light" lang="en"><head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<meta name="google-site-verification" content="83ra1swc0n0FVlU57Ui44HnyFzxKjMeh9wYofRP99-I" />
+<meta name="keywords" content="Opoku Kelvin NanaYaw, Mr Rager, Au_ra.rx, Jabari" />
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Supabase CDN and Client Config -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-client.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&amp;family=EB+Garamond:wght@500&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <style>
+        * {
+            -webkit-tap-highlight-color: transparent !important;
+            outline: none !important;
+        }
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
         }
@@ -143,16 +152,22 @@
 </div>
 </header>
 <!-- Archive Filter Bar (Subtle) -->
-<div class="border-b border-outline-variant mb-8 pb-4 flex flex-wrap gap-8 items-center">
-<button class="font-label-mono text-label-mono text-primary flex items-center gap-2">
-                All Projects <span class="text-on-surface-variant opacity-50">(3)</span>
+<div class="border-b border-outline-variant mb-8 pb-4 flex flex-wrap gap-8 items-center" id="filter-bar">
+<button onclick="filterArchive('All')" class="font-label-mono text-label-mono text-primary flex items-center gap-2" id="filter-btn-All">
+                All Projects <span class="text-on-surface-variant opacity-50" id="filter-count-All">(0)</span>
 </button>
-<button class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary transition-colors">Data Analysis</button>
-<button class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary transition-colors">Web Development</button>
-<button class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary transition-colors">Database</button>
+<button onclick="filterArchive('Data Analysis')" class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary transition-colors" id="filter-btn-Data-Analysis">
+                Data Analysis <span class="text-on-surface-variant opacity-50" id="filter-count-Data-Analysis">(0)</span>
+</button>
+<button onclick="filterArchive('Web Development')" class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary transition-colors" id="filter-btn-Web-Development">
+                Web Development <span class="text-on-surface-variant opacity-50" id="filter-count-Web-Development">(0)</span>
+</button>
+<button onclick="filterArchive('Database')" class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary transition-colors" id="filter-btn-Database">
+                Database <span class="text-on-surface-variant opacity-50" id="filter-count-Database">(0)</span>
+</button>
 </div>
 <!-- Dense Project List (Archive) -->
-<section class="flex flex-col">
+<section class="flex flex-col" id="archive-list">
 <!-- Table Header -->
 <div class="grid grid-cols-12 gap-4 py-4 px-2 border-b border-outline font-label-mono text-label-mono text-on-surface-variant uppercase hidden md:grid">
 <div class="col-span-1">Year</div>
@@ -160,335 +175,7 @@
 <div class="col-span-4">Category / System</div>
 <div class="col-span-2 text-right">Details</div>
 </div>
-<!-- Project Row Knotty & Nice -->
-<div class="group grid grid-cols-12 gap-4 py-6 px-2 border-b border-outline-variant hover:bg-surface-container-low transition-colors duration-200 cursor-pointer items-center">
-<div class="col-span-2 md:col-span-1 font-label-mono text-label-mono text-on-surface-variant">2026</div>
-<div class="col-span-8 md:col-span-5 flex flex-col md:flex-row md:items-center gap-2">
-<span class="font-body-lg text-body-lg text-primary font-medium">Knotty &amp; Nice</span>
-<span class="md:hidden font-label-mono text-[10px] text-on-surface-variant opacity-60">Salon &amp; Booking</span>
-</div>
-<div class="hidden md:block col-span-4">
-<div class="flex flex-wrap gap-2">
-<span class="px-2 py-0.5 bg-surface-container text-on-surface-variant font-label-mono text-[10px]">Firebase</span>
-<span class="px-2 py-0.5 bg-surface-container text-on-surface-variant font-label-mono text-[10px]">HTML/CSS/JS</span>
-<span class="px-2 py-0.5 bg-surface-container text-on-surface-variant font-label-mono text-[10px]">PWA</span>
-<span class="px-2 py-0.5 bg-surface-container text-on-surface-variant font-label-mono text-[10px]">Automated Booking</span>
-</div>
-</div>
-<div class="col-span-2 text-right">
-<span class="material-symbols-outlined text-outline group-hover:text-primary group-hover:translate-x-1 transition-all">arrow_forward</span>
-</div>
-<div class="col-span-12 mt-4 hidden group-hover:block overflow-hidden">
-<div class="grid grid-cols-12 gap-gutter">
-<div class="col-span-4">
-<div class="w-full aspect-video bg-surface-container overflow-hidden rounded border border-outline-variant relative">
-<div class="w-full h-full flex overflow-x-auto snap-x snap-mandatory" style="scrollbar-width: none; -ms-overflow-style: none;">
-<img alt="Knotty & Nice 1" class="w-full h-full flex-shrink-0 snap-center object-cover grayscale hover:grayscale-0 transition-all duration-500" src="Screenshot%202026-05-25%20154759.png"/>
-<img alt="Knotty & Nice 2" class="w-full h-full flex-shrink-0 snap-center object-cover grayscale hover:grayscale-0 transition-all duration-500" src="Screenshot%202026-05-25%20154822.png"/>
-<img alt="Knotty & Nice 3" class="w-full h-full flex-shrink-0 snap-center object-cover grayscale hover:grayscale-0 transition-all duration-500" src="Screenshot%202026-05-25%20154844.png"/>
-</div>
-</div>
-</div>
-<div class="col-span-8 flex flex-col justify-center">
-<p class="font-body-md text-body-md text-on-surface-variant max-w-xl mb-4">
-    A premium student-focused hair appointment and salon booking platform tailored specifically for the KNUST student community. Developed a highly polished Progressive Web App with a theme-aware glassmorphic UI, a dynamic hairdresser directory, and automated WhatsApp inquiry integration to optimize student scheduling.
-</p>
-<a href="https://knottyandnice.vercel.app" target="_blank" class="font-button text-button flex w-fit items-center gap-2 group/link border-b border-primary pb-1 hover:opacity-80 transition-opacity text-primary">
-    View Live Site
-    <span class="material-symbols-outlined text-[16px] group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 transition-transform">north_east</span>
-</a>
-</div>
-</div>
-</div>
-</div>
-
-<!-- Project Row Autocare -->
-<div class="group grid grid-cols-12 gap-4 py-6 px-2 border-b border-outline-variant hover:bg-surface-container-low transition-colors duration-200 cursor-pointer items-center">
-<div class="col-span-2 md:col-span-1 font-label-mono text-label-mono text-on-surface-variant">2026</div>
-<div class="col-span-8 md:col-span-5 flex flex-col md:flex-row md:items-center gap-2">
-<span class="font-body-lg text-body-lg text-primary font-medium">Autocare</span>
-<span class="md:hidden font-label-mono text-[10px] text-on-surface-variant opacity-60">AI Diagnostics</span>
-</div>
-<div class="hidden md:block col-span-4">
-<div class="flex flex-wrap gap-2">
-<span class="px-2 py-0.5 bg-surface-container text-on-surface-variant font-label-mono text-[10px]">AI Diagnostics</span>
-<span class="px-2 py-0.5 bg-surface-container text-on-surface-variant font-label-mono text-[10px]">Automated Bookings</span>
-<span class="px-2 py-0.5 bg-surface-container text-on-surface-variant font-label-mono text-[10px]">HTML/CSS/JS</span>
-</div>
-</div>
-<div class="col-span-2 text-right">
-<span class="material-symbols-outlined text-outline group-hover:text-primary group-hover:translate-x-1 transition-all">arrow_forward</span>
-</div>
-<div class="col-span-12 mt-4 hidden group-hover:block overflow-hidden">
-<div class="grid grid-cols-12 gap-gutter">
-<div class="col-span-4">
-<div class="w-full aspect-video bg-surface-container overflow-hidden rounded border border-outline-variant relative">
-<div class="w-full h-full flex overflow-x-auto snap-x snap-mandatory" style="scrollbar-width: none; -ms-overflow-style: none;">
-<img alt="Autocare 1" class="w-full h-full flex-shrink-0 snap-center object-cover grayscale hover:grayscale-0 transition-all duration-500" src="Screenshot%202026-05-17%20141411.png"/>
-<img alt="Autocare 2" class="w-full h-full flex-shrink-0 snap-center object-cover grayscale hover:grayscale-0 transition-all duration-500" src="Screenshot%202026-05-17%20141455.png"/>
-<img alt="Autocare 3" class="w-full h-full flex-shrink-0 snap-center object-cover grayscale hover:grayscale-0 transition-all duration-500" src="Screenshot%202026-05-17%20141709.png"/>
-</div>
-</div>
-</div>
-<div class="col-span-8 flex flex-col justify-center">
-<p class="font-body-md text-body-md text-on-surface-variant max-w-xl mb-4">
-    An AI-driven car maintenance and diagnostic system. Designed a comprehensive portal combining real-time vehicle telemetry diagnostic dashboards, automated scheduling and service bookings, and an integrated e-commerce shop for replacement parts and automotive accessories.
-</p>
-</div>
-</div>
-</div>
-</div>
-
-<!-- Project Row Bobafie -->
-<div class="group grid grid-cols-12 gap-4 py-6 px-2 border-b border-outline-variant hover:bg-surface-container-low transition-colors duration-200 cursor-pointer items-center">
-<div class="col-span-2 md:col-span-1 font-label-mono text-label-mono text-on-surface-variant">2026</div>
-<div class="col-span-8 md:col-span-5 flex flex-col md:flex-row md:items-center gap-2">
-<span class="font-body-lg text-body-lg text-primary font-medium">Bobafie</span>
-<span class="md:hidden font-label-mono text-[10px] text-on-surface-variant opacity-60">E-Commerce</span>
-</div>
-<div class="hidden md:block col-span-4">
-<div class="flex flex-wrap gap-2">
-<span class="px-2 py-0.5 bg-surface-container text-on-surface-variant font-label-mono text-[10px]">E-Commerce</span>
-<span class="px-2 py-0.5 bg-surface-container text-on-surface-variant font-label-mono text-[10px]">Firebase</span>
-<span class="px-2 py-0.5 bg-surface-container text-on-surface-variant font-label-mono text-[10px]">HTML/CSS/JS</span>
-<span class="px-2 py-0.5 bg-surface-container text-on-surface-variant font-label-mono text-[10px]">PWA</span>
-</div>
-</div>
-<div class="col-span-2 text-right">
-<span class="material-symbols-outlined text-outline group-hover:text-primary group-hover:translate-x-1 transition-all">arrow_forward</span>
-</div>
-<div class="col-span-12 mt-4 hidden group-hover:block overflow-hidden">
-<div class="grid grid-cols-12 gap-gutter">
-<div class="col-span-4">
-<div class="w-full aspect-video bg-surface-container overflow-hidden rounded border border-outline-variant relative">
-<div class="w-full h-full flex overflow-x-auto snap-x snap-mandatory" style="scrollbar-width: none; -ms-overflow-style: none;">
-<img alt="Bobafie 1" class="w-full h-full flex-shrink-0 snap-center object-cover grayscale hover:grayscale-0 transition-all duration-500" src="Screenshot%202026-05-17%20135729.png"/>
-<img alt="Bobafie 2" class="w-full h-full flex-shrink-0 snap-center object-cover grayscale hover:grayscale-0 transition-all duration-500" src="Screenshot%202026-05-17%20135803.png"/>
-<img alt="Bobafie 3" class="w-full h-full flex-shrink-0 snap-center object-cover grayscale hover:grayscale-0 transition-all duration-500" src="Screenshot%202026-05-17%20135820.png"/>
-</div>
-</div>
-</div>
-<div class="col-span-8 flex flex-col justify-center">
-<p class="font-body-md text-body-md text-on-surface-variant max-w-xl mb-4">
-    A sleek Boba Tea ordering system and store. Designed a fully functional, mobile-responsive Progressive Web App (PWA) allowing customers to browse a vibrant menu of handcrafted milk teas, customize sweetness/ice levels, manage a dynamic cart, and check out with real-time order tracking.
-</p>
-<a href="https://bobafie-store.netlify.app" target="_blank" class="font-button text-button flex w-fit items-center gap-2 group/link border-b border-primary pb-1 hover:opacity-80 transition-opacity text-primary">
-    View Live Site
-    <span class="material-symbols-outlined text-[16px] group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 transition-transform">north_east</span>
-</a>
-</div>
-</div>
-</div>
-</div>
-
-<!-- Project Row Between 2 Breads -->
-<div class="group grid grid-cols-12 gap-4 py-6 px-2 border-b border-outline-variant hover:bg-surface-container-low transition-colors duration-200 cursor-pointer items-center">
-<div class="col-span-2 md:col-span-1 font-label-mono text-label-mono text-on-surface-variant">2026</div>
-<div class="col-span-8 md:col-span-5 flex flex-col md:flex-row md:items-center gap-2">
-<span class="font-body-lg text-body-lg text-primary font-medium">Between 2 Breads</span>
-<span class="md:hidden font-label-mono text-[10px] text-on-surface-variant opacity-60">Food Tech</span>
-</div>
-<div class="hidden md:block col-span-4">
-<div class="flex flex-wrap gap-2">
-<span class="px-2 py-0.5 bg-surface-container text-on-surface-variant font-label-mono text-[10px]">Food Tech</span>
-<span class="px-2 py-0.5 bg-surface-container text-on-surface-variant font-label-mono text-[10px]">Tailwind CSS</span>
-<span class="px-2 py-0.5 bg-surface-container text-on-surface-variant font-label-mono text-[10px]">HTML/CSS/JS</span>
-</div>
-</div>
-<div class="col-span-2 text-right">
-<span class="material-symbols-outlined text-outline group-hover:text-primary group-hover:translate-x-1 transition-all">arrow_forward</span>
-</div>
-<div class="col-span-12 mt-4 hidden group-hover:block overflow-hidden">
-<div class="grid grid-cols-12 gap-gutter">
-<div class="col-span-4">
-<div class="w-full aspect-video bg-surface-container overflow-hidden rounded border border-outline-variant relative">
-<div class="w-full h-full flex overflow-x-auto snap-x snap-mandatory" style="scrollbar-width: none; -ms-overflow-style: none;">
-<img alt="Between 2 Breads 1" class="w-full h-full flex-shrink-0 snap-center object-cover grayscale hover:grayscale-0 transition-all duration-500" src="Screenshot%202026-04-03%20020404.png"/>
-<img alt="Between 2 Breads 2" class="w-full h-full flex-shrink-0 snap-center object-cover grayscale hover:grayscale-0 transition-all duration-500" src="Screenshot%202026-04-03%20020419.png"/>
-<img alt="Between 2 Breads 3" class="w-full h-full flex-shrink-0 snap-center object-cover grayscale hover:grayscale-0 transition-all duration-500" src="Screenshot%202026-04-03%20020439.png"/>
-<img alt="Between 2 Breads 4" class="w-full h-full flex-shrink-0 snap-center object-cover grayscale hover:grayscale-0 transition-all duration-500" src="Screenshot%202026-04-03%20020448.png"/>
-</div>
-</div>
-</div>
-<div class="col-span-8 flex flex-col justify-center">
-<p class="font-body-md text-body-md text-on-surface-variant max-w-xl mb-4">
-    A premium food rendering and online ordering service. Designed a highly interactive frontend platform enabling users to browse handcrafted sandwiches, select customized pairings, and place seamless, real-time orders with direct WhatsApp feedback integration.
-</p>
-<a href="https://between-dous-pan.netlify.app" target="_blank" class="font-button text-button flex w-fit items-center gap-2 group/link border-b border-primary pb-1 hover:opacity-80 transition-opacity text-primary">
-    View Live Site
-    <span class="material-symbols-outlined text-[16px] group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 transition-transform">north_east</span>
-</a>
-</div>
-</div>
-</div>
-</div>
-
-<!-- Project Row Kwabz -->
-<div class="group grid grid-cols-12 gap-4 py-6 px-2 border-b border-outline-variant hover:bg-surface-container-low transition-colors duration-200 cursor-pointer items-center">
-<div class="col-span-2 md:col-span-1 font-label-mono text-label-mono text-on-surface-variant">2026</div>
-<div class="col-span-8 md:col-span-5 flex flex-col md:flex-row md:items-center gap-2">
-<span class="font-body-lg text-body-lg text-primary font-medium">Kwabz Store</span>
-<span class="md:hidden font-label-mono text-[10px] text-on-surface-variant opacity-60">E-Commerce</span>
-</div>
-<div class="hidden md:block col-span-4">
-<div class="flex flex-wrap gap-2">
-<span class="px-2 py-0.5 bg-surface-container text-on-surface-variant font-label-mono text-[10px]">Firebase</span>
-<span class="px-2 py-0.5 bg-surface-container text-on-surface-variant font-label-mono text-[10px]">HTML/CSS/JS</span>
-<span class="px-2 py-0.5 bg-surface-container text-on-surface-variant font-label-mono text-[10px]">PWA</span>
-</div>
-</div>
-<div class="col-span-2 text-right">
-<span class="material-symbols-outlined text-outline group-hover:text-primary group-hover:translate-x-1 transition-all">arrow_forward</span>
-</div>
-<div class="col-span-12 mt-4 hidden group-hover:block overflow-hidden">
-<div class="grid grid-cols-12 gap-gutter">
-<div class="col-span-4">
-<div class="w-full aspect-video bg-surface-container overflow-hidden rounded border border-outline-variant relative">
-<div class="w-full h-full flex overflow-x-auto snap-x snap-mandatory" style="scrollbar-width: none; -ms-overflow-style: none;">
-<style>.hide-scroll::-webkit-scrollbar { display: none; }</style>
-<img alt="Kwabz Store 1" class="w-full h-full flex-shrink-0 snap-center object-cover grayscale hover:grayscale-0 transition-all duration-500" src="Screenshot%202026-05-17%20132635.png"/>
-<img alt="Kwabz Store 2" class="w-full h-full flex-shrink-0 snap-center object-cover grayscale hover:grayscale-0 transition-all duration-500" src="Screenshot%202026-05-17%20132647.png"/>
-<img alt="Kwabz Store 3" class="w-full h-full flex-shrink-0 snap-center object-cover grayscale hover:grayscale-0 transition-all duration-500" src="Screenshot%202026-05-17%20132722.png"/>
-</div>
-</div>
-</div>
-<div class="col-span-8 flex flex-col justify-center">
-<p class="font-body-md text-body-md text-on-surface-variant max-w-xl mb-4">
-    A fully functional student e-commerce center. Developed a robust Progressive Web App (PWA) to handle secure authentication, product browsing, and a seamless checkout process tailored specifically for students.
-</p>
-<a href="https://kwabz-store-v2.vercel.app" target="_blank" class="font-button text-button flex w-fit items-center gap-2 group/link border-b border-primary pb-1 hover:opacity-80 transition-opacity text-primary">
-    View Live Site
-    <span class="material-symbols-outlined text-[16px] group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 transition-transform">north_east</span>
-</a>
-</div>
-</div>
-</div>
-</div>
-<!-- Project Row Agritwin -->
-<div class="group grid grid-cols-12 gap-4 py-6 px-2 border-b border-outline-variant hover:bg-surface-container-low transition-colors duration-200 cursor-pointer items-center">
-<div class="col-span-2 md:col-span-1 font-label-mono text-label-mono text-on-surface-variant">2026</div>
-<div class="col-span-8 md:col-span-5 flex flex-col md:flex-row md:items-center gap-2">
-<span class="font-body-lg text-body-lg text-primary font-medium">Agritwin Platform</span>
-<span class="md:hidden font-label-mono text-[10px] text-on-surface-variant opacity-60">Web App</span>
-</div>
-<div class="hidden md:block col-span-4">
-<div class="flex gap-2">
-<span class="px-2 py-0.5 bg-surface-container text-on-surface-variant font-label-mono text-[10px]">AgriTech</span>
-<span class="px-2 py-0.5 bg-surface-container text-on-surface-variant font-label-mono text-[10px]">Web App</span>
-</div>
-</div>
-<div class="col-span-2 text-right">
-<span class="material-symbols-outlined text-outline group-hover:text-primary group-hover:translate-x-1 transition-all">arrow_forward</span>
-</div>
-<div class="col-span-12 mt-4 hidden group-hover:block overflow-hidden">
-<div class="grid grid-cols-12 gap-gutter">
-<div class="col-span-4">
-<div class="w-full aspect-video overflow-hidden border border-outline-variant rounded">
-<img alt="Agritwin Platform" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" src="agritwin.png"/>
-</div>
-</div>
-<div class="col-span-8 flex flex-col justify-center">
-<p class="font-body-md text-body-md text-on-surface-variant max-w-xl">
-    De-risking African agriculture with digital twins. Bridged the gap between farmers and institutional capital by mapping physical farms into real-time digital twins.
-</p>
-</div>
-</div>
-</div>
-</div>
-<!-- Project Row 1 -->
-<div class="group grid grid-cols-12 gap-4 py-6 px-2 border-b border-outline-variant hover:bg-surface-container-low transition-colors duration-200 cursor-pointer items-center">
-<div class="col-span-2 md:col-span-1 font-label-mono text-label-mono text-on-surface-variant">2024</div>
-<div class="col-span-8 md:col-span-5 flex flex-col md:flex-row md:items-center gap-2">
-<span class="font-body-lg text-body-lg text-primary font-medium">Student Database System</span>
-<span class="md:hidden font-label-mono text-[10px] text-on-surface-variant opacity-60">Database</span>
-</div>
-<div class="hidden md:block col-span-4">
-<div class="flex gap-2">
-<span class="px-2 py-0.5 bg-surface-container text-on-surface-variant font-label-mono text-[10px]">Database</span>
-<span class="px-2 py-0.5 bg-surface-container text-on-surface-variant font-label-mono text-[10px]">SQL</span>
-</div>
-</div>
-<div class="col-span-2 text-right">
-<span class="material-symbols-outlined text-outline group-hover:text-primary group-hover:translate-x-1 transition-all">arrow_forward</span>
-</div>
-<div class="col-span-12 mt-4 hidden group-hover:block overflow-hidden">
-<div class="grid grid-cols-12 gap-gutter">
-<div class="col-span-4">
-<div class="w-full aspect-video overflow-hidden border border-outline-variant rounded">
-<img alt="Student Database System" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" src="https://images.unsplash.com/photo-1607799279861-4dd421887fb3?auto=format&fit=crop&w=800&q=80"/>
-</div>
-</div>
-<div class="col-span-8 flex flex-col justify-center">
-<p class="font-body-md text-body-md text-on-surface-variant max-w-xl">
-                                Relational database with 5 normalized tables managing 500+ records, reducing redundancy and improving query efficiency.
-                            </p>
-</div>
-</div>
-</div>
-</div>
-<!-- Project Row 2 -->
-<div class="group grid grid-cols-12 gap-4 py-6 px-2 border-b border-outline-variant hover:bg-surface-container-low transition-colors duration-200 cursor-pointer items-center">
-<div class="col-span-2 md:col-span-1 font-label-mono text-label-mono text-on-surface-variant">2024</div>
-<div class="col-span-8 md:col-span-5 flex flex-col md:flex-row md:items-center gap-2">
-<span class="font-body-lg text-body-lg text-primary font-medium">Personal Portfolio</span>
-<span class="md:hidden font-label-mono text-[10px] text-on-surface-variant opacity-60">Web Development</span>
-</div>
-<div class="hidden md:block col-span-4">
-<div class="flex gap-2">
-<span class="px-2 py-0.5 bg-surface-container text-on-surface-variant font-label-mono text-[10px]">Web Development</span>
-<span class="px-2 py-0.5 bg-surface-container text-on-surface-variant font-label-mono text-[10px]">HTML/CSS/JS</span>
-</div>
-</div>
-<div class="col-span-2 text-right">
-<span class="material-symbols-outlined text-outline group-hover:text-primary group-hover:translate-x-1 transition-all">arrow_forward</span>
-</div>
-<div class="col-span-12 mt-4 hidden group-hover:block">
-<div class="grid grid-cols-12 gap-gutter">
-<div class="col-span-4">
-<div class="w-full aspect-video overflow-hidden border border-outline-variant rounded">
-<img alt="Personal Portfolio" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" src="port.png"/>
-</div>
-</div>
-<div class="col-span-8">
-<p class="font-body-md text-body-md text-on-surface-variant max-w-xl">
-                                Fully responsive portfolio website with a 95+ Lighthouse score, implementing a mobile-first design approach.
-                            </p>
-</div>
-</div>
-</div>
-</div>
-<!-- Project Row 3 -->
-<div class="group grid grid-cols-12 gap-4 py-6 px-2 border-b border-outline-variant hover:bg-surface-container-low transition-colors duration-200 cursor-pointer items-center">
-<div class="col-span-2 md:col-span-1 font-label-mono text-label-mono text-on-surface-variant">2025</div>
-<div class="col-span-8 md:col-span-5 flex flex-col md:flex-row md:items-center gap-2">
-<span class="font-body-lg text-body-lg text-primary font-medium">Power BI & Python Analysis</span>
-<span class="md:hidden font-label-mono text-[10px] text-on-surface-variant opacity-60">Data Analysis</span>
-</div>
-<div class="hidden md:block col-span-4">
-<div class="flex gap-2">
-<span class="px-2 py-0.5 bg-surface-container text-on-surface-variant font-label-mono text-[10px]">Power BI</span>
-<span class="px-2 py-0.5 bg-surface-container text-on-surface-variant font-label-mono text-[10px]">Python</span>
-</div>
-</div>
-<div class="col-span-2 text-right">
-<span class="material-symbols-outlined text-outline group-hover:text-primary group-hover:translate-x-1 transition-all">arrow_forward</span>
-</div>
-<div class="col-span-12 mt-4 hidden group-hover:block">
-<div class="grid grid-cols-12 gap-gutter">
-<div class="col-span-4">
-<div class="w-full aspect-video overflow-hidden border border-outline-variant rounded">
-<img alt="Power BI & Python Analysis" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80"/>
-</div>
-</div>
-<div class="col-span-8 flex flex-col justify-center">
-<p class="font-body-md text-body-md text-on-surface-variant max-w-xl">
-                                Developed interactive Power BI dashboards and Python scripts for automated data cleaning, processing, and visual analytics.
-                            </p>
-</div>
-</div>
-</div>
-</div>
-</div>
+<!-- Dynamic project rows will load here -->
 </section>
 <!-- Pagination/Load More (Subtle) -->
 <div class="mt-16 flex justify-center">
@@ -510,7 +197,7 @@
 </footer>
 
 <!-- Inquiry Modal -->
-<div id="inquiry-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/50 backdrop-blur-sm p-4">
+<div id="inquiry-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/60 p-4">
   <div class="bg-white border border-outline-variant max-w-md w-full p-8 rounded-lg relative shadow-xl">
     <button onclick="toggleInquiryModal(false)" class="absolute right-4 top-4 text-outline hover:text-primary flex items-center justify-center">
       <span class="material-symbols-outlined">close</span>
@@ -538,13 +225,70 @@
 </div>
 
 <script>
+  let whatsappNumber = "233509663058";
+  let allProjects = [];
+
+  function getProjectGroup(proj) {
+    const cat = (proj.category || '').toLowerCase();
+    const tags = (proj.tags || []).map(t => t.toLowerCase());
+    
+    if (cat.includes('data analysis') || cat.includes('power bi') || cat.includes('python') || tags.includes('data analysis') || tags.includes('power bi') || tags.includes('python')) {
+      return 'Data Analysis';
+    }
+    if (cat.includes('database') || cat.includes('sql') || tags.includes('database') || tags.includes('sql')) {
+      return 'Database';
+    }
+    return 'Web Development';
+  }
+
   // Strict Chrome Enforcement for Samsung Internet Users
-  document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("DOMContentLoaded", async () => {
+    // Hidden Admin Access Gesture (3 clicks on the header logo)
+    const logo = document.querySelector("nav .font-headline-lg");
+    if (logo) {
+      let clickCount = 0;
+      let clickTimeout;
+      logo.style.cursor = "pointer";
+      logo.addEventListener("click", () => {
+        clickCount++;
+        clearTimeout(clickTimeout);
+        if (clickCount === 3) {
+          window.location.href = "admin.html";
+        }
+        clickTimeout = setTimeout(() => {
+          clickCount = 0;
+        }, 1000);
+      });
+    }
+
+    // Load Profile Info to update WhatsApp redirects
+    const profile = await getProfile();
+    if (profile && profile.whatsapp) {
+      whatsappNumber = profile.whatsapp.replace(/\+/g, '').replace(/\s/g, '');
+    }
+
+    // Fetch and Render Dynamic Projects
+    allProjects = await getProjects();
+    
+    // Sort projects by year descending
+    allProjects.sort((a, b) => {
+      const yearA = parseInt(a.year) || 0;
+      const yearB = parseInt(b.year) || 0;
+      return yearB - yearA;
+    });
+
+    // Populate filter counts
+    updateFilterCounts();
+
+    // Initial render of all projects (excluding small quote/text cards)
+    const activeProjects = allProjects.filter(p => p.card_size !== 'small');
+    renderProjects(activeProjects);
+
     const ua = navigator.userAgent;
     const isSamsung = ua.indexOf("SamsungBrowser") > -1;
     if (isSamsung) {
       const overlay = document.createElement("div");
-      overlay.className = "fixed inset-0 z-[200] bg-black/80 backdrop-blur-md flex items-center justify-center p-6 text-center";
+      overlay.className = "fixed inset-0 z-[200] bg-black/90 flex items-center justify-center p-6 text-center";
       overlay.innerHTML = `
         <div class="bg-surface border border-outline-variant max-w-md w-full p-8 rounded shadow-2xl flex flex-col items-center">
           <span class="material-symbols-outlined text-[64px] text-primary mb-4 animate-bounce">chrome_reader_mode</span>
@@ -562,6 +306,120 @@
     }
   });
 
+  function updateFilterCounts() {
+    const activeProjects = allProjects.filter(p => p.card_size !== 'small');
+    const total = activeProjects.length;
+    const dataAnalysis = activeProjects.filter(p => getProjectGroup(p) === 'Data Analysis').length;
+    const webDev = activeProjects.filter(p => getProjectGroup(p) === 'Web Development').length;
+    const db = activeProjects.filter(p => getProjectGroup(p) === 'Database').length;
+
+    const countAll = document.getElementById('filter-count-All');
+    if (countAll) countAll.textContent = `(${total})`;
+    const countData = document.getElementById('filter-count-Data-Analysis');
+    if (countData) countData.textContent = `(${dataAnalysis})`;
+    const countWeb = document.getElementById('filter-count-Web-Development');
+    if (countWeb) countWeb.textContent = `(${webDev})`;
+    const countDb = document.getElementById('filter-count-Database');
+    if (countDb) countDb.textContent = `(${db})`;
+  }
+
+  function renderProjects(projectsToRender) {
+    const archiveList = document.getElementById('archive-list');
+    if (!archiveList) return;
+
+    // Preserve the table header
+    const headerHTML = `
+      <div class="grid grid-cols-12 gap-4 py-4 px-2 border-b border-outline font-label-mono text-label-mono text-on-surface-variant uppercase hidden md:grid">
+        <div class="col-span-1">Year</div>
+        <div class="col-span-5">Project Name</div>
+        <div class="col-span-4">Category / System</div>
+        <div class="col-span-2 text-right">Details</div>
+      </div>
+    `;
+
+    const rowsHTML = projectsToRender.map(proj => {
+      // Build images/gallery HTML if present
+      let galleryHTML = '';
+      const imagesArray = proj.images || (proj.image_url ? [proj.image_url] : []);
+      if (imagesArray.length > 0) {
+        galleryHTML = `
+          <div class="w-full aspect-video bg-surface-container overflow-hidden rounded border border-outline-variant relative">
+            <div class="w-full h-full flex overflow-x-auto snap-x snap-mandatory hide-scroll" style="scrollbar-width: none; -ms-overflow-style: none;">
+              ${imagesArray.map((img, i) => `
+                <img alt="${proj.title} ${i+1}" class="w-full h-full flex-shrink-0 snap-center object-cover grayscale hover:grayscale-0 transition-all duration-500" src="${img}"/>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      }
+
+      const tagsHTML = (proj.tags || []).map(tag => `
+        <span class="px-2 py-0.5 bg-surface-container text-on-surface-variant font-label-mono text-[10px] uppercase">${tag}</span>
+      `).join('');
+
+      return `
+        <div class="group grid grid-cols-12 gap-4 py-6 px-2 border-b border-outline-variant hover:bg-surface-container-low transition-colors duration-200 cursor-pointer items-center">
+          <div class="col-span-2 md:col-span-1 font-label-mono text-label-mono text-on-surface-variant">${proj.year || '—'}</div>
+          <div class="col-span-8 md:col-span-5 flex flex-col md:flex-row md:items-center gap-2">
+            <span class="font-body-lg text-body-lg text-primary font-medium">${proj.title}</span>
+            <span class="md:hidden font-label-mono text-[10px] text-on-surface-variant opacity-60">${proj.category || '—'}</span>
+          </div>
+          <div class="hidden md:block col-span-4">
+            <div class="flex flex-wrap gap-2">
+              ${tagsHTML}
+            </div>
+          </div>
+          <div class="col-span-2 text-right">
+            <span class="material-symbols-outlined text-outline group-hover:text-primary group-hover:translate-x-1 transition-all">arrow_forward</span>
+          </div>
+          <div class="col-span-12 mt-4 hidden group-hover:block overflow-hidden">
+            <div class="grid grid-cols-12 gap-gutter">
+              ${galleryHTML ? `<div class="col-span-12 md:col-span-4">${galleryHTML}</div>` : ''}
+              <div class="${galleryHTML ? 'col-span-12 md:col-span-8' : 'col-span-12'} flex flex-col justify-center">
+                <p class="font-body-md text-body-md text-on-surface-variant max-w-xl mb-4">
+                  ${proj.description || ''}
+                </p>
+                ${proj.project_url ? `
+                  <a href="${proj.project_url}" target="_blank" class="font-button text-button flex w-fit items-center gap-2 group/link border-b border-primary pb-1 hover:opacity-80 transition-opacity text-primary">
+                    View Live Site
+                    <span class="material-symbols-outlined text-[16px] group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 transition-transform">north_east</span>
+                  </a>
+                ` : ''}
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    archiveList.innerHTML = headerHTML + rowsHTML;
+  }
+
+  function filterArchive(category) {
+    const activeProjects = allProjects.filter(p => p.card_size !== 'small');
+    // Render filtered list
+    if (category === 'All') {
+      renderProjects(activeProjects);
+    } else {
+      const filtered = activeProjects.filter(p => getProjectGroup(p) === category);
+      renderProjects(filtered);
+    }
+
+    // Update active filter button styles
+    const categories = ['All', 'Data Analysis', 'Web Development', 'Database'];
+    categories.forEach(cat => {
+      const buttonId = `filter-btn-${cat.replace(/\s+/g, '-')}`;
+      const btn = document.getElementById(buttonId);
+      if (btn) {
+        if (cat === category) {
+          btn.className = "font-label-mono text-label-mono text-primary flex items-center gap-2 font-bold";
+        } else {
+          btn.className = "font-label-mono text-label-mono text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2";
+        }
+      }
+    });
+  }
+
   function toggleInquiryModal(show) {
     const modal = document.getElementById('inquiry-modal');
     if (modal) {
@@ -576,7 +434,7 @@
     const message = document.getElementById('modal-message').value;
     
     const formattedText = `Hello Opoku Kelvin, my name is ${name}.\n\nMessage: ${message}\n\nMy phone number is: ${phone}`;
-    const whatsappUrl = `https://wa.me/233509663058?text=${encodeURIComponent(formattedText)}`;
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(formattedText)}`;
     
     window.open(whatsappUrl, '_blank');
     toggleInquiryModal(false);
@@ -604,7 +462,7 @@
 </script>
 
 <!-- Mobile Menu Drawer -->
-<div id="mobile-menu" class="fixed inset-0 z-[90] hidden bg-black/50 backdrop-blur-sm">
+<div id="mobile-menu" class="fixed inset-0 z-[90] hidden bg-black/60">
   <div id="mobile-menu-drawer" class="fixed top-0 right-0 h-full w-64 bg-white border-l border-outline-variant p-8 flex flex-col justify-between transform translate-x-full transition-transform duration-300">
     <div>
       <div class="flex justify-between items-center mb-12">

@@ -2,13 +2,22 @@
 
 <html class="light" lang="en"><head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<meta name="google-site-verification" content="83ra1swc0n0FVlU57Ui44HnyFzxKjMeh9wYofRP99-I" />
+<meta name="keywords" content="Opoku Kelvin NanaYaw, Mr Rager, Au_ra.rx, Jabari" />
 <title>Opoku Kelvin Nanayaw | Portfolio</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Supabase CDN and Client Config -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-client.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=EB+Garamond:ital,wght@0,400;0,500;1,400&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <style>
+        * {
+            -webkit-tap-highlight-color: transparent !important;
+            outline: none !important;
+        }
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
         }
@@ -147,199 +156,8 @@
 </section>
 <!-- Featured Work: Bento Grid -->
 <section class="pb-24">
-<div class="grid grid-cols-1 md:grid-cols-12 gap-bento-gap">
-<!-- Large Feature Card -->
-<div class="md:col-span-8 group relative border border-outline-variant bg-surface-container-lowest overflow-hidden transition-all duration-300 bento-card-hover min-h-[500px] flex flex-col justify-end p-8">
-<img alt="Featured Work" class="absolute inset-0 w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" src="https://images.unsplash.com/photo-1607799279861-4dd421887fb3?auto=format&fit=crop&w=1200&q=80"/>
-<div class="relative z-10 bg-surface/90 backdrop-blur-sm p-6 border border-outline-variant">
-<span class="font-label-mono text-label-mono uppercase mb-2 block">Academic Project</span>
-<h3 class="font-headline-lg text-headline-lg mb-2">Student Database System</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">A relational database with 5 normalized tables managing 500+ records, reducing redundancy and improving query efficiency.</p>
-</div>
-</div>
-<!-- Tall Secondary Card -->
-<div class="md:col-span-4 group relative border border-outline-variant bg-surface-container-lowest overflow-hidden transition-all duration-300 bento-card-hover flex flex-col">
-<div class="h-1/2 overflow-hidden">
-<img alt="Personal Portfolio" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" src="port.png"/>
-</div>
-<div class="p-8 flex flex-col justify-between flex-grow">
-<div>
-<span class="font-label-mono text-label-mono uppercase mb-2 block">Web Dev</span>
-<h3 class="font-headline-lg text-headline-lg mb-4">Personal Portfolio Website</h3>
-</div>
-<a class="font-button text-button flex items-center gap-2 group/link" href="#">
-                            View Project
-                            <span class="material-symbols-outlined text-[18px] group-hover/link:translate-x-1 transition-transform">arrow_forward</span>
-</a>
-</div>
-</div>
-<!-- Small Square Card 1 -->
-<div class="md:col-span-4 p-8 border border-outline-variant bg-surface-container-lowest bento-card-hover transition-all flex flex-col justify-center">
-<span class="material-symbols-outlined text-on-surface-variant mb-6 text-[32px]">database</span>
-<h4 class="font-label-mono text-label-mono uppercase mb-2">Objective</h4>
-<p class="font-body-md text-body-md text-on-surface-variant italic">"Seeking to apply analytical and programming skills to drive decision-making."</p>
-</div>
-<!-- Horizontal Card -->
-<div class="md:col-span-8 group relative border border-outline-variant bg-surface-container-lowest overflow-hidden transition-all duration-300 bento-card-hover p-8 flex items-center gap-8">
-<div class="w-1/3 h-full hidden md:block overflow-hidden border border-outline-variant">
-<img alt="Data Analytics" class="w-full h-full object-cover opacity-50 grayscale hover:grayscale-0 transition-all duration-500" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80"/>
-</div>
-<div class="flex-grow">
-<span class="font-label-mono text-label-mono uppercase mb-2 block">Data Analysis</span>
-<h3 class="font-headline-lg text-headline-lg mb-2">Power BI & Python Analysis</h3>
-<p class="font-body-md text-body-md text-on-surface-variant mb-6">Developed interactive Power BI dashboards and Python scripts for automated data cleaning, processing, and visual analytics.</p>
-<div class="flex gap-2">
-<span class="bg-surface-container px-2 py-1 font-label-mono text-[10px]">POWER BI</span>
-<span class="bg-surface-container px-2 py-1 font-label-mono text-[10px]">PYTHON</span>
-<span class="bg-surface-container px-2 py-1 font-label-mono text-[10px]">PANDAS</span>
-</div>
-</div>
-</div>
-<!-- Knotty & Nice Card -->
-<div class="md:col-span-12 group relative border border-outline-variant bg-surface-container-lowest overflow-hidden transition-all duration-300 bento-card-hover p-8 flex flex-col md:flex-row-reverse items-center gap-8">
-<div class="w-full md:w-1/3 h-48 overflow-hidden border border-outline-variant rounded relative">
-<div class="w-full h-full flex overflow-x-auto snap-x snap-mandatory hide-scroll" style="scrollbar-width: none; -ms-overflow-style: none;">
-<img alt="Knotty & Nice 1" class="w-full h-full flex-shrink-0 snap-center object-cover grayscale hover:grayscale-0 transition-all duration-500" src="Screenshot%202026-05-25%20154759.png"/>
-<img alt="Knotty & Nice 2" class="w-full h-full flex-shrink-0 snap-center object-cover grayscale hover:grayscale-0 transition-all duration-500" src="Screenshot%202026-05-25%20154822.png"/>
-<img alt="Knotty & Nice 3" class="w-full h-full flex-shrink-0 snap-center object-cover grayscale hover:grayscale-0 transition-all duration-500" src="Screenshot%202026-05-25%20154844.png"/>
-</div>
-<div class="absolute bottom-2 left-2 bg-surface-container-highest/80 px-2 py-0.5 rounded text-[10px] font-label-mono text-on-surface">SCROLL →</div>
-</div>
-<div class="flex-grow md:w-2/3">
-<span class="font-label-mono text-label-mono uppercase mb-2 block text-primary">Salon &amp; Booking / Web App</span>
-<h3 class="font-headline-lg text-headline-lg mb-2">Knotty &amp; Nice</h3>
-<p class="font-body-md text-body-md text-on-surface-variant mb-6">A premium student-focused hair appointment and salon booking platform tailored specifically for the KNUST student community. Developed a highly polished Progressive Web App with a theme-aware glassmorphic UI, a dynamic hairdresser directory, and automated WhatsApp inquiry integration to optimize student scheduling.</p>
-<div class="flex flex-wrap gap-2 mb-6">
-<span class="bg-surface-container px-2 py-1 font-label-mono text-[10px]">FIREBASE</span>
-<span class="bg-surface-container px-2 py-1 font-label-mono text-[10px]">HTML/CSS/JS</span>
-<span class="bg-surface-container px-2 py-1 font-label-mono text-[10px]">TAILWIND CSS</span>
-<span class="bg-surface-container px-2 py-1 font-label-mono text-[10px]">PWA</span>
-<span class="bg-surface-container px-2 py-1 font-label-mono text-[10px]">AUTOMATED BOOKINGS</span>
-</div>
-<a href="https://knottyandnice.vercel.app" target="_blank" class="font-button text-button flex w-fit items-center gap-2 group/link border-b border-primary pb-1 hover:opacity-80 transition-opacity">
-  Live Site
-  <span class="material-symbols-outlined text-[16px] group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 transition-transform">north_east</span>
-</a>
-</div>
-</div>
-
-<!-- Agritwin Card -->
-<div class="md:col-span-12 group relative border border-outline-variant bg-surface-container-lowest overflow-hidden transition-all duration-300 bento-card-hover p-8 flex flex-col md:flex-row items-center gap-8">
-<div class="w-full md:w-1/3 h-48 overflow-hidden border border-outline-variant rounded">
-<img alt="Agritwin" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" src="agritwin.png"/>
-</div>
-<div class="flex-grow md:w-2/3">
-<span class="font-label-mono text-label-mono uppercase mb-2 block text-primary">AgriTech / Web App</span>
-<h3 class="font-headline-lg text-headline-lg mb-2">Agritwin Platform</h3>
-<p class="font-body-md text-body-md text-on-surface-variant mb-6">De-risking African agriculture with digital twins. Bridged the gap between farmers and institutional capital by mapping physical farms into real-time digital twins, providing lenders and insurers with 99.9% verifiable telemetry.</p>
-<div class="flex gap-2">
-<span class="bg-surface-container px-2 py-1 font-label-mono text-[10px]">LIVE IN GHANA</span>
-<span class="bg-surface-container px-2 py-1 font-label-mono text-[10px]">1.2M+ HECTARES MAPPED</span>
-</div>
-</div>
-</div>
-<!-- Kwabz Store Card -->
-<div class="md:col-span-12 group relative border border-outline-variant bg-surface-container-lowest overflow-hidden transition-all duration-300 bento-card-hover p-8 flex flex-col md:flex-row-reverse items-center gap-8">
-<div class="w-full md:w-1/3 h-48 overflow-hidden border border-outline-variant rounded relative">
-<div class="w-full h-full flex overflow-x-auto snap-x snap-mandatory" style="scrollbar-width: none; -ms-overflow-style: none;">
-<style>.hide-scroll::-webkit-scrollbar { display: none; }</style>
-<img alt="Kwabz Store 1" class="w-full h-full flex-shrink-0 snap-center object-cover grayscale hover:grayscale-0 transition-all duration-500" src="Screenshot%202026-05-17%20132635.png"/>
-<img alt="Kwabz Store 2" class="w-full h-full flex-shrink-0 snap-center object-cover grayscale hover:grayscale-0 transition-all duration-500" src="Screenshot%202026-05-17%20132647.png"/>
-<img alt="Kwabz Store 3" class="w-full h-full flex-shrink-0 snap-center object-cover grayscale hover:grayscale-0 transition-all duration-500" src="Screenshot%202026-05-17%20132722.png"/>
-</div>
-<div class="absolute bottom-2 left-2 bg-surface-container-highest/80 px-2 py-0.5 rounded text-[10px] font-label-mono text-on-surface">SCROLL →</div>
-</div>
-<div class="flex-grow md:w-2/3">
-<span class="font-label-mono text-label-mono uppercase mb-2 block text-primary">E-Commerce / Web App</span>
-<h3 class="font-headline-lg text-headline-lg mb-2">Kwabz Store</h3>
-<p class="font-body-md text-body-md text-on-surface-variant mb-6">A fully functional student e-commerce center. Developed a robust Progressive Web App (PWA) to handle secure authentication, product browsing, and a seamless checkout process tailored specifically for students.</p>
-<div class="flex flex-wrap gap-2 mb-6">
-<span class="bg-surface-container px-2 py-1 font-label-mono text-[10px]">FIREBASE</span>
-<span class="bg-surface-container px-2 py-1 font-label-mono text-[10px]">HTML</span>
-<span class="bg-surface-container px-2 py-1 font-label-mono text-[10px]">CSS</span>
-<span class="bg-surface-container px-2 py-1 font-label-mono text-[10px]">JS</span>
-<span class="bg-surface-container px-2 py-1 font-label-mono text-[10px]">PWA</span>
-</div>
-<a href="https://kwabz-store-v2.vercel.app" target="_blank" class="font-button text-button flex w-fit items-center gap-2 group/link border-b border-primary pb-1 hover:opacity-80 transition-opacity">
-  Live Site
-  <span class="material-symbols-outlined text-[16px] group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 transition-transform">north_east</span>
-</a>
-</div>
-</div>
-<!-- Between 2 Breads Card -->
-<div class="md:col-span-12 group relative border border-outline-variant bg-surface-container-lowest overflow-hidden transition-all duration-300 bento-card-hover p-8 flex flex-col md:flex-row items-center gap-8">
-<div class="w-full md:w-1/3 h-48 overflow-hidden border border-outline-variant rounded relative">
-<div class="w-full h-full flex overflow-x-auto snap-x snap-mandatory" style="scrollbar-width: none; -ms-overflow-style: none;">
-<img alt="Between 2 Breads 1" class="w-full h-full flex-shrink-0 snap-center object-cover grayscale hover:grayscale-0 transition-all duration-500" src="Screenshot%202026-04-03%20020404.png"/>
-<img alt="Between 2 Breads 2" class="w-full h-full flex-shrink-0 snap-center object-cover grayscale hover:grayscale-0 transition-all duration-500" src="Screenshot%202026-04-03%20020419.png"/>
-<img alt="Between 2 Breads 3" class="w-full h-full flex-shrink-0 snap-center object-cover grayscale hover:grayscale-0 transition-all duration-500" src="Screenshot%202026-04-03%20020439.png"/>
-<img alt="Between 2 Breads 4" class="w-full h-full flex-shrink-0 snap-center object-cover grayscale hover:grayscale-0 transition-all duration-500" src="Screenshot%202026-04-03%20020448.png"/>
-</div>
-<div class="absolute bottom-2 left-2 bg-surface-container-highest/80 px-2 py-0.5 rounded text-[10px] font-label-mono text-on-surface">SCROLL →</div>
-</div>
-<div class="flex-grow md:w-2/3">
-<span class="font-label-mono text-label-mono uppercase mb-2 block text-primary">Food Tech / Rendering Service</span>
-<h3 class="font-headline-lg text-headline-lg mb-2">Between 2 Breads</h3>
-<p class="font-body-md text-body-md text-on-surface-variant mb-6">A premium food rendering and online ordering service. Designed a highly interactive frontend platform enabling users to browse handcrafted sandwiches, select customized pairings, and place seamless, real-time orders with direct WhatsApp feedback integration.</p>
-<div class="flex flex-wrap gap-2 mb-6">
-<span class="bg-surface-container px-2 py-1 font-label-mono text-[10px]">HTML/CSS/JS</span>
-<span class="bg-surface-container px-2 py-1 font-label-mono text-[10px]">TAILWIND CSS</span>
-<span class="bg-surface-container px-2 py-1 font-label-mono text-[10px]">FRONTEND DEVELOPMENT</span>
-<span class="bg-surface-container px-2 py-1 font-label-mono text-[10px]">WHATSAPP API</span>
-</div>
-<a href="https://between-dous-pan.netlify.app" target="_blank" class="font-button text-button flex w-fit items-center gap-2 group/link border-b border-primary pb-1 hover:opacity-80 transition-opacity">
-  Live Site
-  <span class="material-symbols-outlined text-[16px] group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 transition-transform">north_east</span>
-</a>
-</div>
-</div>
-<!-- Bobafie Card -->
-<div class="md:col-span-12 group relative border border-outline-variant bg-surface-container-lowest overflow-hidden transition-all duration-300 bento-card-hover p-8 flex flex-col md:flex-row-reverse items-center gap-8">
-<div class="w-full md:w-1/3 h-48 overflow-hidden border border-outline-variant rounded relative">
-<div class="w-full h-full flex overflow-x-auto snap-x snap-mandatory" style="scrollbar-width: none; -ms-overflow-style: none;">
-<img alt="Bobafie 1" class="w-full h-full flex-shrink-0 snap-center object-cover grayscale hover:grayscale-0 transition-all duration-500" src="Screenshot%202026-05-17%20135729.png"/>
-<img alt="Bobafie 2" class="w-full h-full flex-shrink-0 snap-center object-cover grayscale hover:grayscale-0 transition-all duration-500" src="Screenshot%202026-05-17%20135803.png"/>
-<img alt="Bobafie 3" class="w-full h-full flex-shrink-0 snap-center object-cover grayscale hover:grayscale-0 transition-all duration-500" src="Screenshot%202026-05-17%20135820.png"/>
-</div>
-<div class="absolute bottom-2 left-2 bg-surface-container-highest/80 px-2 py-0.5 rounded text-[10px] font-label-mono text-on-surface">SCROLL →</div>
-</div>
-<div class="flex-grow md:w-2/3">
-<span class="font-label-mono text-label-mono uppercase mb-2 block text-primary">E-Commerce / Boba Tea Store</span>
-<h3 class="font-headline-lg text-headline-lg mb-2">Bobafie</h3>
-<p class="font-body-md text-body-md text-on-surface-variant mb-6">A sleek Boba Tea ordering system and store. Designed a fully functional, mobile-responsive Progressive Web App (PWA) allowing customers to browse a vibrant menu of handcrafted milk teas, customize sweetness/ice levels, manage a dynamic cart, and check out with real-time order tracking.</p>
-<div class="flex flex-wrap gap-2 mb-6">
-<span class="bg-surface-container px-2 py-1 font-label-mono text-[10px]">FIREBASE</span>
-<span class="bg-surface-container px-2 py-1 font-label-mono text-[10px]">HTML/CSS/JS</span>
-<span class="bg-surface-container px-2 py-1 font-label-mono text-[10px]">TAILWIND CSS</span>
-<span class="bg-surface-container px-2 py-1 font-label-mono text-[10px]">PWA</span>
-</div>
-<a href="https://bobafie-store.netlify.app" target="_blank" class="font-button text-button flex w-fit items-center gap-2 group/link border-b border-primary pb-1 hover:opacity-80 transition-opacity">
-  Live Site
-  <span class="material-symbols-outlined text-[16px] group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 transition-transform">north_east</span>
-</a>
-</div>
-</div>
-<!-- Autocare Card -->
-<div class="md:col-span-12 group relative border border-outline-variant bg-surface-container-lowest overflow-hidden transition-all duration-300 bento-card-hover p-8 flex flex-col md:flex-row items-center gap-8">
-<div class="w-full md:w-1/3 h-48 overflow-hidden border border-outline-variant rounded relative">
-<div class="w-full h-full flex overflow-x-auto snap-x snap-mandatory" style="scrollbar-width: none; -ms-overflow-style: none;">
-<img alt="Autocare 1" class="w-full h-full flex-shrink-0 snap-center object-cover grayscale hover:grayscale-0 transition-all duration-500" src="Screenshot%202026-05-17%20141411.png"/>
-<img alt="Autocare 2" class="w-full h-full flex-shrink-0 snap-center object-cover grayscale hover:grayscale-0 transition-all duration-500" src="Screenshot%202026-05-17%20141455.png"/>
-<img alt="Autocare 3" class="w-full h-full flex-shrink-0 snap-center object-cover grayscale hover:grayscale-0 transition-all duration-500" src="Screenshot%202026-05-17%20141709.png"/>
-</div>
-<div class="absolute bottom-2 left-2 bg-surface-container-highest/80 px-2 py-0.5 rounded text-[10px] font-label-mono text-on-surface">SCROLL →</div>
-</div>
-<div class="flex-grow md:w-2/3">
-<span class="font-label-mono text-label-mono uppercase mb-2 block text-primary">Automotive / AI Diagnostics &amp; Bookings</span>
-<h3 class="font-headline-lg text-headline-lg mb-2">Autocare</h3>
-<p class="font-body-md text-body-md text-on-surface-variant mb-6">An AI-driven car maintenance and diagnostic system. Designed a comprehensive portal combining real-time vehicle telemetry diagnostic dashboards, automated scheduling and service bookings, and an integrated e-commerce shop for replacement parts and automotive accessories.</p>
-<div class="flex flex-wrap gap-2">
-<span class="bg-surface-container px-2 py-1 font-label-mono text-[10px]">AI DIAGNOSTICS</span>
-<span class="bg-surface-container px-2 py-1 font-label-mono text-[10px]">HTML/CSS/JS</span>
-<span class="bg-surface-container px-2 py-1 font-label-mono text-[10px]">TAILWIND CSS</span>
-<span class="bg-surface-container px-2 py-1 font-label-mono text-[10px]">AUTOMATED BOOKINGS</span>
-</div>
-</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-bento-gap" id="projects-grid">
+    <!-- Dynamic projects will load here -->
 </div>
 </div>
 </section>
@@ -353,58 +171,8 @@
 <!-- Reading List -->
 <div>
 <h5 class="font-label-mono text-label-mono uppercase border-b border-outline-variant pb-4 mb-6">Certifications</h5>
-<ul class="space-y-4">
-<li class="flex justify-between items-end gap-4 border-b border-outline-variant/30 pb-2 group">
-<a href="CertificateOfCompletion_Introduction to Fintech.pdf" target="_blank" class="font-body-md text-body-md hover:underline flex items-center gap-1.5 group-hover:text-primary transition-colors">
-  — Introduction to Fintech
-  <span class="material-symbols-outlined text-[14px] opacity-0 group-hover:opacity-100 transition-opacity" style="font-variation-settings: 'wght' 300;">open_in_new</span>
-</a>
-<span class="font-label-mono text-[10px] text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity uppercase">LinkedIn, 2026</span>
-</li>
-<li class="flex justify-between items-end gap-4 border-b border-outline-variant/30 pb-2 group">
-<a href="CertificateOfCompletion_Digital Banking Fundamentals.pdf" target="_blank" class="font-body-md text-body-md hover:underline flex items-center gap-1.5 group-hover:text-primary transition-colors">
-  — Digital Banking Fundamentals
-  <span class="material-symbols-outlined text-[14px] opacity-0 group-hover:opacity-100 transition-opacity" style="font-variation-settings: 'wght' 300;">open_in_new</span>
-</a>
-<span class="font-label-mono text-[10px] text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity uppercase">LinkedIn, 2026</span>
-</li>
-<li class="flex justify-between items-end gap-4 border-b border-outline-variant/30 pb-2 group">
-<a href="UC-094f847c-3b51-49cf-9408-bf6f15e4a36a.jpg" target="_blank" class="font-body-md text-body-md hover:underline flex items-center gap-1.5 group-hover:text-primary transition-colors">
-  — AI Essentials: Intro to AI
-  <span class="material-symbols-outlined text-[14px] opacity-0 group-hover:opacity-100 transition-opacity" style="font-variation-settings: 'wght' 300;">open_in_new</span>
-</a>
-<span class="font-label-mono text-[10px] text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity uppercase">Udemy, 2025</span>
-</li>
-<li class="flex justify-between items-end gap-4 border-b border-outline-variant/30 pb-2 group">
-<a href="UC-74cc5aa2-696b-4681-ac73-a15a95ccf1cc.jpg" target="_blank" class="font-body-md text-body-md hover:underline flex items-center gap-1.5 group-hover:text-primary transition-colors">
-  — Mastering Power BI
-  <span class="material-symbols-outlined text-[14px] opacity-0 group-hover:opacity-100 transition-opacity" style="font-variation-settings: 'wght' 300;">open_in_new</span>
-</a>
-<span class="font-label-mono text-[10px] text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity uppercase">Udemy, 2025</span>
-</li>
-<li class="flex justify-between items-end gap-4 border-b border-outline-variant/30 pb-2 group">
-<a href="UC-b10473d2-e7cb-488d-9116-51de5c4a631a.jpg" target="_blank" class="font-body-md text-body-md hover:underline flex items-center gap-1.5 group-hover:text-primary transition-colors">
-  — CyberSecurity: Ultimate Guide
-  <span class="material-symbols-outlined text-[14px] opacity-0 group-hover:opacity-100 transition-opacity" style="font-variation-settings: 'wght' 300;">open_in_new</span>
-</a>
-<span class="font-label-mono text-[10px] text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity uppercase">Udemy, 2025</span>
-</li>
-<li class="flex justify-between items-end gap-4 border-b border-outline-variant/30 pb-2 group">
-<span class="font-body-md text-body-md">— AI Career Essentials (ALX)</span>
-<span class="font-label-mono text-[10px] text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity uppercase">ALX, 2025</span>
-</li>
-<li class="flex justify-between items-end gap-4 border-b border-outline-variant/30 pb-2 group">
-<span class="font-body-md text-body-md">— Python Programming</span>
-<span class="font-label-mono text-[10px] text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity uppercase">Udemy, 2024</span>
-</li>
-<li class="flex justify-between items-end gap-4 border-b border-outline-variant/30 pb-2 group">
-<span class="font-body-md text-body-md">— SQL for Database Management</span>
-<span class="font-label-mono text-[10px] text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity uppercase">Udemy, 2024</span>
-</li>
-<li class="flex justify-between items-end gap-4 border-b border-outline-variant/30 pb-2 group">
-<span class="font-body-md text-body-md">— Web Development Fundamentals</span>
-<span class="font-label-mono text-[10px] text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity uppercase">Udemy, 2024</span>
-</li>
+<ul class="space-y-4" id="certifications-list">
+<!-- Dynamic certifications will load here -->
 </ul>
 </div>
 <!-- Current Focus -->
@@ -436,7 +204,7 @@
 </footer>
 
 <!-- Inquiry Modal -->
-<div id="inquiry-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/50 backdrop-blur-sm p-4">
+<div id="inquiry-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/60 p-4">
   <div class="bg-white border border-outline-variant max-w-md w-full p-8 rounded-lg relative shadow-xl">
     <button onclick="toggleInquiryModal(false)" class="absolute right-4 top-4 text-outline hover:text-primary flex items-center justify-center">
       <span class="material-symbols-outlined">close</span>
@@ -464,13 +232,147 @@
 </div>
 
 <script>
+  let whatsappNumber = "233509663058";
+
   // Strict Chrome Enforcement for Samsung Internet Users
-  document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("DOMContentLoaded", async () => {
+    // Hidden Admin Access Gesture (3 clicks on the header logo)
+    const logo = document.querySelector("nav .font-headline-lg");
+    if (logo) {
+      let clickCount = 0;
+      let clickTimeout;
+      logo.style.cursor = "pointer";
+      logo.addEventListener("click", () => {
+        clickCount++;
+        clearTimeout(clickTimeout);
+        if (clickCount === 3) {
+          window.location.href = "admin.html";
+        }
+        clickTimeout = setTimeout(() => {
+          clickCount = 0;
+        }, 1000);
+      });
+    }
+
+    // Load Profile Info to update WhatsApp redirects
+    const profile = await getProfile();
+    if (profile && profile.whatsapp) {
+      whatsappNumber = profile.whatsapp.replace(/\+/g, '').replace(/\s/g, '');
+    }
+
+    // Fetch and Render Dynamic Projects
+    const projects = await getProjects();
+    const grid = document.getElementById('projects-grid');
+    if (grid) {
+      grid.innerHTML = projects.map((proj, index) => {
+        const size = proj.card_size || 'full';
+        
+        if (size === 'featured') {
+          return `
+            <div class="md:col-span-8 group relative border border-outline-variant bg-surface-container-lowest overflow-hidden transition-all duration-300 bento-card-hover min-h-[500px] flex flex-col justify-end p-8">
+              ${proj.image_url ? `<img alt="${proj.title}" class="absolute inset-0 w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" src="${proj.image_url}"/>` : ''}
+              <div class="relative z-10 bg-surface p-6 border border-outline-variant">
+                <span class="font-label-mono text-label-mono uppercase mb-2 block">${proj.category}</span>
+                <h3 class="font-headline-lg text-headline-lg mb-2">${proj.title}</h3>
+                <p class="font-body-md text-body-md text-on-surface-variant">${proj.description}</p>
+              </div>
+            </div>
+          `;
+        } else if (size === 'tall') {
+          return `
+            <div class="md:col-span-4 group relative border border-outline-variant bg-surface-container-lowest overflow-hidden transition-all duration-300 bento-card-hover flex flex-col">
+              ${proj.image_url ? `<div class="h-1/2 overflow-hidden"><img alt="${proj.title}" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" src="${proj.image_url}"/></div>` : ''}
+              <div class="p-8 flex flex-col justify-between flex-grow">
+                <div>
+                  <span class="font-label-mono text-label-mono uppercase mb-2 block">${proj.category}</span>
+                  <h3 class="font-headline-lg text-headline-lg mb-4">${proj.title}</h3>
+                </div>
+                ${proj.project_url ? `<a class="font-button text-button flex items-center gap-2 group/link" href="${proj.project_url}" target="_blank">View Project <span class="material-symbols-outlined text-[18px] group-hover/link:translate-x-1 transition-transform">arrow_forward</span></a>` : ''}
+              </div>
+            </div>
+          `;
+        } else if (size === 'small') {
+          return `
+            <div class="md:col-span-4 p-8 border border-outline-variant bg-surface-container-lowest bento-card-hover transition-all flex flex-col justify-center">
+              <span class="material-symbols-outlined text-on-surface-variant mb-6 text-[32px]">database</span>
+              <h4 class="font-label-mono text-label-mono uppercase mb-2">${proj.category || 'Objective'}</h4>
+              <p class="font-body-md text-body-md text-on-surface-variant italic">"${proj.description}"</p>
+            </div>
+          `;
+        } else if (size === 'horizontal') {
+          return `
+            <div class="md:col-span-8 group relative border border-outline-variant bg-surface-container-lowest overflow-hidden transition-all duration-300 bento-card-hover p-8 flex items-center gap-8">
+              ${proj.image_url ? `<div class="w-1/3 h-full hidden md:block overflow-hidden border border-outline-variant"><img alt="${proj.title}" class="w-full h-full object-cover opacity-50 grayscale hover:grayscale-0 transition-all duration-500" src="${proj.image_url}"/></div>` : ''}
+              <div class="flex-grow">
+                <span class="font-label-mono text-label-mono uppercase mb-2 block">${proj.category}</span>
+                <h3 class="font-headline-lg text-headline-lg mb-2">${proj.title}</h3>
+                <p class="font-body-md text-body-md text-on-surface-variant mb-6">${proj.description}</p>
+                <div class="flex gap-2">
+                  ${(proj.tags || []).map(t => `<span class="bg-surface-container px-2 py-1 font-label-mono text-[10px] uppercase">${t}</span>`).join('')}
+                </div>
+              </div>
+            </div>
+          `;
+        } else {
+          // default/full size
+          let imagesHTML = '';
+          const imagesArray = proj.images || (proj.image_url ? [proj.image_url] : []);
+          if (imagesArray.length > 0) {
+            imagesHTML = imagesArray.map((img, i) => `<img alt="${proj.title} ${i+1}" class="w-full h-full flex-shrink-0 snap-center object-cover grayscale hover:grayscale-0 transition-all duration-500" src="${img}"/>`).join('');
+          }
+          
+          const scrollHintHTML = (imagesArray.length > 1) ? `<div class="absolute bottom-2 left-2 bg-surface-container-highest/80 px-2 py-0.5 rounded text-[10px] font-label-mono text-on-surface">SCROLL →</div>` : '';
+          const galleryColHTML = imagesHTML ? `
+            <div class="w-full md:w-1/3 h-48 overflow-hidden border border-outline-variant rounded relative">
+              <div class="w-full h-full flex overflow-x-auto snap-x snap-mandatory hide-scroll" style="scrollbar-width: none; -ms-overflow-style: none;">
+                ${imagesHTML}
+              </div>
+              ${scrollHintHTML}
+            </div>` : '';
+          
+          const isReverse = index % 2 === 0 ? ' md:flex-row-reverse' : ' md:flex-row';
+          
+          return `
+            <div class="md:col-span-12 group relative border border-outline-variant bg-surface-container-lowest overflow-hidden transition-all duration-300 bento-card-hover p-8 flex flex-col${isReverse} items-center gap-8">
+              ${galleryColHTML}
+              <div class="flex-grow md:w-2/3">
+                <span class="font-label-mono text-label-mono uppercase mb-2 block text-primary">${proj.category}</span>
+                <h3 class="font-headline-lg text-headline-lg mb-2">${proj.title}</h3>
+                <p class="font-body-md text-body-md text-on-surface-variant mb-6">${proj.description}</p>
+                <div class="flex flex-wrap gap-2 mb-6">
+                  ${(proj.tags || []).map(t => `<span class="bg-surface-container px-2 py-1 font-label-mono text-[10px] uppercase">${t}</span>`).join('')}
+                </div>
+                ${proj.project_url ? `<a href="${proj.project_url}" target="_blank" class="font-button text-button flex w-fit items-center gap-2 group/link border-b border-primary pb-1 hover:opacity-80 transition-opacity">Live Site <span class="material-symbols-outlined text-[16px] group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 transition-transform">north_east</span></a>` : ''}
+              </div>
+            </div>
+          `;
+        }
+      }).join('');
+    }
+
+    // Fetch and Render Dynamic Certifications
+    const certs = await getCertifications();
+    const certsList = document.getElementById('certifications-list');
+    if (certsList) {
+      certsList.innerHTML = certs.map(cert => `
+        <li class="flex justify-between items-end gap-4 border-b border-outline-variant/30 pb-2 group">
+          ${cert.url ? `
+          <a href="${cert.url}" target="_blank" class="font-body-md text-body-md hover:underline flex items-center gap-1.5 group-hover:text-primary transition-colors">
+            — ${cert.name}
+            <span class="material-symbols-outlined text-[14px] opacity-0 group-hover:opacity-100 transition-opacity" style="font-variation-settings: 'wght' 300;">open_in_new</span>
+          </a>` : `
+          <span class="font-body-md text-body-md">— ${cert.name}</span>
+          `}
+          <span class="font-label-mono text-[10px] text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity uppercase">${cert.issuer}, ${cert.year}</span>
+        </li>
+      `).join('');
+    }
+
     const ua = navigator.userAgent;
     const isSamsung = ua.indexOf("SamsungBrowser") > -1;
     if (isSamsung) {
       const overlay = document.createElement("div");
-      overlay.className = "fixed inset-0 z-[200] bg-black/80 backdrop-blur-md flex items-center justify-center p-6 text-center";
+      overlay.className = "fixed inset-0 z-[200] bg-black/90 flex items-center justify-center p-6 text-center";
       overlay.innerHTML = `
         <div class="bg-surface border border-outline-variant max-w-md w-full p-8 rounded shadow-2xl flex flex-col items-center">
           <span class="material-symbols-outlined text-[64px] text-primary mb-4 animate-bounce">chrome_reader_mode</span>
@@ -502,7 +404,7 @@
     const message = document.getElementById('modal-message').value;
     
     const formattedText = `Hello Opoku Kelvin, my name is ${name}.\n\nMessage: ${message}\n\nMy phone number is: ${phone}`;
-    const whatsappUrl = `https://wa.me/233509663058?text=${encodeURIComponent(formattedText)}`;
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(formattedText)}`;
     
     window.open(whatsappUrl, '_blank');
     toggleInquiryModal(false);
@@ -530,7 +432,7 @@
 </script>
 
 <!-- Mobile Menu Drawer -->
-<div id="mobile-menu" class="fixed inset-0 z-[90] hidden bg-black/50 backdrop-blur-sm">
+<div id="mobile-menu" class="fixed inset-0 z-[90] hidden bg-black/60">
   <div id="mobile-menu-drawer" class="fixed top-0 right-0 h-full w-64 bg-white border-l border-outline-variant p-8 flex flex-col justify-between transform translate-x-full transition-transform duration-300">
     <div>
       <div class="flex justify-between items-center mb-12">
