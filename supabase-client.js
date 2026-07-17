@@ -14,6 +14,9 @@ const FALLBACK_PROFILE = {
     name: "Opoku Kelvin NanaYaw",
     title: "Data Analyst & Junior IT Support",
     bio: "I am a Business Information Technology student at KNUST, pioneering the intersection of data-driven business intelligence and robust systems engineering. As a developer and analyst, I build high-density, real-world platforms—from precision geolocation trackers mapping physical farms, to automated WhatsApp notification systems and AI-powered vehicle telemetry dashboards.\n\nMy mission is simple: transform manual, error-prone business operations into elegant, automated, and highly optimized digital assets.",
+    bio_title: "Leveraging data and tech to solve real business problems.",
+    sub_description: "Combining SQL database management, Python programming, and web development to build functional, data-driven systems.",
+    graduation_year: "2027",
     email: "opoku3765@gmail.com",
     phone: "+233 050 966 3058",
     location: "Accra, Ghana",
@@ -215,5 +218,76 @@ async function getCertifications() {
     } catch (e) {
         console.warn("Error fetching certifications from Supabase, using fallback data:", e.message);
         return FALLBACK_CERTIFICATIONS;
+    }
+}
+
+const FALLBACK_SKILLS = [
+    { id: "s1", name: "SQL", category: "Data & Analytics", sort_order: 1 },
+    { id: "s2", name: "Python", category: "Data & Analytics", sort_order: 2 },
+    { id: "s3", name: "Pandas", category: "Data & Analytics", sort_order: 3 },
+    { id: "s4", name: "Power BI", category: "Data & Analytics", sort_order: 4 },
+    { id: "s5", name: "Excel", category: "Data & Analytics", sort_order: 5 },
+    { id: "s6", name: "HTML5 / CSS3", category: "Development & Web", sort_order: 6 },
+    { id: "s7", name: "JavaScript (ES6+)", category: "Development & Web", sort_order: 7 },
+    { id: "s8", name: "Tailwind CSS", category: "Development & Web", sort_order: 8 },
+    { id: "s9", name: "PWA Architecture", category: "Development & Web", sort_order: 9 },
+    { id: "s10", name: "Firebase", category: "Infrastructure & Services", sort_order: 10 },
+    { id: "s11", name: "REST APIs", category: "Infrastructure & Services", sort_order: 11 },
+    { id: "s12", name: "Git & GitHub", category: "Infrastructure & Services", sort_order: 12 },
+    { id: "s13", name: "Vercel / Netlify", category: "Infrastructure & Services", sort_order: 13 }
+];
+
+async function getSkills() {
+    if (!supabaseClient) return FALLBACK_SKILLS;
+    try {
+        const { data, error } = await supabaseClient
+            .from('skills')
+            .select('*')
+            .order('sort_order', { ascending: true })
+            .order('created_at', { ascending: true });
+        if (error) throw error;
+        if (!data || data.length === 0) return FALLBACK_SKILLS;
+        return data;
+    } catch (e) {
+        console.warn("Error fetching skills from Supabase, using fallback data:", e.message);
+        return FALLBACK_SKILLS;
+    }
+}
+
+const FALLBACK_EDUCATION = [
+  {
+    id: "edu-knust",
+    school: "Kwame Nkrumah University of Science and Technology (KNUST)",
+    degree: "BSc Business Administration (Business Information Technology)",
+    duration: "2023 — PRESENT (EXPECTED 2027)",
+    description: "Applying double-disciplinary frameworks of high-level management and systems engineering. Mastering database design, SQL queries, object-oriented programming, and business analytics. Built normalized database models handling 500+ student data matrices.",
+    tags: ["Database Management", "Business Analytics", "Information Systems"],
+    sort_order: 1
+  },
+  {
+    id: "edu-spers",
+    school: "St. Peter's Senior High School",
+    degree: "General Arts",
+    duration: "GRADUATED 2023",
+    description: "Graduated with distinction. Built a strong early analytical foundation, public speaking prowess, and academic rigor in humanities and arts.",
+    tags: [],
+    sort_order: 2
+  }
+];
+
+async function getEducation() {
+    if (!supabaseClient) return FALLBACK_EDUCATION;
+    try {
+        const { data, error } = await supabaseClient
+            .from('education')
+            .select('*')
+            .order('sort_order', { ascending: true })
+            .order('created_at', { ascending: true });
+        if (error) throw error;
+        if (!data || data.length === 0) return FALLBACK_EDUCATION;
+        return data;
+    } catch (e) {
+        console.warn("Error fetching education from Supabase, using fallback data:", e.message);
+        return FALLBACK_EDUCATION;
     }
 }

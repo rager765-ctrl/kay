@@ -7,6 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <meta name="google-site-verification" content="83ra1swc0n0FVlU57Ui44HnyFzxKjMeh9wYofRP99-I" />
         <meta name="keywords" content="Opoku Kelvin NanaYaw, Mr Rager, Au_ra.rx, Jabari" />
+        <link rel="icon" type="image/png" href="favicon.png" />
         <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
         <!-- Supabase CDN and Client Config -->
         <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -134,7 +135,25 @@
         </style>
 </head>
 
-<body class="bg-background text-on-surface font-body-md antialiased">
+<body class="bg-background text-on-surface font-body-md antialiased relative min-h-screen overflow-x-hidden">
+        <!-- Curvy grid background lines (Supabase style) -->
+        <div class="absolute inset-0 -z-50 overflow-hidden pointer-events-none opacity-[0.6]">
+          <!-- Grid mesh (Graph paper: 24px grid) -->
+          <div class="absolute inset-0 bg-[linear-gradient(to_right,#8080800b_1px,transparent_1px),linear-gradient(to_bottom,#8080800b_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+          
+          <!-- Radial spotlight glow -->
+          <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[300px] bg-primary/5 blur-[100px] rounded-full"></div>
+
+          <!-- Concentric Arcs -->
+          <svg class="absolute top-0 left-1/2 -translate-x-1/2 w-[1400px] h-[800px] text-outline/15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="700" cy="-100" r="400" stroke="currentColor" stroke-width="1" stroke-dasharray="4 4" />
+            <circle cx="700" cy="-100" r="600" stroke="currentColor" stroke-width="1" />
+            <circle cx="700" cy="-100" r="800" stroke="currentColor" stroke-width="1" />
+            <circle cx="700" cy="-100" r="1000" stroke="currentColor" stroke-width="1" stroke-dasharray="8 4" />
+            <circle cx="700" cy="-100" r="1200" stroke="currentColor" stroke-width="1" />
+          </svg>
+        </div>
+
         <!-- TopNavBar -->
         <header
                 class="bg-surface dark:bg-surface border-b border-outline-variant dark:border-outline sticky top-0 z-50">
@@ -225,51 +244,9 @@
                         <div class="md:col-span-7 bento-card p-margin rounded-lg flex flex-col justify-between">
                                 <div>
                                         <h2 class="font-headline-lg text-headline-lg mb-8">Academic Foundation</h2>
-                                        <div class="space-y-8">
-                                                <div class="relative pl-4 border-l border-primary/20">
-                                                        <span
-                                                                class="font-label-mono text-label-mono text-outline block mb-1">2023
-                                                                — PRESENT (EXPECTED 2027)</span>
-                                                        <h3 class="font-body-lg font-medium text-primary">BSc Business
-                                                                Administration (Business Information Technology)</h3>
-                                                        <p class="font-body-sm text-outline mb-2">Kwame Nkrumah
-                                                                University of Science and Technology (KNUST)</p>
-                                                        <p class="font-body-md text-on-surface-variant leading-relaxed">
-                                                                Applying double-disciplinary frameworks of high-level
-                                                                management and systems engineering. Mastering database
-                                                                design, SQL queries, object-oriented programming, and
-                                                                business analytics. Built normalized database models
-                                                                handling 500+ student data matrices.
-                                                        </p>
-                                                        <div class="flex flex-wrap gap-2 mt-3">
-                                                                <span
-                                                                        class="px-2 py-0.5 bg-surface-container text-on-surface-variant font-label-mono text-[9px]">Database
-                                                                        Management</span>
-                                                                <span
-                                                                        class="px-2 py-0.5 bg-surface-container text-on-surface-variant font-label-mono text-[9px]">Business
-                                                                        Analytics</span>
-                                                                <span
-                                                                        class="px-2 py-0.5 bg-surface-container text-on-surface-variant font-label-mono text-[9px]">Information
-                                                                        Systems</span>
-                                                        </div>
-                                                </div>
-
-                                                <div class="relative pl-4 border-l border-primary/20">
-                                                        <span
-                                                                class="font-label-mono text-label-mono text-outline block mb-1">GRADUATED
-                                                                2023</span>
-                                                        <h3 class="font-body-lg font-medium text-primary">General Arts
-                                                        </h3>
-                                                        <p class="font-body-sm text-outline">St. Peter's Senior High
-                                                                School</p>
-                                                        <p class="font-body-md text-on-surface-variant leading-relaxed">
-                                                                Graduated with distinction. Built a strong early
-                                                                analytical foundation, public speaking prowess, and
-                                                                academic rigor in humanities and arts.
-                                                        </p>
-                                                </div>
+                                        <div id="education-timeline" class="space-y-8">
+                                                 <!-- Dynamic education timeline items -->
                                         </div>
-                                </div>
 
                                 <div class="mt-8 pt-6 border-t border-outline-variant/30">
                                         <h4
@@ -288,62 +265,8 @@
                                         <div>
                                                 <h2 class="font-headline-lg text-headline-lg mb-6">Technical Spectrum
                                                 </h2>
-                                                <div class="space-y-4">
-                                                        <div>
-                                                                <span
-                                                                        class="font-label-mono text-[10px] text-outline uppercase block mb-1.5">Data
-                                                                        &amp; Analytics</span>
-                                                                <div class="flex flex-wrap gap-1.5">
-                                                                        <span
-                                                                                class="px-2.5 py-1 bg-primary text-on-primary font-label-mono text-[10px]">SQL</span>
-                                                                        <span
-                                                                                class="px-2.5 py-1 bg-primary text-on-primary font-label-mono text-[10px]">Python</span>
-                                                                        <span
-                                                                                class="px-2.5 py-1 bg-primary text-on-primary font-label-mono text-[10px]">Pandas</span>
-                                                                        <span
-                                                                                class="px-2.5 py-1 bg-primary text-on-primary font-label-mono text-[10px]">Power
-                                                                                BI</span>
-                                                                        <span
-                                                                                class="px-2.5 py-1 bg-primary text-on-primary font-label-mono text-[10px]">Excel</span>
-                                                                </div>
-                                                        </div>
-                                                        <div>
-                                                                <span
-                                                                        class="font-label-mono text-[10px] text-outline uppercase block mb-1.5">Development
-                                                                        &amp; Web</span>
-                                                                <div class="flex flex-wrap gap-1.5">
-                                                                        <span
-                                                                                class="px-2.5 py-1 bg-primary text-on-primary font-label-mono text-[10px]">HTML5
-                                                                                / CSS3</span>
-                                                                        <span
-                                                                                class="px-2.5 py-1 bg-primary text-on-primary font-label-mono text-[10px]">JavaScript
-                                                                                (ES6+)</span>
-                                                                        <span
-                                                                                class="px-2.5 py-1 bg-primary text-on-primary font-label-mono text-[10px]">Tailwind
-                                                                                CSS</span>
-                                                                        <span
-                                                                                class="px-2.5 py-1 bg-primary text-on-primary font-label-mono text-[10px]">PWA
-                                                                                Architecture</span>
-                                                                </div>
-                                                        </div>
-                                                        <div>
-                                                                <span
-                                                                        class="font-label-mono text-[10px] text-outline uppercase block mb-1.5">Infrastructure
-                                                                        &amp; Services</span>
-                                                                <div class="flex flex-wrap gap-1.5">
-                                                                        <span
-                                                                                class="px-2.5 py-1 bg-primary text-on-primary font-label-mono text-[10px]">Firebase</span>
-                                                                        <span
-                                                                                class="px-2.5 py-1 bg-primary text-on-primary font-label-mono text-[10px]">REST
-                                                                                APIs</span>
-                                                                        <span
-                                                                                class="px-2.5 py-1 bg-primary text-on-primary font-label-mono text-[10px]">Git
-                                                                                &amp; GitHub</span>
-                                                                        <span
-                                                                                class="px-2.5 py-1 bg-primary text-on-primary font-label-mono text-[10px]">Vercel
-                                                                                / Netlify</span>
-                                                                </div>
-                                                        </div>
+                                                                                <div class="space-y-4" id="skills-container">
+                                                        <!-- Dynamic skills will load here -->
                                                 </div>
                                         </div>
 
@@ -550,6 +473,32 @@
                                 }
                         }
 
+                        // Fetch Dynamic Education Data from Supabase
+                        try {
+                                const education = await getEducation();
+                                const timeline = document.getElementById('education-timeline');
+                                if (timeline) {
+                                        timeline.innerHTML = education.map(edu => {
+                                                const tagsHTML = (edu.tags || []).length > 0
+                                                        ? `<div class="flex flex-wrap gap-2 mt-3">
+                                                                ${edu.tags.map(t => `<span class="px-2 py-0.5 bg-surface-container text-on-surface-variant font-label-mono text-[9px] uppercase">${t}</span>`).join('')}
+                                                           </div>`
+                                                        : '';
+                                                return `
+                                                        <div class="relative pl-4 border-l border-primary/20">
+                                                                <span class="font-label-mono text-label-mono text-outline block mb-1">${edu.duration}</span>
+                                                                <h3 class="font-body-lg font-medium text-primary">${edu.degree}</h3>
+                                                                <p class="font-body-sm text-outline mb-2">${edu.school}</p>
+                                                                <p class="font-body-md text-on-surface-variant leading-relaxed">${edu.description || ''}</p>
+                                                                ${tagsHTML}
+                                                        </div>
+                                                `;
+                                        }).join('');
+                                }
+                        } catch (e) {
+                                console.warn("Error loading education:", e);
+                        }
+
                         // Fetch Dynamic Certifications Data from Supabase
                         const certs = await getCertifications();
                         const certsGrid = document.getElementById('certifications-grid');
@@ -570,6 +519,31 @@
                                                 ${wrapperEnd}
                                         `;
                                 }).join('');
+                        }
+
+                        // Fetch Dynamic Skills Data from Supabase
+                        try {
+                                const skills = await getSkills();
+                                const skillsContainer = document.getElementById('skills-container');
+                                if (skillsContainer) {
+                                        const categories = ["Data & Analytics", "Development & Web", "Infrastructure & Services"];
+                                        skillsContainer.innerHTML = categories.map(cat => {
+                                                const catSkills = skills.filter(s => s.category === cat);
+                                                if (catSkills.length === 0) return '';
+                                                return `
+                                                        <div>
+                                                                <span class="font-label-mono text-[10px] text-outline uppercase block mb-1.5">${cat}</span>
+                                                                <div class="flex flex-wrap gap-1.5">
+                                                                        ${catSkills.map(s => `
+                                                                                <span class="px-2.5 py-1 bg-primary text-on-primary font-label-mono text-[10px]">${s.name}</span>
+                                                                        `).join('')}
+                                                                </div>
+                                                        </div>
+                                                `;
+                                        }).join('');
+                                }
+                        } catch (e) {
+                                console.warn("Error loading skills:", e);
                         }
 
                         const ua = navigator.userAgent;

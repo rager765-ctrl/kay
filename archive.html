@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 <meta name="google-site-verification" content="83ra1swc0n0FVlU57Ui44HnyFzxKjMeh9wYofRP99-I" />
 <meta name="keywords" content="Opoku Kelvin NanaYaw, Mr Rager, Au_ra.rx, Jabari" />
+<link rel="icon" type="image/png" href="favicon.png" />
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <!-- Supabase CDN and Client Config -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -116,7 +117,25 @@
         }
     </script>
 </head>
-<body class="bg-background text-on-background">
+<body class="bg-background text-on-background relative min-h-screen overflow-x-hidden">
+<!-- Curvy grid background lines (Supabase style) -->
+<div class="absolute inset-0 -z-50 overflow-hidden pointer-events-none opacity-[0.6]">
+  <!-- Grid mesh (Graph paper: 24px grid) -->
+  <div class="absolute inset-0 bg-[linear-gradient(to_right,#8080800b_1px,transparent_1px),linear-gradient(to_bottom,#8080800b_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+  
+  <!-- Radial spotlight glow -->
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[300px] bg-primary/5 blur-[100px] rounded-full"></div>
+
+  <!-- Concentric Arcs -->
+  <svg class="absolute top-0 left-1/2 -translate-x-1/2 w-[1400px] h-[800px] text-outline/15" fill="none" xmlns="http://www.w3.org/2000/svg">
+     <circle cx="700" cy="-100" r="400" stroke="currentColor" stroke-width="1" stroke-dasharray="4 4" />
+     <circle cx="700" cy="-100" r="600" stroke="currentColor" stroke-width="1" />
+     <circle cx="700" cy="-100" r="800" stroke="currentColor" stroke-width="1" />
+     <circle cx="700" cy="-100" r="1000" stroke="currentColor" stroke-width="1" stroke-dasharray="8 4" />
+     <circle cx="700" cy="-100" r="1200" stroke="currentColor" stroke-width="1" />
+  </svg>
+</div>
+
 <!-- TopNavBar -->
 <nav class="flex justify-between items-center w-full px-margin py-gutter max-w-container-max mx-auto sticky top-0 z-50 bg-surface border-b border-outline-variant">
 <div class="font-headline-lg text-headline-lg tracking-tight text-primary">Mr Rager</div>
@@ -145,9 +164,9 @@
 <div class="flex gap-4">
 <div class="flex items-center gap-2 px-3 py-1 bg-surface-container border border-outline-variant">
 <span class="font-label-mono text-label-mono">View:</span>
-<button class="font-label-mono text-label-mono text-primary font-bold">List</button>
+<button id="view-btn-list" onclick="setView('list')" class="font-label-mono text-label-mono text-primary font-bold">List</button>
 <span class="text-outline-variant">/</span>
-<button class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary">Grid</button>
+<button id="view-btn-grid" onclick="setView('grid')" class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary">Grid</button>
 </div>
 </div>
 </header>
@@ -227,6 +246,8 @@
 <script>
   let whatsappNumber = "233509663058";
   let allProjects = [];
+  let currentCategory = "All";
+  let currentView = "list";
 
   function getProjectGroup(proj) {
     const cat = (proj.category || '').toLowerCase();
@@ -323,79 +344,146 @@
     if (countDb) countDb.textContent = `(${db})`;
   }
 
+  function setView(view) {
+    currentView = view;
+    
+    // Toggle active styles on the buttons
+    const btnList = document.getElementById('view-btn-list');
+    const btnGrid = document.getElementById('view-btn-grid');
+    if (btnList && btnGrid) {
+      if (view === 'list') {
+        btnList.className = "font-label-mono text-label-mono text-primary font-bold";
+        btnGrid.className = "font-label-mono text-label-mono text-on-surface-variant hover:text-primary";
+      } else {
+        btnList.className = "font-label-mono text-label-mono text-on-surface-variant hover:text-primary";
+        btnGrid.className = "font-label-mono text-label-mono text-primary font-bold";
+      }
+    }
+    
+    // Re-render current category projects
+    filterArchive(currentCategory);
+  }
+
   function renderProjects(projectsToRender) {
     const archiveList = document.getElementById('archive-list');
     if (!archiveList) return;
 
-    // Preserve the table header
-    const headerHTML = `
-      <div class="grid grid-cols-12 gap-4 py-4 px-2 border-b border-outline font-label-mono text-label-mono text-on-surface-variant uppercase hidden md:grid">
-        <div class="col-span-1">Year</div>
-        <div class="col-span-5">Project Name</div>
-        <div class="col-span-4">Category / System</div>
-        <div class="col-span-2 text-right">Details</div>
-      </div>
-    `;
+    if (currentView === 'list') {
+      // Preserve the table header
+      const headerHTML = `
+        <div class="grid grid-cols-12 gap-4 py-4 px-2 border-b border-outline font-label-mono text-label-mono text-on-surface-variant uppercase hidden md:grid">
+          <div class="col-span-1">Year</div>
+          <div class="col-span-5">Project Name</div>
+          <div class="col-span-4">Category / System</div>
+          <div class="col-span-2 text-right">Details</div>
+        </div>
+      `;
 
-    const rowsHTML = projectsToRender.map(proj => {
-      // Build images/gallery HTML if present
-      let galleryHTML = '';
-      const imagesArray = proj.images || (proj.image_url ? [proj.image_url] : []);
-      if (imagesArray.length > 0) {
-        galleryHTML = `
-          <div class="w-full aspect-video bg-surface-container overflow-hidden rounded border border-outline-variant relative">
-            <div class="w-full h-full flex overflow-x-auto snap-x snap-mandatory hide-scroll" style="scrollbar-width: none; -ms-overflow-style: none;">
-              ${imagesArray.map((img, i) => `
-                <img alt="${proj.title} ${i+1}" class="w-full h-full flex-shrink-0 snap-center object-cover grayscale hover:grayscale-0 transition-all duration-500" src="${img}"/>
-              `).join('')}
+      const rowsHTML = projectsToRender.map(proj => {
+        // Build images/gallery HTML if present
+        let galleryHTML = '';
+        const imagesArray = proj.images || (proj.image_url ? [proj.image_url] : []);
+        if (imagesArray.length > 0) {
+          galleryHTML = `
+            <div class="w-full aspect-video bg-surface-container overflow-hidden rounded border border-outline-variant relative">
+              <div class="w-full h-full flex overflow-x-auto snap-x snap-mandatory hide-scroll" style="scrollbar-width: none; -ms-overflow-style: none;">
+                ${imagesArray.map((img, i) => `
+                  <img alt="${proj.title} ${i+1}" class="w-full h-full flex-shrink-0 snap-center object-cover grayscale hover:grayscale-0 transition-all duration-500" src="${img}"/>
+                `).join('')}
+              </div>
+            </div>
+          `;
+        }
+
+        const tagsHTML = (proj.tags || []).map(tag => `
+          <span class="px-2 py-0.5 bg-surface-container text-on-surface-variant font-label-mono text-[10px] uppercase">${tag}</span>
+        `).join('');
+
+        return `
+          <div class="group grid grid-cols-12 gap-4 py-6 px-2 border-b border-outline-variant hover:bg-surface-container-low transition-colors duration-200 cursor-pointer items-center">
+            <div class="col-span-2 md:col-span-1 font-label-mono text-label-mono text-on-surface-variant">${proj.year || '—'}</div>
+            <div class="col-span-8 md:col-span-5 flex flex-col md:flex-row md:items-center gap-2">
+              <span class="font-body-lg text-body-lg text-primary font-medium">${proj.title}</span>
+              <span class="md:hidden font-label-mono text-[10px] text-on-surface-variant opacity-60">${proj.category || '—'}</span>
+            </div>
+            <div class="hidden md:block col-span-4">
+              <div class="flex flex-wrap gap-2">
+                ${tagsHTML}
+              </div>
+            </div>
+            <div class="col-span-2 text-right">
+              <span class="material-symbols-outlined text-outline group-hover:text-primary group-hover:translate-x-1 transition-all">arrow_forward</span>
+            </div>
+            <div class="col-span-12 mt-4 hidden group-hover:block overflow-hidden">
+              <div class="grid grid-cols-12 gap-gutter">
+                ${galleryHTML ? `<div class="col-span-12 md:col-span-4">${galleryHTML}</div>` : ''}
+                <div class="${galleryHTML ? 'col-span-12 md:col-span-8' : 'col-span-12'} flex flex-col justify-center">
+                  <p class="font-body-md text-body-md text-on-surface-variant max-w-xl mb-4">
+                    ${proj.description || ''}
+                  </p>
+                  ${proj.project_url ? `
+                    <a href="${proj.project_url}" target="_blank" class="font-button text-button flex w-fit items-center gap-2 group/link border-b border-primary pb-1 hover:opacity-80 transition-opacity text-primary">
+                      View Live Site
+                      <span class="material-symbols-outlined text-[16px] group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 transition-transform">north_east</span>
+                    </a>
+                  ` : ''}
+                </div>
+              </div>
             </div>
           </div>
         `;
-      }
+      }).join('');
 
-      const tagsHTML = (proj.tags || []).map(tag => `
-        <span class="px-2 py-0.5 bg-surface-container text-on-surface-variant font-label-mono text-[10px] uppercase">${tag}</span>
-      `).join('');
+      archiveList.innerHTML = headerHTML + rowsHTML;
+      archiveList.className = "flex flex-col";
+    } else {
+      // Grid view
+      const cardsHTML = projectsToRender.map(proj => {
+        const imagesArray = proj.images || (proj.image_url ? [proj.image_url] : []);
+        const firstImage = imagesArray[0] || '';
+        const tagsHTML = (proj.tags || []).map(tag => `
+          <span class="px-2 py-0.5 bg-surface-container text-on-surface-variant font-label-mono text-[9px] uppercase">${tag}</span>
+        `).join('');
 
-      return `
-        <div class="group grid grid-cols-12 gap-4 py-6 px-2 border-b border-outline-variant hover:bg-surface-container-low transition-colors duration-200 cursor-pointer items-center">
-          <div class="col-span-2 md:col-span-1 font-label-mono text-label-mono text-on-surface-variant">${proj.year || '—'}</div>
-          <div class="col-span-8 md:col-span-5 flex flex-col md:flex-row md:items-center gap-2">
-            <span class="font-body-lg text-body-lg text-primary font-medium">${proj.title}</span>
-            <span class="md:hidden font-label-mono text-[10px] text-on-surface-variant opacity-60">${proj.category || '—'}</span>
-          </div>
-          <div class="hidden md:block col-span-4">
-            <div class="flex flex-wrap gap-2">
-              ${tagsHTML}
+        return `
+          <div class="group border border-outline-variant bg-surface-container-lowest overflow-hidden transition-all duration-300 bento-card hover:border-outline p-6 rounded flex flex-col justify-between min-h-[350px]">
+            <div>
+              ${firstImage ? `
+                <div class="w-full aspect-[16/10] bg-surface-container overflow-hidden rounded border border-outline-variant/30 mb-4">
+                  <img alt="${proj.title}" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" src="${firstImage}"/>
+                </div>
+              ` : ''}
+              <div class="flex justify-between items-start gap-2 mb-2">
+                <span class="font-label-mono text-[10px] text-on-surface-variant uppercase">${proj.category || 'Project'}</span>
+                <span class="font-label-mono text-[10px] text-outline">${proj.year || '—'}</span>
+              </div>
+              <h3 class="font-headline-lg text-xl text-primary font-semibold mb-2 group-hover:text-primary transition-colors">${proj.title}</h3>
+              <p class="font-body-md text-xs text-on-surface-variant line-clamp-3 mb-4 leading-relaxed">${proj.description || ''}</p>
             </div>
-          </div>
-          <div class="col-span-2 text-right">
-            <span class="material-symbols-outlined text-outline group-hover:text-primary group-hover:translate-x-1 transition-all">arrow_forward</span>
-          </div>
-          <div class="col-span-12 mt-4 hidden group-hover:block overflow-hidden">
-            <div class="grid grid-cols-12 gap-gutter">
-              ${galleryHTML ? `<div class="col-span-12 md:col-span-4">${galleryHTML}</div>` : ''}
-              <div class="${galleryHTML ? 'col-span-12 md:col-span-8' : 'col-span-12'} flex flex-col justify-center">
-                <p class="font-body-md text-body-md text-on-surface-variant max-w-xl mb-4">
-                  ${proj.description || ''}
-                </p>
+            <div class="space-y-4">
+              <div class="flex flex-wrap gap-1.5">
+                ${tagsHTML}
+              </div>
+              <div class="flex gap-4 pt-2">
                 ${proj.project_url ? `
-                  <a href="${proj.project_url}" target="_blank" class="font-button text-button flex w-fit items-center gap-2 group/link border-b border-primary pb-1 hover:opacity-80 transition-opacity text-primary">
-                    View Live Site
-                    <span class="material-symbols-outlined text-[16px] group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 transition-transform">north_east</span>
+                  <a href="${proj.project_url}" target="_blank" class="font-button text-[12px] flex items-center gap-1.5 text-primary border-b border-primary/30 hover:border-primary pb-0.5 transition-colors font-medium">
+                    Live Site
+                    <span class="material-symbols-outlined text-[14px]">north_east</span>
                   </a>
                 ` : ''}
               </div>
             </div>
           </div>
-        </div>
-      `;
-    }).join('');
+        `;
+      }).join('');
 
-    archiveList.innerHTML = headerHTML + rowsHTML;
+      archiveList.innerHTML = `<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">${cardsHTML}</div>`;
+      archiveList.className = "block";
+    }
   }
 
   function filterArchive(category) {
+    currentCategory = category;
     const activeProjects = allProjects.filter(p => p.card_size !== 'small');
     // Render filtered list
     if (category === 'All') {

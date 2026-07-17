@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 <meta name="google-site-verification" content="83ra1swc0n0FVlU57Ui44HnyFzxKjMeh9wYofRP99-I" />
 <meta name="keywords" content="Opoku Kelvin NanaYaw, Mr Rager, Au_ra.rx, Jabari" />
+<link rel="icon" type="image/png" href="favicon.png" />
 <title>Opoku Kelvin Nanayaw | Portfolio</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <!-- Supabase CDN and Client Config -->
@@ -116,7 +117,25 @@
         }
     </script>
 </head>
-<body class="bg-surface text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed antialiased">
+<body class="bg-surface text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed antialiased relative min-h-screen overflow-x-hidden">
+<!-- Curvy grid background lines (Supabase style) -->
+<div class="absolute inset-0 -z-50 overflow-hidden pointer-events-none opacity-[0.6]">
+  <!-- Grid mesh (Graph paper: 24px grid) -->
+  <div class="absolute inset-0 bg-[linear-gradient(to_right,#8080800b_1px,transparent_1px),linear-gradient(to_bottom,#8080800b_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+  
+  <!-- Radial spotlight glow -->
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[300px] bg-primary/5 blur-[100px] rounded-full"></div>
+
+  <!-- Concentric Arcs -->
+  <svg class="absolute top-0 left-1/2 -translate-x-1/2 w-[1400px] h-[800px] text-outline/15" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="700" cy="-100" r="400" stroke="currentColor" stroke-width="1" stroke-dasharray="4 4" />
+    <circle cx="700" cy="-100" r="600" stroke="currentColor" stroke-width="1" />
+    <circle cx="700" cy="-100" r="800" stroke="currentColor" stroke-width="1" />
+    <circle cx="700" cy="-100" r="1000" stroke="currentColor" stroke-width="1" stroke-dasharray="8 4" />
+    <circle cx="700" cy="-100" r="1200" stroke="currentColor" stroke-width="1" />
+  </svg>
+</div>
+
 <!-- TopNavBar (Shared Component) -->
 <nav class="bg-surface dark:bg-surface border-b border-outline-variant dark:border-outline flex justify-between items-center w-full px-margin py-gutter max-w-container-max mx-auto sticky top-0 z-50">
 <div class="font-headline-lg text-headline-lg tracking-tight text-primary dark:text-primary-fixed-dim">
@@ -141,16 +160,16 @@
 <!-- Hero Section: Reverse Pyramid Intro -->
 <section class="py-24 md:py-32 flex flex-col items-center text-center">
 <div class="max-w-3xl">
-<h1 class="font-headline-xl text-headline-xl mb-8">
+<h1 id="hero-headline" class="font-headline-xl text-headline-xl mb-8">
                     Data Analyst & Junior IT Support. Leveraging data and tech to solve real business problems.
                 </h1>
-<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl mx-auto">
+<p id="hero-description" class="font-body-lg text-body-lg text-on-surface-variant max-w-xl mx-auto">
                     Combining SQL database management, Python programming, and web development to build functional, data-driven systems.
                 </p>
 <div class="mt-12 flex items-center justify-center gap-4">
-<span class="font-label-mono text-label-mono bg-secondary-container px-3 py-1">CLASS OF 2027</span>
+<span id="hero-class" class="font-label-mono text-label-mono bg-secondary-container px-3 py-1">CLASS OF 2027</span>
 <span class="w-8 h-px bg-outline-variant"></span>
-<span class="font-label-mono text-label-mono text-on-surface-variant italic">BASED IN ACCRA, GHANA</span>
+<span id="hero-location" class="font-label-mono text-label-mono text-on-surface-variant italic">BASED IN ACCRA, GHANA</span>
 </div>
 </div>
 </section>
@@ -254,10 +273,30 @@
       });
     }
 
-    // Load Profile Info to update WhatsApp redirects
+    // Load Profile Info to update WhatsApp redirects and hero content
     const profile = await getProfile();
-    if (profile && profile.whatsapp) {
-      whatsappNumber = profile.whatsapp.replace(/\+/g, '').replace(/\s/g, '');
+    if (profile) {
+      if (profile.whatsapp) {
+        whatsappNumber = profile.whatsapp.replace(/\+/g, '').replace(/\s/g, '');
+      }
+      
+      const headlineEl = document.getElementById('hero-headline');
+      const descEl = document.getElementById('hero-description');
+      const classEl = document.getElementById('hero-class');
+      const locEl = document.getElementById('hero-location');
+
+      if (headlineEl) {
+        headlineEl.innerText = `${profile.title}. ${profile.bio_title || ''}`;
+      }
+      if (descEl) {
+        descEl.innerText = profile.sub_description || '';
+      }
+      if (classEl) {
+        classEl.innerText = `CLASS OF ${profile.graduation_year || '2027'}`;
+      }
+      if (locEl) {
+        locEl.innerText = `BASED IN ${(profile.location || 'Accra, Ghana').toUpperCase()}`;
+      }
     }
 
     // Fetch and Render Dynamic Projects
