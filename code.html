@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3 Strong Inc. | Engineering Digital Excellence</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=block" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/geist@1.3.0/dist/fonts/geist.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        try {
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        colors: {
+                            "on-primary": "#002e6a",
+                            "tertiary-container": "#009fb4",
+                            "background": "#0f1321",
+                            "surface-container": "#1b1f2e",
+                            "on-tertiary-container": "#002f36",
+                            "on-secondary-container": "#c4abff",
+                            "secondary-fixed-dim": "#d0bcff",
+                            "on-error": "#690005",
+                            "inverse-primary": "#005ac2",
+                            "on-secondary-fixed": "#23005c",
+                            "secondary-container": "#571bc1",
+                            "error-container": "#93000a",
+                            "on-secondary-fixed-variant": "#5516be",
+                            "on-tertiary": "#00363e",
+                            "tertiary-fixed": "#a2eeff",
+                            "secondary-fixed": "#e9ddff",
+                            "on-surface-variant": "#c2c6d6",
+                            "primary": "#adc6ff",
+                            "surface-variant": "#303444",
+                            "error": "#ffb4ab",
+                            "secondary": "#d0bcff",
+                            "on-surface": "#dfe1f6",
+                            "surface-container-lowest": "#0a0d1c",
+                            "outline-variant": "#424754",
+                            "tertiary": "#2fd9f4",
+                            "on-tertiary-fixed": "#001f25",
+                            "primary-fixed": "#d8e2ff",
+                            "surface-tint": "#adc6ff",
+                            "inverse-surface": "#dfe1f6",
+                            "surface-container-low": "#171b2a",
+                            "on-secondary": "#3c0091",
+                            "inverse-on-surface": "#2c303f",
+                            "on-primary-container": "#00285d",
+                            "outline": "#8c909f",
+                            "primary-container": "#4d8eff",
+                            "on-primary-fixed-variant": "#004395",
+                            "on-error-container": "#ffdad6",
+                            "tertiary-fixed-dim": "#2fd9f4",
+                            "surface-container-high": "#262939",
+                            "surface-dim": "#0f1321",
+                            "on-primary-fixed": "#001a42",
+                            "on-background": "#dfe1f6",
+                            "surface-bright": "#353849",
+                            "on-tertiary-fixed-variant": "#004e5a",
+                            "surface-container-highest": "#303444",
+                            "primary-fixed-dim": "#adc6ff",
+                            "surface": "#0f1321"
+                        },
+                        borderRadius: {
+                            "DEFAULT": "0.25rem",
+                            "lg": "0.5rem",
+                            "xl": "0.75rem",
+                            "full": "9999px"
+                        },
+                        spacing: {
+                            "stack-lg": "32px",
+                            "gutter": "24px",
+                            "stack-sm": "8px",
+                            "margin-mobile": "16px",
+                            "container-max": "1280px",
+                            "stack-md": "16px",
+                            "margin-desktop": "48px",
+                            "stack-xs": "4px",
+                            "stack-xl": "64px"
+                        },
+                        fontFamily: {
+                            "headline-lg": ["Geist"],
+                            "label-md": ["Geist"],
+                            "display": ["Geist"],
+                            "headline-md": ["Geist"],
+                            "body-lg": ["Inter"],
+                            "mono": ["Geist"],
+                            "headline-lg-mobile": ["Geist"],
+                            "body-md": ["Inter"]
+                        },
+                        fontSize: {
+                            "headline-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                            "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                            "display": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                            "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                            "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                            "mono": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                            "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                            "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                        }
+                    },
+                },
+            }
+        } catch (_e) {}
+    </script>
+    <style>
+        /* Custom design system and premium micro-interactions */
+        :root {
+            --color-primary: #adc6ff;
+            --color-tertiary: #2fd9f4;
+            --color-background: #0f1321;
+        }
+
+        body {
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f1321;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.18);
+        }
+
+        /* Mouse glow spotlight */
+        .mouse-glow {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(173, 198, 255, 0.05) 0%, rgba(47, 217, 244, 0.02) 40%, rgba(15, 19, 33, 0) 70%);
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            mix-blend-mode: screen;
+            transition: opacity 0.3s ease;
+        }
+
+        /* Ambient aurora background blobs */
+        .aurora-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(130px);
+            opacity: 0.12;
+            z-index: 0;
+            animation: floatBlob 25s infinite alternate ease-in-out;
+        }
+        
+        @keyframes floatBlob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            50% { transform: translate(80px, -100px) scale(1.3); }
+            100% { transform: translate(-60px, 60px) scale(0.9); }
+        }
+
+        /* Glassmorphism panel cards */
+        .glass-card {
+            background: rgba(27, 31, 46, 0.35);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .glass-card:hover {
+            background: rgba(27, 31, 46, 0.55);
+            border-color: rgba(173, 198, 255, 0.25);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6), 0 0 25px rgba(173, 198, 255, 0.06);
+        }
+
+        /* Neon gradient border hover transition */
+        .neon-border-animate {
+            position: relative;
+        }
+        .neon-border-animate::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 1px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            transition: background 0.4s ease;
+        }
+        .neon-border-animate:hover::after {
+            background: linear-gradient(135deg, #adc6ff, #2fd9f4);
+        }
+
+        /* Tech floating animation */
+        .floating {
+            animation: floatUpDown 8s infinite ease-in-out;
+        }
+        @keyframes floatUpDown {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        /* Process vertical timeline */
+        .timeline-line {
+            background: linear-gradient(180deg, rgba(173, 198, 255, 0.05) 0%, rgba(173, 198, 255, 0.4) 30%, rgba(47, 217, 244, 0.4) 70%, rgba(47, 217, 244, 0.05) 100%);
+        }
+
+        .step-dot {
+            transition: all 0.3s ease;
+        }
+
+        details[open] summary {
+            color: #adc6ff;
+        }
+        details summary::-webkit-details-marker {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-background selection:bg-primary/30">
+    
+    <div id="mouse-glow" class="mouse-glow"></div>
+
+    <!-- Navigation Header -->
+    <header class="fixed top-0 w-full z-50 bg-surface/60 backdrop-blur-xl border-b border-outline-variant/10 shadow-sm">
+        <div class="flex justify-between items-center px-gutter py-4 max-w-container-max mx-auto">
+            <div class="flex items-center gap-3">
+                <!-- Rebuilt Premium SVG Logo -->
+                <svg class="h-10 w-10 text-primary" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="logoGrad" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0%" stop-color="#adc6ff"/>
+                            <stop offset="100%" stop-color="#2fd9f4"/>
+                        </linearGradient>
+                    </defs>
+                    <path d="M50 10 L85 75 L15 75 Z" stroke="url(#logoGrad)" stroke-width="8" stroke-linejoin="round"/>
+                    <path d="M50 30 L72 70 L28 70 Z" stroke="url(#logoGrad)" stroke-width="6" stroke-linejoin="round" opacity="0.7"/>
+                    <circle cx="50" cy="58" r="8" fill="url(#logoGrad)"/>
+                </svg>
+                <span class="font-headline-md text-headline-md font-bold text-on-surface tracking-tighter">3 Strong Inc.</span>
+            </div>
+            <nav class="hidden md:flex gap-8 items-center font-label-md text-label-md">
+                <a href="#" class="text-primary font-bold border-b-2 border-primary pb-1">Home</a>
+                <a href="#services" class="text-on-surface-variant hover:text-primary transition-all duration-200">Solutions</a>
+                <a href="#process" class="text-on-surface-variant hover:text-primary transition-all duration-200">Process</a>
+                <a href="#case-studies" class="text-on-surface-variant hover:text-primary transition-all duration-200">Impact</a>
+                <button onclick="openContactModal()" class="bg-primary text-on-primary px-6 py-2 rounded-full font-bold hover:drop-shadow-[0_0_8px_rgba(173,198,255,0.5)] transition-all active:scale-95">Connect</button>
+            </nav>
+            <button onclick="toggleMobileMenu()" class="md:hidden text-on-surface p-1">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-menu" class="fixed inset-y-0 right-0 z-[100] w-full max-w-xs bg-surface-container/95 backdrop-blur-2xl p-6 shadow-2xl border-l border-outline-variant/10 transform translate-x-full transition-transform duration-300 ease-in-out">
+        <div class="flex justify-between items-center mb-8">
+            <div class="flex items-center gap-2">
+                <svg class="h-8 w-8 text-primary" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 12 L82 72 L18 72 Z" stroke="currentColor" stroke-width="8" stroke-linejoin="round"/>
+                </svg>
+                <span class="font-headline-md text-xl font-bold text-on-surface">3 Strong</span>
+            </div>
+            <button onclick="toggleMobileMenu()" class="text-on-surface p-1">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+        <nav class="flex flex-col gap-6 font-label-md text-lg">
+            <a href="#" onclick="toggleMobileMenu()" class="text-primary font-bold">Home</a>
+            <a href="#services" onclick="toggleMobileMenu()" class="text-on-surface-variant hover:text-primary transition-all">Solutions</a>
+            <a href="#process" onclick="toggleMobileMenu()" class="text-on-surface-variant hover:text-primary transition-all">Process</a>
+            <a href="#case-studies" onclick="toggleMobileMenu()" class="text-on-surface-variant hover:text-primary transition-all">Impact</a>
+            <button onclick="toggleMobileMenu(); openContactModal();" class="bg-primary text-on-primary px-6 py-3 rounded-full font-bold hover:shadow-lg transition-all mt-4 w-full">Connect</button>
+        </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center pt-24 overflow-hidden">
+        <!-- Interactive Aurora Shader background -->
+        <div class="absolute inset-0 w-full h-full opacity-60 z-0">
+            <canvas id="shader-canvas-ANIMATION_2" style="display:block;width:100%;height:100%"></canvas>
+            <script>
+                (function() {
+                    const canvas = document.getElementById('shader-canvas-ANIMATION_2');
+
+                    function syncSize() {
+                        const w = canvas.clientWidth  || 1280;
+                        const h = canvas.clientHeight || 720;
+                        if (canvas.width !== w || canvas.height !== h) {
+                            canvas.width  = w;
+                            canvas.height = h;
+                        }
+                    }
+                    if (typeof ResizeObserver !== 'undefined') {
+                        new ResizeObserver(syncSize).observe(canvas);
+                    }
+                    syncSize();
+
+                    const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+                    if (!gl) return;
+                    
+                    const vs = `
+                        attribute vec2 a_position;
+                        varying vec2 v_texCoord;
+                        void main() {
+                            v_texCoord = a_position * 0.5 + 0.5;
+                            gl_Position = vec4(a_position, 0.0, 1.0);
+                        }
+                    `;
+                    const fs = `
+                        precision highp float;
+                        varying vec2 v_texCoord;
+                        uniform float u_time;
+                        uniform vec2 u_resolution;
+                        uniform vec2 u_mouse;
+
+                        void main() {
+                            vec2 uv = v_texCoord;
+                            vec2 m = u_mouse / u_resolution;
+                            
+                            // Deep space background
+                            vec3 color = vec3(0.04, 0.05, 0.12); 
+                            
+                            // Aurora 1 (Blue)
+                            float wave1 = sin(uv.x * 2.0 + u_time * 0.4) * 0.2 + 0.5;
+                            float dist1 = abs(uv.y - wave1);
+                            color += vec3(0.23, 0.51, 0.96) * (0.06 / (dist1 + 0.12)) * 0.55;
+                            
+                            // Aurora 2 (Cyan)
+                            float wave2 = cos(uv.x * 1.5 - u_time * 0.25) * 0.18 + 0.42;
+                            float dist2 = abs(uv.y - wave2);
+                            color += vec3(0.18, 0.85, 0.95) * (0.05 / (dist2 + 0.1)) * 0.45;
+
+                            // Interactive Mouse spotlight glow
+                            float m_dist = distance(uv, vec2(m.x, m.y));
+                            color += vec3(0.13, 0.82, 0.93) * (0.035 / (m_dist + 0.08));
+
+                            gl_FragColor = vec4(color, 1.0);
+                        }
+                    `;
+                    
+                    function cs(type, src) {
+                        const s = gl.createShader(type);
+                        gl.shaderSource(s, src);
+                        gl.compileShader(s);
+                        return s;
+                    }
+                    const prog = gl.createProgram();
+                    gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
+                    gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
+                    gl.linkProgram(prog);
+                    gl.useProgram(prog);
+                    const buf = gl.createBuffer();
+                    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+                    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+                    const pos = gl.getAttribLocation(prog, 'a_position');
+                    gl.enableVertexAttribArray(pos);
+                    gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+                    const uTime = gl.getUniformLocation(prog, 'u_time');
+                    const uRes = gl.getUniformLocation(prog, 'u_resolution');
+                    const uMouse = gl.getUniformLocation(prog, 'u_mouse');
+
+                    let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+                    window.addEventListener('mousemove', (event) => {
+                        const rect = canvas.getBoundingClientRect();
+                        if (rect.width && rect.height) {
+                            const nx = (event.clientX - rect.left) / rect.width;
+                            const ny = 1.0 - (event.clientY - rect.top) / rect.height;
+                            mouse.x = nx * canvas.width;
+                            mouse.y = ny * canvas.height;
+                        }
+                    });
+
+                    function render(t) {
+                        if (typeof ResizeObserver === 'undefined') syncSize();
+                        gl.viewport(0, 0, canvas.width, canvas.height);
+                        if (uTime) gl.uniform1f(uTime, t * 0.001);
+                        if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
+                        if (uMouse) gl.uniform2f(uMouse, mouse.x, mouse.y);
+                        gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+                        requestAnimationFrame(render);
+                    }
+                    render(0);
+                })();
+            </script>
+        </div>
+
+        <div class="absolute inset-0 z-0">
+            <div class="aurora-blob w-[500px] h-[500px] bg-primary top-[-10%] left-[-10%]"></div>
+            <div class="aurora-blob w-[400px] h-[400px] bg-tertiary bottom-[-10%] right-[-5%]" style="animation-delay: -5s;"></div>
+        </div>
+
+        <div class="max-w-container-max mx-auto px-gutter grid md:grid-cols-2 gap-12 items-center relative z-10 w-full">
+            <div class="space-y-8" data-aos="fade-up">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary font-label-md text-sm">
+                    <span class="material-symbols-outlined text-[18px]">verified</span>
+                    Engineering Digital Excellence
+                </div>
+                <h1 class="font-display text-display leading-tight">
+                    Building Digital Products <br>
+                    <span class="text-primary">That Scale.</span>
+                </h1>
+                <p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg">
+                    We engineer high-performance systems for visionaries. From cloud infrastructure to seamless user interfaces, we turn complexity into competitive advantage.
+                </p>
+                <div class="flex flex-wrap gap-4 pt-4">
+                    <button onclick="openContactModal()" class="bg-primary text-on-primary px-8 py-4 rounded-xl font-bold text-lg hover:shadow-[0_0_30px_rgba(173,198,255,0.4)] transition-all flex items-center gap-2">
+                        Start Your Project
+                        <span class="material-symbols-outlined">arrow_forward</span>
+                    </button>
+                    <button onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})" class="bg-transparent border border-white/20 hover:border-white/40 px-8 py-4 rounded-xl font-bold text-lg transition-all">
+                        View Our Work
+                    </button>
+                </div>
+            </div>
+            <!-- Interactive Plexus Network Canvas -->
+            <div class="relative h-[500px] md:h-[600px] w-full hidden md:block z-20">
+                <div class="absolute inset-0 w-full h-full" style="display:block;">
+                    <script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
+                    <div id="threejs-container-ANIMATION_3" style="width:100%;height:100%"></div>
+                    <script>
+                        (function() {
+                            const container = document.getElementById('threejs-container-ANIMATION_3');
+                            const scene = new THREE.Scene();
+                            const width = container.clientWidth || 500;
+                            const height = container.clientHeight || 500;
+                            
+                            const camera = new THREE.PerspectiveCamera(60, width / height, 0.1, 100);
+                            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+                            renderer.setSize(width, height);
+                            container.appendChild(renderer.domElement);
+
+                            const group = new THREE.Group();
+                            const nodeGeometry = new THREE.SphereGeometry(0.05, 12, 12);
+                            const nodeMaterial = new THREE.MeshBasicMaterial({ color: 0xadc6ff });
+
+                            const nodesCount = 45;
+                            const nodes = [];
+                            const velocities = [];
+
+                            for(let i = 0; i < nodesCount; i++) {
+                                const node = new THREE.Mesh(nodeGeometry, nodeMaterial);
+                                node.position.set((Math.random()-0.5)*4, (Math.random()-0.5)*4, (Math.random()-0.5)*4);
+                                group.add(node);
+                                nodes.push(node);
+                                velocities.push(new THREE.Vector3((Math.random()-0.5)*0.008, (Math.random()-0.5)*0.008, (Math.random()-0.5)*0.008));
+                            }
+
+                            scene.add(group);
+
+                            const mousePos = new THREE.Vector2();
+                            window.addEventListener('mousemove', (e) => {
+                                const rect = container.getBoundingClientRect();
+                                if (rect.width && rect.height) {
+                                    mousePos.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+                                    mousePos.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+                                }
+                            });
+
+                            const linesGroup = new THREE.Group();
+                            group.add(linesGroup);
+                            camera.position.z = 4.2;
+
+                            function animate() {
+                                requestAnimationFrame(animate);
+                                
+                                group.rotation.y += 0.0008;
+                                group.rotation.x += 0.0004;
+                                
+                                // Clear old lines
+                                while(linesGroup.children.length > 0) {
+                                    const obj = linesGroup.children[0];
+                                    linesGroup.remove(obj);
+                                    obj.geometry.dispose();
+                                }
+                                
+                                // Update node positions
+                                for(let i = 0; i < nodes.length; i++) {
+                                    const node = nodes[i];
+                                    node.position.add(velocities[i]);
+                                    
+                                    if (Math.abs(node.position.x) > 2) velocities[i].x *= -1;
+                                    if (Math.abs(node.position.y) > 2) velocities[i].y *= -1;
+                                    if (Math.abs(node.position.z) > 2) velocities[i].z *= -1;
+                                    
+                                    // Gravity pull to cursor
+                                    const target = new THREE.Vector3(mousePos.x * 2.2, mousePos.y * 2.2, 0);
+                                    const dist = node.position.distanceTo(target);
+                                    if (dist < 1.6) {
+                                        const pull = (1.6 - dist) * 0.001;
+                                        node.position.lerp(target, pull);
+                                    }
+                                }
+                                
+                                // Draw connections
+                                const lineMaterial = new THREE.LineBasicMaterial({ 
+                                    color: 0x2fd9f4, 
+                                    transparent: true, 
+                                    opacity: 0.1 
+                                });
+                                
+                                for(let i = 0; i < nodes.length; i++) {
+                                    for(let j = i + 1; j < nodes.length; j++) {
+                                        const dist = nodes[i].position.distanceTo(nodes[j].position);
+                                        if (dist < 1.1) {
+                                            const opacity = (1.1 - dist) / 1.1;
+                                            const points = [nodes[i].position, nodes[j].position];
+                                            const lineGeometry = new THREE.BufferGeometry().setFromPoints(points);
+                                            const localLineMat = lineMaterial.clone();
+                                            localLineMat.opacity = opacity * 0.3;
+                                            const line = new THREE.Line(lineGeometry, localLineMat);
+                                            linesGroup.add(line);
+                                        }
+                                    }
+                                }
+                                
+                                renderer.render(scene, camera);
+                            }
+                            animate();
+
+                            window.addEventListener('resize', () => {
+                                const w = container.clientWidth || 500;
+                                const h = container.clientHeight || 500;
+                                renderer.setSize(w, h);
+                                camera.aspect = w / h;
+                                camera.updateProjectionMatrix();
+                            });
+                        })();
+                    </script>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-stack-xl relative z-20">
+        <div class="max-w-container-max mx-auto px-gutter">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="text-center space-y-2">
+                    <div class="font-display text-headline-lg text-primary counter" data-target="99.9">0</div>
+                    <div class="font-label-md text-on-surface-variant">Uptime Guarantee</div>
+                </div>
+                <div class="text-center space-y-2">
+                    <div class="font-display text-headline-lg text-tertiary counter" data-target="250">0</div>
+                    <div class="font-label-md text-on-surface-variant">Projects Delivered</div>
+                </div>
+                <div class="text-center space-y-2">
+                    <div class="font-display text-headline-lg text-primary counter" data-target="15">0</div>
+                    <div class="font-label-md text-on-surface-variant">Industry Awards</div>
+                </div>
+                <div class="text-center space-y-2">
+                    <div class="font-display text-headline-lg text-tertiary counter" data-target="100">0</div>
+                    <div class="font-label-md text-on-surface-variant">Security Score</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-stack-xl bg-surface-container-low/30" id="services">
+        <div class="max-w-container-max mx-auto px-gutter">
+            <div class="flex flex-col items-center text-center mb-stack-xl">
+                <h2 class="font-headline-lg text-headline-lg mb-4">Mastering Modern Technology</h2>
+                <p class="font-body-md text-body-md text-on-surface-variant max-w-2xl font-body-lg">We offer a comprehensive suite of digital engineering services designed to propel your business into the future.</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+                <!-- Card 1: Software Development -->
+                <div class="glass-card neon-border-animate p-8 rounded-2xl group">
+                    <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-6">
+                        <span class="material-symbols-outlined text-primary">code</span>
+                    </div>
+                    <h3 class="font-headline-md text-headline-md mb-4">Software Development</h3>
+                    <ul class="space-y-3 font-body-md text-on-surface-variant">
+                        <li class="flex items-center gap-2"><span class="material-symbols-outlined text-[8px] text-primary">circle</span> Custom Enterprise Solutions</li>
+                        <li class="flex items-center gap-2"><span class="material-symbols-outlined text-[8px] text-primary">circle</span> Legacy System Modernization</li>
+                        <li class="flex items-center gap-2"><span class="material-symbols-outlined text-[8px] text-primary">circle</span> API Integration & Architecture</li>
+                    </ul>
+                </div>
+                <!-- Card 2: Cloud & DevOps -->
+                <div class="glass-card neon-border-animate p-8 rounded-2xl">
+                    <div class="w-12 h-12 rounded-lg bg-tertiary/10 flex items-center justify-center mb-6">
+                        <span class="material-symbols-outlined text-tertiary">cloud</span>
+                    </div>
+                    <h3 class="font-headline-md text-headline-md mb-4">Cloud & DevOps</h3>
+                    <ul class="space-y-3 font-body-md text-on-surface-variant">
+                        <li class="flex items-center gap-2"><span class="material-symbols-outlined text-[8px] text-tertiary">circle</span> Infrastructure as Code</li>
+                        <li class="flex items-center gap-2"><span class="material-symbols-outlined text-[8px] text-tertiary">circle</span> AWS/Azure/GCP Management</li>
+                        <li class="flex items-center gap-2"><span class="material-symbols-outlined text-[8px] text-tertiary">circle</span> CI/CD Pipeline Optimization</li>
+                    </ul>
+                </div>
+                <!-- Card 3: Cybersecurity -->
+                <div class="glass-card neon-border-animate p-8 rounded-2xl">
+                    <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-6">
+                        <span class="material-symbols-outlined text-primary">security</span>
+                    </div>
+                    <h3 class="font-headline-md text-headline-md mb-4">Cybersecurity</h3>
+                    <ul class="space-y-3 font-body-md text-on-surface-variant">
+                        <li class="flex items-center gap-2"><span class="material-symbols-outlined text-[8px] text-primary">circle</span> Penetration Testing</li>
+                        <li class="flex items-center gap-2"><span class="material-symbols-outlined text-[8px] text-primary">circle</span> Threat Detection & Response</li>
+                        <li class="flex items-center gap-2"><span class="material-symbols-outlined text-[8px] text-primary">circle</span> Zero-Trust Architecture</li>
+                    </ul>
+                </div>
+                <!-- Card 4: SEO & Growth -->
+                <div class="glass-card neon-border-animate p-8 rounded-2xl">
+                    <div class="w-12 h-12 rounded-lg bg-tertiary/10 flex items-center justify-center mb-6">
+                        <span class="material-symbols-outlined text-tertiary">trending_up</span>
+                    </div>
+                    <h3 class="font-headline-md text-headline-md mb-4">SEO & Growth</h3>
+                    <ul class="space-y-3 font-body-md text-on-surface-variant">
+                        <li class="flex items-center gap-2"><span class="material-symbols-outlined text-[8px] text-tertiary">circle</span> Technical SEO Audits</li>
+                        <li class="flex items-center gap-2"><span class="material-symbols-outlined text-[8px] text-tertiary">circle</span> Performance Optimization</li>
+                        <li class="flex items-center gap-2"><span class="material-symbols-outlined text-[8px] text-tertiary">circle</span> Growth Hacking Strategy</li>
+                    </ul>
+                </div>
+                <!-- Card 5: UI/UX Design -->
+                <div class="glass-card neon-border-animate p-8 rounded-2xl">
+                    <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-6">
+                        <span class="material-symbols-outlined text-primary">palette</span>
+                    </div>
+                    <h3 class="font-headline-md text-headline-md mb-4">UI/UX Design</h3>
+                    <ul class="space-y-3 font-body-md text-on-surface-variant">
+                        <li class="flex items-center gap-2"><span class="material-symbols-outlined text-[8px] text-primary">circle</span> User Research & Prototyping</li>
+                        <li class="flex items-center gap-2"><span class="material-symbols-outlined text-[8px] text-primary">circle</span> Multi-platform Interface Design</li>
+                        <li class="flex items-center gap-2"><span class="material-symbols-outlined text-[8px] text-primary">circle</span> Interaction Micro-animations</li>
+                    </ul>
+                </div>
+                <!-- Card 6: IT Consulting -->
+                <div class="glass-card neon-border-animate p-8 rounded-2xl">
+                    <div class="w-12 h-12 rounded-lg bg-tertiary/10 flex items-center justify-center mb-6">
+                        <span class="material-symbols-outlined text-tertiary">insights</span>
+                    </div>
+                    <h3 class="font-headline-md text-headline-md mb-4">IT Consulting</h3>
+                    <ul class="space-y-3 font-body-md text-on-surface-variant">
+                        <li class="flex items-center gap-2"><span class="material-symbols-outlined text-[8px] text-tertiary">circle</span> Digital Roadmap Strategy</li>
+                        <li class="flex items-center gap-2"><span class="material-symbols-outlined text-[8px] text-tertiary">circle</span> CTO-as-a-Service</li>
+                        <li class="flex items-center gap-2"><span class="material-symbols-outlined text-[8px] text-tertiary">circle</span> Scale-up Advisory</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technologies (Rebuilt Clean SVGs) -->
+    <section class="py-stack-xl relative overflow-hidden">
+        <div class="max-w-container-max mx-auto px-gutter">
+            <h2 class="font-headline-md text-headline-md text-center mb-stack-lg">Our Modern Tech Stack</h2>
+            <div class="flex flex-wrap justify-center gap-12 items-center opacity-85">
+                <div class="floating flex flex-col items-center gap-3 transition-transform hover:scale-105" style="animation-delay: 0s;">
+                    <!-- React SVG -->
+                    <svg class="w-16 h-16 text-[#61DAFB] filter drop-shadow-[0_0_12px_rgba(97,218,251,0.25)]" viewBox="-11.5 -10.23 23 20.46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <ellipse rx="11" ry="4.2" stroke="currentColor" stroke-width="1.1"/>
+                        <ellipse rx="11" ry="4.2" transform="rotate(60)" stroke="currentColor" stroke-width="1.1"/>
+                        <ellipse rx="11" ry="4.2" transform="rotate(120)" stroke="currentColor" stroke-width="1.1"/>
+                        <circle r="2" fill="currentColor"/>
+                    </svg>
+                    <span class="font-mono text-sm text-outline">React</span>
+                </div>
+                <div class="floating flex flex-col items-center gap-3 transition-transform hover:scale-105" style="animation-delay: 1.2s;">
+                    <!-- Next.js SVG -->
+                    <svg class="w-16 h-16 text-on-surface filter drop-shadow-[0_0_12px_rgba(255,255,255,0.15)]" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <mask id="mask0_next" maskUnits="userSpaceOnUse" x="0" y="0" width="180" height="180">
+                            <circle cx="90" cy="90" r="90" fill="black"/>
+                        </mask>
+                        <g mask="url(#mask0_next)">
+                            <circle cx="90" cy="90" r="90" fill="currentColor"/>
+                            <path d="M149.5 157.5L69.1 54H54v72h14.1V73.4l70.7 91.1c3.8-2 7.4-4.3 10.7-6.9z" fill="black"/>
+                            <rect x="115" y="54" width="14" height="72" fill="black"/>
+                        </g>
+                    </svg>
+                    <span class="font-mono text-sm text-outline">Next.js</span>
+                </div>
+                <div class="floating flex flex-col items-center gap-3 transition-transform hover:scale-105" style="animation-delay: 2.4s;">
+                    <!-- TS SVG -->
+                    <svg class="w-16 h-16 rounded-xl overflow-hidden filter drop-shadow-[0_0_12px_rgba(49,120,198,0.25)]" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="100" height="100" rx="16" fill="#3178C6"/>
+                        <text x="50" y="78" fill="white" font-family="Inter, sans-serif" font-size="34" font-weight="bold" text-anchor="middle">TS</text>
+                    </svg>
+                    <span class="font-mono text-sm text-outline">TypeScript</span>
+                </div>
+                <div class="floating flex flex-col items-center gap-3 transition-transform hover:scale-105" style="animation-delay: 3.6s;">
+                    <!-- Node.js SVG -->
+                    <svg class="w-16 h-16 text-[#339933] filter drop-shadow-[0_0_12px_rgba(51,153,51,0.25)]" viewBox="0 0 128 128" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M116.5 37.9L67.6 9.6c-2.2-1.3-5-1.3-7.2 0L11.5 37.9C9.3 39.2 8 41.5 8 44v56.5c0 2.5 1.3 4.8 3.5 6.1l48.9 28.3c2.2 1.3 5 1.3 7.2 0l48.9-28.3c2.2-1.3 3.5-3.6 3.5-6.1V44c0-2.5-1.3-4.8-3.5-6.1zM64 113V68L25 45.5 64 23v45l39 22.5L64 113z"/>
+                    </svg>
+                    <span class="font-mono text-sm text-outline">Node.js</span>
+                </div>
+                <div class="floating flex flex-col items-center gap-3 transition-transform hover:scale-105" style="animation-delay: 4.8s;">
+                    <!-- AWS SVG -->
+                    <svg class="w-16 h-16 text-[#FF9900] filter drop-shadow-[0_0_12px_rgba(255,153,0,0.25)]" viewBox="0 0 128 128" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M96.7 82.2c-5.8 4.7-14.2 7.3-22.1 7.3-10.7 0-20.3-4.5-24.8-11.4-.8-1.2-.1-2.4 1.1-1.7 8.2 4.8 18.7 7.7 28.5 7.7 13.9 0 26.5-5.3 31.6-12.7.9-1.2 2 .5 1.1 1.7-4.1 5.4-9.3 7.4-15.4 9.1zm17.6-6c-.8-1 .4-2 1.3-1.3 4.2 3.1 8.9 1 9.4-.3.6-1.5-3.3-5-8.5-4.8-.9 0-1-1.3-.1-1.6 6.3-2 13 1.7 12 6.2-.9 4-6.3 5.4-11.6 3.1-1-.4-2-.1-2.5-1.3zm-68.8-19.1c0 8.3-5.2 12.8-12 12.8-5.3 0-8.8-3-8.8-8.2 0-8.6 7.6-11.3 17.3-11.3v1.1c-1.5-2.7-5.1-4.8-10.5-4.8-7.9 0-14.1 5.3-14.1 13.6 0 7.6 5.8 13.5 14.3 13.5 6.4 0 10.7-3.2 12-7.8h1.1v6.9c0 .7.5 1.2 1.2 1.2h3.5c.7 0 1.2-.5 1.2-1.2v-29c0-.7-.5-1.2-1.2-1.2h-3.5c-.7 0-1.2.5-1.2 1.2v3.1zm18.3 8.3c0-7.8 4.6-11.6 11-11.6 4.9 0 7.7 2.7 7.7 7.4v18.7c0 .7.5 1.2 1.2 1.2h3.5c.7 0 1.2-.5 1.2-1.2v-21.7c0-.7-.5-1.2-1.2-1.2h-3.5c-.7 0-1.2.5-1.2 1.2v2.7c-1.5-2.7-5.1-4.3-10.1-4.3-8.7 0-14.9 5.8-14.9 14.3 0 7.8 5.6 13.8 14.6 13.8 5.6 0 9.1-2.4 10.4-5.8h1.1v.2c0 8-4.2 11.2-11.3 11.2-5.4 0-9.8-2.2-11.4-6.4-.2-.5-.7-.8-1.2-.8h-3.2c-.7 0-1.2.6-1 1.2 2.2 6.5 8.3 11.2 17.5 11.2 11.8 0 17.2-6.2 17.2-16.7v-29.2c0-.7-.5-1.2-1.2-1.2h-3.5c-.7 0-1.2.5-1.2 1.2v2.7c-1.5-2.7-5.1-4.3-10.1-4.3-8.7 0-14.9 5.8-14.9 14.3z"/>
+                    </svg>
+                    <span class="font-mono text-sm text-outline">AWS</span>
+                </div>
+                <div class="floating flex flex-col items-center gap-3 transition-transform hover:scale-105" style="animation-delay: 6s;">
+                    <!-- Docker SVG -->
+                    <svg class="w-16 h-16 text-[#2496ED] filter drop-shadow-[0_0_12px_rgba(36,150,237,0.25)]" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13.983 11.078h2.119c.51 0 .9-.379.9-.9V8.074c0-.51-.39-.9-.9-.9h-2.119c-.51 0-.9.39-.9.9v2.104c0 .521.39.9.9.9zm-2.909 0h2.12c.51 0 .9-.379.9-.9V8.074c0-.51-.39-.9-.9-.9h-2.12c-.51 0-.9.39-.9.9v2.104c0 .521.39.9.9.9zm-2.913 0h2.119c.51 0 .9-.379.9-.9V8.074c0-.51-.39-.9-.9-.9H8.261c-.51 0-.9.39-.9.9v2.104c0 .521.39.9.9.9zm-2.915 0h2.12c.51 0 .9-.379.9-.9V8.074c0-.51-.39-.9-.9-.9h-2.12c-.51 0-.9.39-.9.9v2.104c0 .521.39.9.9.9zm-2.913 0h2.119c.51 0 .9-.379.9-.9V8.074c0-.51-.39-.9-.9-.9H2.433c-.51 0-.9.39-.9.9v2.104c0 .521.39.9.9.9zm-2.914-2.915h2.12c.51 0 .9-.379.9-.9V5.161c0-.51-.39-.9-.9-.9h-2.12c-.51 0-.9.39-.9.9v2.088c0 .521.39.9.9.9zm2.914 0h2.119c.51 0 .9-.379.9-.9V5.161c0-.51-.39-.9-.9-.9H8.261c-.51 0-.9.39-.9.9v2.088c0 .521.39.9.9.9zm2.913 0h2.12c.51 0 .9-.379.9-.9V5.161c0-.51-.39-.9-.9-.9h-2.12c-.51 0-.9.39-.9.9v2.088c0 .521.39.9.9.9zm-8.74 5.83h2.119c.51 0 .9-.379.9-.9v-2.103c0-.51-.39-.9-.9-.9H2.433c-.51 0-.9.39-.9.9v2.103c0 .521.39.9.9.9zM22.347 8.074c-.09-.396-.414-.827-.827-.827-.36 0-.827.27-.827.827V9.72c-.225-.09-.45-.225-.676-.36l.225-.675c.18-.54-.09-1.08-.63-1.26a1.002 1.002 0 0 0-1.26.63L17.702 10.3c-.63.225-1.26.54-1.89.856V3.882c0-.51-.39-.9-.9-.9h-2.119c-.51 0-.9.39-.9.9v7.24h-2.12v-7.24c0-.51-.39-.9-.9-.9h-2.12c-.51 0-.9.39-.9.9v7.24H6.155v-7.24c0-.51-.39-.9-.9-.9H3.136c-.51 0-.9.39-.9.9v7.24H.1c-.05 0-.1.02-.15.05v.27c0 .1.05.2.1.25.1.05 4.507.95 6.012 4.414 1.352 3.11 4.507 4.146 5.86 4.146h6.012c4.507 0 6.012-3.11 6.012-6.012 0-1.89-1.503-3.415-1.652-3.535z"/>
+                    </svg>
+                    <span class="font-mono text-sm text-outline">Docker</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Timeline -->
+    <section class="py-stack-xl relative" id="process">
+        <div class="max-w-container-max mx-auto px-gutter">
+            <h2 class="font-headline-lg text-headline-lg text-center mb-stack-xl">The 3 Strong Process</h2>
+            <div class="relative max-w-4xl mx-auto">
+                <div class="absolute left-[20px] md:left-1/2 top-0 bottom-0 w-0.5 timeline-line transform md:-translate-x-1/2"></div>
+                <!-- Steps -->
+                <div class="space-y-16">
+                    <div class="relative flex flex-col md:flex-row items-start md:items-center justify-between group">
+                        <div class="md:w-5/12 text-left md:text-right order-2 md:order-1 pl-12 md:pl-0">
+                            <h4 class="font-headline-md text-2xl text-primary mb-2">Discovery</h4>
+                            <p class="text-on-surface-variant">Aligning business goals with technical requirements through collaborative workshops.</p>
+                        </div>
+                        <div class="absolute left-0 md:left-1/2 w-10 h-10 bg-background border-2 border-primary rounded-full z-10 transform -translate-x-0 md:-translate-x-1/2 flex items-center justify-center shadow-[0_0_15px_rgba(173,198,255,0.5)]">
+                            <span class="material-symbols-outlined text-primary text-sm">search</span>
+                        </div>
+                        <div class="md:w-5/12 order-3"></div>
+                    </div>
+                    <div class="relative flex flex-col md:flex-row items-start md:items-center justify-between group">
+                        <div class="md:w-5/12 order-2 md:order-1"></div>
+                        <div class="absolute left-0 md:left-1/2 w-10 h-10 bg-background border-2 border-tertiary rounded-full z-10 transform -translate-x-0 md:-translate-x-1/2 flex items-center justify-center shadow-[0_0_15px_rgba(47,217,244,0.5)]">
+                            <span class="material-symbols-outlined text-tertiary text-sm">edit_note</span>
+                        </div>
+                        <div class="md:w-5/12 text-left pl-12 md:pl-0 order-2">
+                            <h4 class="font-headline-md text-2xl text-tertiary mb-2">Planning</h4>
+                            <p class="text-on-surface-variant">Architectural blueprints and sprint mapping for precise execution.</p>
+                        </div>
+                    </div>
+                    <div class="relative flex flex-col md:flex-row items-start md:items-center justify-between group">
+                        <div class="md:w-5/12 text-left md:text-right order-2 md:order-1 pl-12 md:pl-0">
+                            <h4 class="font-headline-md text-2xl text-primary mb-2">Development</h4>
+                            <p class="text-on-surface-variant">Agile engineering with continuous feedback loops and robust code quality.</p>
+                        </div>
+                        <div class="absolute left-0 md:left-1/2 w-10 h-10 bg-background border-2 border-primary rounded-full z-10 transform -translate-x-0 md:-translate-x-1/2 flex items-center justify-center shadow-[0_0_15px_rgba(173,198,255,0.5)]">
+                            <span class="material-symbols-outlined text-primary text-sm">terminal</span>
+                        </div>
+                        <div class="md:w-5/12 order-3"></div>
+                    </div>
+                    <div class="relative flex flex-col md:flex-row items-start md:items-center justify-between group">
+                        <div class="md:w-5/12 order-2 md:order-1"></div>
+                        <div class="absolute left-0 md:left-1/2 w-10 h-10 bg-background border-2 border-tertiary rounded-full z-10 transform -translate-x-0 md:-translate-x-1/2 flex items-center justify-center shadow-[0_0_15px_rgba(47,217,244,0.5)]">
+                            <span class="material-symbols-outlined text-tertiary text-sm">rocket_launch</span>
+                        </div>
+                        <div class="md:w-5/12 text-left pl-12 md:pl-0 order-2">
+                            <h4 class="font-headline-md text-2xl text-tertiary mb-2">Deployment</h4>
+                            <p class="text-on-surface-variant">Zero-downtime shipping and automated infrastructure scaling.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies / Impact Section -->
+    <section class="py-stack-xl bg-surface-container-low/30" id="case-studies">
+        <div class="max-w-container-max mx-auto px-gutter">
+            <div class="flex flex-col items-center text-center mb-stack-xl">
+                <h2 class="font-headline-lg text-headline-lg mb-4">Impactful Engineering</h2>
+                <p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">Explore how we've helped industry leaders scale their digital horizons.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-gutter mt-stack-xl">
+                <div class="glass-card neon-border-animate p-8 rounded-2xl flex flex-col justify-between h-full">
+                    <div>
+                        <div class="text-primary font-label-mono text-xs uppercase mb-2">Cloud Migration & Security</div>
+                        <h3 class="font-headline-md text-2xl mb-4 text-on-surface font-semibold">Global Fintech Scale-up</h3>
+                        <p class="text-on-surface-variant font-body-md mb-6 text-sm leading-relaxed">Architected a zero-trust environment for a Tier-1 financial institution, handling 1M+ daily transactions.</p>
+                    </div>
+                    <button onclick="openContactModal()" class="flex items-center gap-2 text-primary font-bold hover:gap-3 transition-all text-sm text-left">
+                        View Case Study <span class="material-symbols-outlined">arrow_forward</span>
+                    </button>
+                </div>
+                <div class="glass-card neon-border-animate p-8 rounded-2xl flex flex-col justify-between h-full">
+                    <div>
+                        <div class="text-tertiary font-label-mono text-xs uppercase mb-2">Product Design & Development</div>
+                        <h3 class="font-headline-md text-2xl mb-4 text-on-surface font-semibold">AI-Powered SaaS</h3>
+                        <p class="text-on-surface-variant font-body-md mb-6 text-sm leading-relaxed">Built a generative AI platform from MVP to 500k users, focusing on low-latency response and intuitive UI.</p>
+                    </div>
+                    <button onclick="openContactModal()" class="flex items-center gap-2 text-tertiary font-bold hover:gap-3 transition-all text-sm text-left">
+                        View Case Study <span class="material-symbols-outlined">arrow_forward</span>
+                    </button>
+                </div>
+                <div class="glass-card neon-border-animate p-8 rounded-2xl flex flex-col justify-between h-full">
+                    <div>
+                        <div class="text-primary font-label-mono text-xs uppercase mb-2">Performance Optimization</div>
+                        <h3 class="font-headline-md text-2xl mb-4 text-on-surface font-semibold">Enterprise E-commerce</h3>
+                        <p class="text-on-surface-variant font-body-md mb-6 text-sm leading-relaxed">Optimized infrastructure for a global retailer, resulting in a 40% increase in checkout conversion rates.</p>
+                    </div>
+                    <button onclick="openContactModal()" class="flex items-center gap-2 text-primary font-bold hover:gap-3 transition-all text-sm text-left">
+                        View Case Study <span class="material-symbols-outlined">arrow_forward</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials & FAQ Section -->
+    <section class="py-stack-xl">
+        <div class="max-w-container-max mx-auto px-gutter grid md:grid-cols-2 gap-stack-xl">
+            <!-- Testimonial -->
+            <div>
+                <h3 class="font-headline-md text-headline-md mb-8">What Leaders Say</h3>
+                <div class="glass-card p-8 rounded-2xl border-l-4 border-l-primary relative">
+                    <span class="material-symbols-outlined absolute top-4 right-4 opacity-10 text-6xl">format_quote</span>
+                    <p class="font-body-lg text-body-lg italic mb-6 text-on-surface-variant leading-relaxed">"3 Strong Inc. didn't just build our app; they rebuilt our entire digital culture. Their engineering standards are world-class."</p>
+                    <div class="flex items-center gap-4">
+                        <!-- Custom styled CSS Avatar -->
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-primary/30 to-tertiary/30 border border-primary/20 flex items-center justify-center font-bold text-on-surface shadow-md">
+                            SC
+                        </div>
+                        <div>
+                            <div class="font-bold text-on-surface">Sarah Chen</div>
+                            <div class="text-sm text-on-surface-variant">CTO, NexaGen Industries</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- FAQ Accordion -->
+            <div>
+                <h3 class="font-headline-md text-headline-md mb-8">Common Questions</h3>
+                <div class="space-y-4">
+                    <details class="glass-card rounded-xl overflow-hidden group">
+                        <summary class="p-4 cursor-pointer flex justify-between items-center font-bold text-on-surface">
+                            How do you handle project scalability?
+                            <span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+                        </summary>
+                        <div class="p-4 pt-0 text-on-surface-variant text-sm leading-relaxed">
+                            We architect for the future from day one, using cloud-native patterns and microservices that grow with your user base.
+                        </div>
+                    </details>
+                    <details class="glass-card rounded-xl overflow-hidden group">
+                        <summary class="p-4 cursor-pointer flex justify-between items-center font-bold text-on-surface">
+                            Do you provide post-launch support?
+                            <span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+                        </summary>
+                        <div class="p-4 pt-0 text-on-surface-variant text-sm leading-relaxed">
+                            Yes, we offer ongoing maintenance and 24/7 monitoring to ensure your product remains secure and performing optimally.
+                        </div>
+                    </details>
+                    <details class="glass-card rounded-xl overflow-hidden group">
+                        <summary class="p-4 cursor-pointer flex justify-between items-center font-bold text-on-surface">
+                            What is your typical project timeline?
+                            <span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+                        </summary>
+                        <div class="p-4 pt-0 text-on-surface-variant text-sm leading-relaxed">
+                            Timelines vary based on complexity, but most MVP projects range from 8 to 16 weeks from discovery to deployment.
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="py-stack-xl mb-stack-xl">
+        <div class="max-w-container-max mx-auto px-gutter">
+            <div class="glass-card p-12 md:p-20 rounded-3xl text-center relative overflow-hidden">
+                <div class="aurora-blob w-[300px] h-[300px] bg-primary/20 top-[-20%] left-[-10%]"></div>
+                <div class="aurora-blob w-[300px] h-[300px] bg-tertiary/20 bottom-[-20%] right-[-10%]"></div>
+                <h2 class="font-display text-headline-lg mb-6">Ready to Engineer Your Future?</h2>
+                <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-10">
+                    Join the ranks of high-growth companies building with 3 Strong Inc. Let's discuss your roadmap today.
+                </p>
+                <div class="flex flex-col md:flex-row justify-center gap-4 relative z-10">
+                    <input id="cta-email" class="bg-black/40 border border-white/10 rounded-xl px-6 py-4 md:w-96 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none text-on-surface placeholder:text-outline" placeholder="Enter your work email" type="email">
+                    <button onclick="openContactModal(document.getElementById('cta-email').value)" class="bg-primary text-on-primary px-10 py-4 rounded-xl font-bold hover:shadow-[0_0_30px_rgba(173,198,255,0.4)] transition-all">
+                        Get Started
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-surface-container-lowest w-full py-stack-xl border-t border-outline-variant/5">
+        <div class="flex flex-col md:flex-row justify-between items-center px-gutter max-w-container-max mx-auto gap-8">
+            <div class="flex items-center gap-3">
+                <svg class="h-8 w-8 text-primary" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 15 L80 70 L20 70 Z" stroke="currentColor" stroke-width="8" stroke-linejoin="round"/>
+                </svg>
+                <span class="font-headline-md text-headline-md text-on-surface">3 Strong Inc.</span>
+            </div>
+            <div class="flex gap-8 font-body-md text-body-md text-outline">
+                <a class="hover:text-on-surface transition-colors" href="#">Privacy</a>
+                <a class="hover:text-on-surface transition-colors" href="#">Terms</a>
+                <a class="hover:text-on-surface transition-colors" href="#">LinkedIn</a>
+                <a class="hover:text-on-surface transition-colors" href="#">Github</a>
+            </div>
+            <p class="font-body-md text-body-md text-outline">© 2026 3 Strong Inc. Engineering the Future.</p>
+        </div>
+    </footer>
+
+    <!-- Interactive Multi-Step Lead Planner Contact Drawer -->
+    <div id="contact-modal" class="fixed inset-0 z-[200] hidden items-center justify-center bg-black/70 backdrop-blur-md p-4 overflow-y-auto">
+        <div class="bg-surface-container border border-outline-variant/20 max-w-lg w-full p-8 rounded-2xl relative shadow-2xl transition-all duration-300 scale-95 opacity-0 transform" id="contact-modal-content">
+            <button onclick="closeContactModal()" class="absolute right-4 top-4 text-outline hover:text-primary flex items-center justify-center transition-colors">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+            
+            <!-- Multi-step tracker -->
+            <div class="flex justify-between items-center mb-8">
+                <div class="flex gap-2">
+                    <span class="step-dot w-2.5 h-2.5 rounded-full bg-primary" id="dot-1"></span>
+                    <span class="step-dot w-2.5 h-2.5 rounded-full bg-surface-variant" id="dot-2"></span>
+                    <span class="step-dot w-2.5 h-2.5 rounded-full bg-surface-variant" id="dot-3"></span>
+                </div>
+                <span class="font-label-mono text-xs text-outline uppercase" id="step-label">Step 1 of 3</span>
+            </div>
+
+            <form id="contact-form" onsubmit="handleContactSubmit(event)">
+                <!-- Step 1: Solution Selection -->
+                <div id="step-panel-1" class="space-y-6">
+                    <h3 class="font-headline-md text-2xl text-on-surface font-bold">What solution do you need?</h3>
+                    <p class="text-on-surface-variant text-sm">Select the primary service required for your project.</p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <label class="border border-primary bg-primary/5 p-4 rounded-xl cursor-pointer flex flex-col gap-2 transition-all group">
+                            <input type="radio" name="solution" value="Software Development" checked class="hidden" onclick="selectSolutionCard(this)" />
+                            <span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">code</span>
+                            <span class="font-bold text-sm text-on-surface">Software Dev</span>
+                        </label>
+                        <label class="border border-outline-variant/30 hover:border-primary/50 bg-surface-container-low p-4 rounded-xl cursor-pointer flex flex-col gap-2 transition-all group">
+                            <input type="radio" name="solution" value="Cloud & DevOps" class="hidden" onclick="selectSolutionCard(this)" />
+                            <span class="material-symbols-outlined text-tertiary group-hover:scale-110 transition-transform">cloud</span>
+                            <span class="font-bold text-sm text-on-surface">Cloud & DevOps</span>
+                        </label>
+                        <label class="border border-outline-variant/30 hover:border-primary/50 bg-surface-container-low p-4 rounded-xl cursor-pointer flex flex-col gap-2 transition-all group">
+                            <input type="radio" name="solution" value="Cybersecurity" class="hidden" onclick="selectSolutionCard(this)" />
+                            <span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">security</span>
+                            <span class="font-bold text-sm text-on-surface">Cybersecurity</span>
+                        </label>
+                        <label class="border border-outline-variant/30 hover:border-primary/50 bg-surface-container-low p-4 rounded-xl cursor-pointer flex flex-col gap-2 transition-all group">
+                            <input type="radio" name="solution" value="UI/UX Design" class="hidden" onclick="selectSolutionCard(this)" />
+                            <span class="material-symbols-outlined text-tertiary group-hover:scale-110 transition-transform">palette</span>
+                            <span class="font-bold text-sm text-on-surface">UI/UX Design</span>
+                        </label>
+                    </div>
+                    <div class="flex justify-end pt-4">
+                        <button type="button" onclick="goToStep(2)" class="bg-primary text-on-primary px-6 py-3 rounded-xl font-bold flex items-center gap-1.5 hover:opacity-90 transition-opacity">
+                            Next Step <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Budget Selection -->
+                <div id="step-panel-2" class="hidden space-y-6">
+                    <h3 class="font-headline-md text-2xl text-on-surface font-bold">Project Budget</h3>
+                    <p class="text-on-surface-variant text-sm">Help us gauge the size and scope of your development sprint.</p>
+                    <div class="space-y-3">
+                        <label class="flex justify-between items-center border border-outline-variant/30 hover:border-primary/50 p-4 rounded-xl cursor-pointer bg-surface-container-low transition-all">
+                            <div>
+                                <span class="font-bold block text-on-surface">Startup Launch</span>
+                                <span class="text-xs text-on-surface-variant">Best for initial MVPs and design prototypes.</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="font-mono text-sm text-primary font-bold">&lt;$10k</span>
+                                <input type="radio" name="budget" value="<10k" checked class="text-primary focus:ring-0" />
+                            </div>
+                        </label>
+                        <label class="flex justify-between items-center border border-outline-variant/30 hover:border-primary/50 p-4 rounded-xl cursor-pointer bg-surface-container-low transition-all">
+                            <div>
+                                <span class="font-bold block text-on-surface">Scale-Up Engine</span>
+                                <span class="text-xs text-on-surface-variant">Custom platforms with advanced APIs and integrations.</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="font-mono text-sm text-primary font-bold">$10k - $50k</span>
+                                <input type="radio" name="budget" value="10k-50k" class="text-primary focus:ring-0" />
+                            </div>
+                        </label>
+                        <label class="flex justify-between items-center border border-outline-variant/30 hover:border-primary/50 p-4 rounded-xl cursor-pointer bg-surface-container-low transition-all">
+                            <div>
+                                <span class="font-bold block text-on-surface">Enterprise System</span>
+                                <span class="text-xs text-on-surface-variant">High-performance custom architectures and scale security.</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="font-mono text-sm text-primary font-bold">$50k+</span>
+                                <input type="radio" name="budget" value="50k+" class="text-primary focus:ring-0" />
+                            </div>
+                        </label>
+                    </div>
+                    <div class="flex justify-between pt-4">
+                        <button type="button" onclick="goToStep(1)" class="bg-transparent border border-white/20 text-on-surface px-6 py-3 rounded-xl font-bold flex items-center gap-1.5 hover:border-white/40 transition-colors">
+                            <span class="material-symbols-outlined text-sm">arrow_back</span> Back
+                        </button>
+                        <button type="button" onclick="goToStep(3)" class="bg-primary text-on-primary px-6 py-3 rounded-xl font-bold flex items-center gap-1.5 hover:opacity-90 transition-opacity">
+                            Next Step <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Contact Details -->
+                <div id="step-panel-3" class="hidden space-y-6">
+                    <h3 class="font-headline-md text-2xl text-on-surface font-bold">Connect with the Team</h3>
+                    <p class="text-on-surface-variant text-sm">Leave your details and our lead engineer will reach out in 24 hours.</p>
+                    <div class="space-y-4">
+                        <div class="space-y-1">
+                            <label class="font-label-mono text-xs text-outline uppercase">Your Name</label>
+                            <input id="contact-name" required class="w-full bg-surface-container-low border border-outline-variant/30 focus:border-primary focus:ring-0 rounded-xl px-4 py-3 text-sm text-on-surface outline-none" type="text" placeholder="e.g. Sarah Chen" />
+                        </div>
+                        <div class="space-y-1">
+                            <label class="font-label-mono text-xs text-outline uppercase">Work Email</label>
+                            <input id="contact-email" required class="w-full bg-surface-container-low border border-outline-variant/30 focus:border-primary focus:ring-0 rounded-xl px-4 py-3 text-sm text-on-surface outline-none" type="email" placeholder="sarah@nexagen.com" />
+                        </div>
+                        <div class="space-y-1">
+                            <label class="font-label-mono text-xs text-outline uppercase">Project Brief (Optional)</label>
+                            <textarea id="contact-brief" rows="3" class="w-full bg-surface-container-low border border-outline-variant/30 focus:border-primary focus:ring-0 rounded-xl px-4 py-3 text-sm text-on-surface outline-none resize-none" placeholder="Briefly describe what you're building..."></textarea>
+                        </div>
+                    </div>
+                    <div class="flex justify-between pt-4">
+                        <button type="button" onclick="goToStep(2)" class="bg-transparent border border-white/20 text-on-surface px-6 py-3 rounded-xl font-bold flex items-center gap-1.5 hover:border-white/40 transition-colors">
+                            <span class="material-symbols-outlined text-sm">arrow_back</span> Back
+                        </button>
+                        <button type="submit" class="bg-primary text-on-primary px-8 py-3 rounded-xl font-bold hover:shadow-[0_0_20px_rgba(173,198,255,0.4)] transition-all flex items-center gap-1.5">
+                            Submit Proposal <span class="material-symbols-outlined text-sm">send</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Success Step -->
+                <div id="step-panel-success" class="hidden text-center py-8 space-y-6">
+                    <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/20 text-primary mb-2 relative">
+                        <span class="material-symbols-outlined text-4xl animate-bounce">check_circle</span>
+                        <div class="absolute inset-0 rounded-full border border-primary animate-ping opacity-35"></div>
+                    </div>
+                    <h3 class="font-headline-md text-2xl text-on-surface font-bold">Proposal Received!</h3>
+                    <p class="text-on-surface-variant text-sm max-w-xs mx-auto leading-relaxed">
+                        Thank you. We have received your query for <span id="summary-solution" class="text-primary font-bold"></span>. A technical manager will email you at <span id="summary-email" class="text-primary font-bold"></span> shortly.
+                    </p>
+                    <button type="button" onclick="closeContactModal()" class="bg-surface-variant text-on-surface px-6 py-2.5 rounded-xl font-bold text-sm hover:bg-outline-variant/40 transition-colors">
+                        Close Window
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Mouse Glow Spotlight Effect
+        const glow = document.getElementById('mouse-glow');
+        document.addEventListener('mousemove', (e) => {
+            glow.style.left = e.clientX + 'px';
+            glow.style.top = e.clientY + 'px';
+        });
+
+        // Mobile menu drawer toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu.classList.contains('translate-x-full')) {
+                menu.classList.remove('translate-x-full');
+            } else {
+                menu.classList.add('translate-x-full');
+            }
+        }
+
+        // Contact Modal Logic
+        let activeContactStep = 1;
+        
+        function openContactModal(prefilledEmail = '') {
+            const modal = document.getElementById('contact-modal');
+            const content = document.getElementById('contact-modal-content');
+            modal.style.display = 'flex';
+            setTimeout(() => {
+                content.classList.remove('scale-95', 'opacity-0');
+            }, 10);
+            
+            if (prefilledEmail) {
+                document.getElementById('contact-email').value = prefilledEmail;
+            }
+            goToStep(1);
+        }
+        
+        function closeContactModal() {
+            const modal = document.getElementById('contact-modal');
+            const content = document.getElementById('contact-modal-content');
+            content.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 300);
+        }
+        
+        function goToStep(step) {
+            activeContactStep = step;
+            
+            document.getElementById('step-panel-1').classList.add('hidden');
+            document.getElementById('step-panel-2').classList.add('hidden');
+            document.getElementById('step-panel-3').classList.add('hidden');
+            document.getElementById('step-panel-success').classList.add('hidden');
+            
+            if (step === 'success') {
+                document.getElementById('step-panel-success').classList.remove('hidden');
+                document.getElementById('step-label').innerText = "Finished";
+                return;
+            }
+            
+            document.getElementById(`step-panel-${step}`).classList.remove('hidden');
+            document.getElementById('step-label').innerText = `Step ${step} of 3`;
+            
+            for (let i = 1; i <= 3; i++) {
+                const dot = document.getElementById(`dot-${i}`);
+                if (i <= step) {
+                    dot.className = "step-dot w-2.5 h-2.5 rounded-full bg-primary transition-all duration-300";
+                } else {
+                    dot.className = "step-dot w-2.5 h-2.5 rounded-full bg-surface-variant transition-all duration-300";
+                }
+            }
+        }
+        
+        function selectSolutionCard(input) {
+            const cards = input.closest('.grid').querySelectorAll('label');
+            cards.forEach(card => {
+                card.className = "border border-outline-variant/30 hover:border-primary/50 bg-surface-container-low p-4 rounded-xl cursor-pointer flex flex-col gap-2 transition-all group";
+            });
+            const activeCard = input.closest('label');
+            activeCard.className = "border-2 border-primary bg-primary/5 p-4 rounded-xl cursor-pointer flex flex-col gap-2 transition-all group";
+        }
+        
+        function handleContactSubmit(event) {
+            event.preventDefault();
+            const solution = document.querySelector('input[name="solution"]:checked').value;
+            const email = document.getElementById('contact-email').value;
+            
+            document.getElementById('summary-solution').innerText = solution;
+            document.getElementById('summary-email').innerText = email;
+            
+            goToStep('success');
+            
+            // Capture proposals locally
+            const proposals = JSON.parse(localStorage.getItem('lead_proposals') || '[]');
+            proposals.push({
+                id: Math.random().toString(),
+                solution,
+                budget: document.querySelector('input[name="budget"]:checked').value,
+                name: document.getElementById('contact-name').value,
+                email,
+                brief: document.getElementById('contact-brief').value,
+                date: new Date().toISOString()
+            });
+            localStorage.setItem('lead_proposals', JSON.stringify(proposals));
+        }
+
+        // Animated Stats Counters
+        const observerOptions = { threshold: 0.5 };
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = parseFloat(counter.getAttribute('data-target'));
+                    const duration = 2000;
+                    const startTime = performance.now();
+
+                    const updateCounter = (currentTime) => {
+                        const elapsed = currentTime - startTime;
+                        const progress = Math.min(elapsed / duration, 1);
+                        const current = progress * target;
+                        
+                        if (target % 1 === 0) {
+                            counter.innerText = Math.floor(current);
+                        } else {
+                            counter.innerText = current.toFixed(1) + '%';
+                        }
+
+                        if (progress < 1) {
+                            requestAnimationFrame(updateCounter);
+                        }
+                    };
+                    requestAnimationFrame(updateCounter);
+                    counterObserver.unobserve(counter);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.counter').forEach(counter => {
+            counterObserver.observe(counter);
+        });
+
+        // Parallax scroll effect for floating background elements
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            document.querySelectorAll('.aurora-blob').forEach(blob => {
+                const speed = 0.15;
+                blob.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+    </script>
+</body>
+</html>

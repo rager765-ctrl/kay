@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<meta name="google-site-verification" content="83ra1swc0n0FVlU57Ui44HnyFzxKjMeh9wYofRP99-I" />
+<meta name="keywords" content="Opoku Kelvin NanaYaw, Mr Rager, Au_ra.rx, Jabari" />
+<link rel="icon" type="image/png" href="favicon.png" />
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Supabase CDN and Client Config -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-client.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&amp;family=EB+Garamond:wght@500&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        * {
+            -webkit-tap-highlight-color: transparent !important;
+            outline: none !important;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #f9f9f9;
+            color: #1a1c1c;
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "inverse-surface": "#2f3131",
+                        "primary-fixed": "#e7e2d9",
+                        "on-error-container": "#93000a",
+                        "tertiary": "#1e201f",
+                        "inverse-on-surface": "#f0f1f1",
+                        "surface-tint": "#615e57",
+                        "outline-variant": "#cbc6bc",
+                        "outline": "#7a776e",
+                        "on-surface": "#1a1c1c",
+                        "on-background": "#1a1c1c",
+                        "on-primary-fixed-variant": "#494740",
+                        "surface-container": "#eeeeee",
+                        "tertiary-container": "#333534",
+                        "primary-fixed-dim": "#cbc6bd",
+                        "inverse-primary": "#cbc6bd",
+                        "secondary-fixed-dim": "#c7c6c4",
+                        "on-secondary-fixed": "#1b1c1a",
+                        "secondary-container": "#e1dfdd",
+                        "secondary": "#5e5e5d",
+                        "surface-dim": "#dadada",
+                        "surface-container-low": "#f3f3f4",
+                        "on-secondary-container": "#626361",
+                        "secondary-fixed": "#e4e2e0",
+                        "tertiary-fixed-dim": "#c6c7c5",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#1d1c16",
+                        "background": "#f9f9f9",
+                        "primary-container": "#37352f",
+                        "on-tertiary-fixed-variant": "#454746",
+                        "on-tertiary-fixed": "#1a1c1b",
+                        "primary": "#21201a",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "surface-container-highest": "#e2e2e2",
+                        "on-surface-variant": "#49473f",
+                        "tertiary-fixed": "#e2e3e1",
+                        "surface-container-high": "#e8e8e8",
+                        "on-tertiary-container": "#9d9e9c",
+                        "on-secondary-fixed-variant": "#464745",
+                        "on-primary-container": "#a19d95",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#f9f9f9",
+                        "surface-variant": "#e2e2e2",
+                        "surface": "#f9f9f9"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "container-max": "1200px",
+                        "bento-gap": "12px",
+                        "unit": "4px",
+                        "margin": "24px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-xl": ["EB Garamond"],
+                        "headline-lg-mobile": ["EB Garamond"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "button": ["Inter"],
+                        "label-mono": ["JetBrains Mono"],
+                        "headline-lg": ["EB Garamond"]
+                    },
+                    "fontSize": {
+                        "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                        "body-md": ["15px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "button": ["14px", {"lineHeight": "1", "fontWeight": "500"}],
+                        "label-mono": ["12px", {"lineHeight": "1.5", "letterSpacing": "0.05em", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background relative min-h-screen overflow-x-hidden">
+<!-- Curvy grid background lines (Supabase style) -->
+<div class="absolute inset-0 -z-50 overflow-hidden pointer-events-none opacity-[0.6]">
+  <!-- Grid mesh (Graph paper: 24px grid) -->
+  <div class="absolute inset-0 bg-[linear-gradient(to_right,#8080800b_1px,transparent_1px),linear-gradient(to_bottom,#8080800b_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+  
+  <!-- Radial spotlight glow -->
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[300px] bg-primary/5 blur-[100px] rounded-full"></div>
+
+  <!-- Concentric Arcs -->
+  <svg class="absolute top-0 left-1/2 -translate-x-1/2 w-[1400px] h-[800px] text-outline/15" fill="none" xmlns="http://www.w3.org/2000/svg">
+     <circle cx="700" cy="-100" r="400" stroke="currentColor" stroke-width="1" stroke-dasharray="4 4" />
+     <circle cx="700" cy="-100" r="600" stroke="currentColor" stroke-width="1" />
+     <circle cx="700" cy="-100" r="800" stroke="currentColor" stroke-width="1" />
+     <circle cx="700" cy="-100" r="1000" stroke="currentColor" stroke-width="1" stroke-dasharray="8 4" />
+     <circle cx="700" cy="-100" r="1200" stroke="currentColor" stroke-width="1" />
+  </svg>
+</div>
+
+<!-- TopNavBar -->
+<nav class="flex justify-between items-center w-full px-margin py-gutter max-w-container-max mx-auto sticky top-0 z-50 bg-surface border-b border-outline-variant">
+<div class="font-headline-lg text-headline-lg tracking-tight text-primary">Mr Rager</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary transition-colors duration-200" href="work.html">Work</a>
+<a class="font-label-mono text-label-mono text-primary border-b border-primary pb-1" href="archive.html">Archive</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary transition-colors duration-200" href="index.html">About</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary transition-colors duration-200" href="mailto:opoku3765@gmail.com">Contact</a>
+<div class="flex items-center gap-4">
+<button onclick="toggleInquiryModal(true)" class="hidden md:block bg-primary-container text-on-primary-fixed-variant px-6 py-2 font-button text-button scale-100 active:scale-95 transition-transform">Inquire</button>
+<button onclick="toggleMobileMenu(true)" class="md:hidden flex items-center justify-center p-2 text-primary">
+    <span class="material-symbols-outlined text-[28px]">menu</span>
+</button>
+</div>
+</div>
+</nav>
+
+
+<main class="max-w-container-max mx-auto px-margin py-12 md:py-24">
+<!-- Header Section -->
+<header class="mb-16 md:mb-24 flex flex-col md:flex-row justify-between items-end gap-gutter">
+<div class="max-w-2xl">
+<span class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-widest mb-4 block">Index of Projects</span>
+<h1 class="font-headline-xl text-headline-xl text-primary">A log of my database, programming, and web development projects.</h1>
+</div>
+<div class="flex gap-4">
+<div class="flex items-center gap-2 px-3 py-1 bg-surface-container border border-outline-variant">
+<span class="font-label-mono text-label-mono">View:</span>
+<button id="view-btn-list" onclick="setView('list')" class="font-label-mono text-label-mono text-primary font-bold">List</button>
+<span class="text-outline-variant">/</span>
+<button id="view-btn-grid" onclick="setView('grid')" class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary">Grid</button>
+</div>
+</div>
+</header>
+<!-- Archive Filter Bar (Subtle) -->
+<div class="border-b border-outline-variant mb-8 pb-4 flex flex-wrap gap-8 items-center" id="filter-bar">
+<button onclick="filterArchive('All')" class="font-label-mono text-label-mono text-primary flex items-center gap-2" id="filter-btn-All">
+                All Projects <span class="text-on-surface-variant opacity-50" id="filter-count-All">(0)</span>
+</button>
+<button onclick="filterArchive('Data Analysis')" class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary transition-colors" id="filter-btn-Data-Analysis">
+                Data Analysis <span class="text-on-surface-variant opacity-50" id="filter-count-Data-Analysis">(0)</span>
+</button>
+<button onclick="filterArchive('Web Development')" class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary transition-colors" id="filter-btn-Web-Development">
+                Web Development <span class="text-on-surface-variant opacity-50" id="filter-count-Web-Development">(0)</span>
+</button>
+<button onclick="filterArchive('Database')" class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary transition-colors" id="filter-btn-Database">
+                Database <span class="text-on-surface-variant opacity-50" id="filter-count-Database">(0)</span>
+</button>
+</div>
+<!-- Dense Project List (Archive) -->
+<section class="flex flex-col" id="archive-list">
+<!-- Table Header -->
+<div class="grid grid-cols-12 gap-4 py-4 px-2 border-b border-outline font-label-mono text-label-mono text-on-surface-variant uppercase hidden md:grid">
+<div class="col-span-1">Year</div>
+<div class="col-span-5">Project Name</div>
+<div class="col-span-4">Category / System</div>
+<div class="col-span-2 text-right">Details</div>
+</div>
+<!-- Dynamic project rows will load here -->
+</section>
+<!-- Pagination/Load More (Subtle) -->
+<div class="mt-16 flex justify-center">
+</div>
+</main>
+<!-- Footer -->
+<footer class="border-t border-outline-variant mt-24">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-margin py-12 max-w-container-max mx-auto gap-gutter">
+<div class="flex flex-col gap-2 text-center md:text-left">
+<div class="font-label-mono text-label-mono uppercase tracking-widest text-primary">OPOKU KELVIN NANAYAW</div>
+</div>
+<div class="flex gap-8">
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary transition-colors" href="https://linkedin.com">LinkedIn</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary transition-colors" href="https://read.cv">Read.cv</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary transition-colors" href="https://instagram.com">Instagram</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary transition-colors" href="https://github.com">GitHub</a>
+</div>
+</div>
+</footer>
+
+<!-- Inquiry Modal -->
+<div id="inquiry-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/60 p-4">
+  <div class="bg-white border border-outline-variant max-w-md w-full p-8 rounded-lg relative shadow-xl">
+    <button onclick="toggleInquiryModal(false)" class="absolute right-4 top-4 text-outline hover:text-primary flex items-center justify-center">
+      <span class="material-symbols-outlined">close</span>
+    </button>
+    <h3 class="font-headline-lg text-headline-lg mb-6">Send an Inquiry</h3>
+    <form onsubmit="handleInquirySubmit(event)" class="space-y-6">
+      <div class="space-y-1">
+        <label class="font-label-mono text-label-mono uppercase text-outline">Your Name</label>
+        <input id="modal-name" required class="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-primary font-body-md py-2 px-0" placeholder="John Doe" type="text" />
+      </div>
+      <div class="space-y-1">
+        <label class="font-label-mono text-label-mono uppercase text-outline">Your Phone Number (For Response)</label>
+        <input id="modal-phone" required class="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-primary font-body-md py-2 px-0" placeholder="+233..." type="tel" />
+      </div>
+      <div class="space-y-1">
+        <label class="font-label-mono text-label-mono uppercase text-outline">Message</label>
+        <textarea id="modal-message" required class="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-primary font-body-md py-2 px-0" placeholder="Tell me about your project..." rows="3"></textarea>
+      </div>
+      <button type="submit" class="w-full bg-primary text-on-primary py-3 rounded font-button text-button hover:bg-tertiary transition-colors flex items-center justify-center gap-2">
+        Send on WhatsApp
+        <span class="material-symbols-outlined text-[18px]">send</span>
+      </button>
+    </form>
+  </div>
+</div>
+
+<script>
+  let whatsappNumber = "233509663058";
+  let allProjects = [];
+  let currentCategory = "All";
+  let currentView = "list";
+
+  function getProjectGroup(proj) {
+    const cat = (proj.category || '').toLowerCase();
+    const tags = (proj.tags || []).map(t => t.toLowerCase());
+    
+    if (cat.includes('data analysis') || cat.includes('power bi') || cat.includes('python') || tags.includes('data analysis') || tags.includes('power bi') || tags.includes('python')) {
+      return 'Data Analysis';
+    }
+    if (cat.includes('database') || cat.includes('sql') || tags.includes('database') || tags.includes('sql')) {
+      return 'Database';
+    }
+    return 'Web Development';
+  }
+
+  // Strict Chrome Enforcement for Samsung Internet Users
+  document.addEventListener("DOMContentLoaded", async () => {
+    // Hidden Admin Access Gesture (3 clicks on the header logo)
+    const logo = document.querySelector("nav .font-headline-lg");
+    if (logo) {
+      let clickCount = 0;
+      let clickTimeout;
+      logo.style.cursor = "pointer";
+      logo.addEventListener("click", () => {
+        clickCount++;
+        clearTimeout(clickTimeout);
+        if (clickCount === 3) {
+          window.location.href = "admin.html";
+        }
+        clickTimeout = setTimeout(() => {
+          clickCount = 0;
+        }, 1000);
+      });
+    }
+
+    // Load Profile Info to update WhatsApp redirects
+    const profile = await getProfile();
+    if (profile && profile.whatsapp) {
+      whatsappNumber = profile.whatsapp.replace(/\+/g, '').replace(/\s/g, '');
+    }
+
+    // Fetch and Render Dynamic Projects
+    allProjects = await getProjects();
+    
+    // Sort projects by year descending
+    allProjects.sort((a, b) => {
+      const yearA = parseInt(a.year) || 0;
+      const yearB = parseInt(b.year) || 0;
+      return yearB - yearA;
+    });
+
+    // Populate filter counts
+    updateFilterCounts();
+
+    // Initial render of all projects (excluding small quote/text cards)
+    const activeProjects = allProjects.filter(p => p.card_size !== 'small');
+    renderProjects(activeProjects);
+
+    const ua = navigator.userAgent;
+    const isSamsung = ua.indexOf("SamsungBrowser") > -1;
+    if (isSamsung) {
+      const overlay = document.createElement("div");
+      overlay.className = "fixed inset-0 z-[200] bg-black/90 flex items-center justify-center p-6 text-center";
+      overlay.innerHTML = `
+        <div class="bg-surface border border-outline-variant max-w-md w-full p-8 rounded shadow-2xl flex flex-col items-center">
+          <span class="material-symbols-outlined text-[64px] text-primary mb-4 animate-bounce">chrome_reader_mode</span>
+          <h3 class="font-headline-lg text-headline-lg mb-4 text-on-surface">Please Open in Google Chrome</h3>
+          <p class="font-body-md text-body-md text-on-surface-variant mb-6 leading-relaxed">
+            It looks like you are browsing using <strong>Samsung Internet</strong>. For the best visual experience, premium animations, and interactive elements, please copy this link and open it in <strong>Google Chrome</strong>.
+          </p>
+          <button onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');" class="bg-primary text-on-primary px-6 py-3 font-button text-button hover:opacity-90 transition-all flex items-center gap-2 mb-4 w-full justify-center">
+            <span class="material-symbols-outlined text-[18px]">content_copy</span> Copy Link
+          </button>
+          <p class="font-label-mono text-[10px] text-outline uppercase">Optimized for Google Chrome &amp; Safari</p>
+        </div>
+      `;
+      document.body.appendChild(overlay);
+    }
+  });
+
+  function updateFilterCounts() {
+    const activeProjects = allProjects.filter(p => p.card_size !== 'small');
+    const total = activeProjects.length;
+    const dataAnalysis = activeProjects.filter(p => getProjectGroup(p) === 'Data Analysis').length;
+    const webDev = activeProjects.filter(p => getProjectGroup(p) === 'Web Development').length;
+    const db = activeProjects.filter(p => getProjectGroup(p) === 'Database').length;
+
+    const countAll = document.getElementById('filter-count-All');
+    if (countAll) countAll.textContent = `(${total})`;
+    const countData = document.getElementById('filter-count-Data-Analysis');
+    if (countData) countData.textContent = `(${dataAnalysis})`;
+    const countWeb = document.getElementById('filter-count-Web-Development');
+    if (countWeb) countWeb.textContent = `(${webDev})`;
+    const countDb = document.getElementById('filter-count-Database');
+    if (countDb) countDb.textContent = `(${db})`;
+  }
+
+  function setView(view) {
+    currentView = view;
+    
+    // Toggle active styles on the buttons
+    const btnList = document.getElementById('view-btn-list');
+    const btnGrid = document.getElementById('view-btn-grid');
+    if (btnList && btnGrid) {
+      if (view === 'list') {
+        btnList.className = "font-label-mono text-label-mono text-primary font-bold";
+        btnGrid.className = "font-label-mono text-label-mono text-on-surface-variant hover:text-primary";
+      } else {
+        btnList.className = "font-label-mono text-label-mono text-on-surface-variant hover:text-primary";
+        btnGrid.className = "font-label-mono text-label-mono text-primary font-bold";
+      }
+    }
+    
+    // Re-render current category projects
+    filterArchive(currentCategory);
+  }
+
+  function renderProjects(projectsToRender) {
+    const archiveList = document.getElementById('archive-list');
+    if (!archiveList) return;
+
+    if (currentView === 'list') {
+      // Preserve the table header
+      const headerHTML = `
+        <div class="grid grid-cols-12 gap-4 py-4 px-2 border-b border-outline font-label-mono text-label-mono text-on-surface-variant uppercase hidden md:grid">
+          <div class="col-span-1">Year</div>
+          <div class="col-span-5">Project Name</div>
+          <div class="col-span-4">Category / System</div>
+          <div class="col-span-2 text-right">Details</div>
+        </div>
+      `;
+
+      const rowsHTML = projectsToRender.map(proj => {
+        // Build images/gallery HTML if present
+        let galleryHTML = '';
+        const imagesArray = proj.images || (proj.image_url ? [proj.image_url] : []);
+        if (imagesArray.length > 0) {
+          galleryHTML = `
+            <div class="w-full aspect-video bg-surface-container overflow-hidden rounded border border-outline-variant relative">
+              <div class="w-full h-full flex overflow-x-auto snap-x snap-mandatory hide-scroll" style="scrollbar-width: none; -ms-overflow-style: none;">
+                ${imagesArray.map((img, i) => `
+                  <img alt="${proj.title} ${i+1}" class="w-full h-full flex-shrink-0 snap-center object-cover grayscale hover:grayscale-0 transition-all duration-500" src="${img}"/>
+                `).join('')}
+              </div>
+            </div>
+          `;
+        }
+
+        const tagsHTML = (proj.tags || []).map(tag => `
+          <span class="px-2 py-0.5 bg-surface-container text-on-surface-variant font-label-mono text-[10px] uppercase">${tag}</span>
+        `).join('');
+
+        return `
+          <div class="group grid grid-cols-12 gap-4 py-6 px-2 border-b border-outline-variant hover:bg-surface-container-low transition-colors duration-200 cursor-pointer items-center">
+            <div class="col-span-2 md:col-span-1 font-label-mono text-label-mono text-on-surface-variant">${proj.year || '—'}</div>
+            <div class="col-span-8 md:col-span-5 flex flex-col md:flex-row md:items-center gap-2">
+              <span class="font-body-lg text-body-lg text-primary font-medium">${proj.title}</span>
+              <span class="md:hidden font-label-mono text-[10px] text-on-surface-variant opacity-60">${proj.category || '—'}</span>
+            </div>
+            <div class="hidden md:block col-span-4">
+              <div class="flex flex-wrap gap-2">
+                ${tagsHTML}
+              </div>
+            </div>
+            <div class="col-span-2 text-right">
+              <span class="material-symbols-outlined text-outline group-hover:text-primary group-hover:translate-x-1 transition-all">arrow_forward</span>
+            </div>
+            <div class="col-span-12 mt-4 hidden group-hover:block overflow-hidden">
+              <div class="grid grid-cols-12 gap-gutter">
+                ${galleryHTML ? `<div class="col-span-12 md:col-span-4">${galleryHTML}</div>` : ''}
+                <div class="${galleryHTML ? 'col-span-12 md:col-span-8' : 'col-span-12'} flex flex-col justify-center">
+                  <p class="font-body-md text-body-md text-on-surface-variant max-w-xl mb-4">
+                    ${proj.description || ''}
+                  </p>
+                  ${proj.project_url ? `
+                    <a href="${proj.project_url}" target="_blank" class="font-button text-button flex w-fit items-center gap-2 group/link border-b border-primary pb-1 hover:opacity-80 transition-opacity text-primary">
+                      View Live Site
+                      <span class="material-symbols-outlined text-[16px] group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 transition-transform">north_east</span>
+                    </a>
+                  ` : ''}
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      archiveList.innerHTML = headerHTML + rowsHTML;
+      archiveList.className = "flex flex-col";
+    } else {
+      // Grid view
+      const cardsHTML = projectsToRender.map(proj => {
+        const imagesArray = proj.images || (proj.image_url ? [proj.image_url] : []);
+        const firstImage = imagesArray[0] || '';
+        const tagsHTML = (proj.tags || []).map(tag => `
+          <span class="px-2 py-0.5 bg-surface-container text-on-surface-variant font-label-mono text-[9px] uppercase">${tag}</span>
+        `).join('');
+
+        return `
+          <div class="group border border-outline-variant bg-surface-container-lowest overflow-hidden transition-all duration-300 bento-card hover:border-outline p-6 rounded flex flex-col justify-between min-h-[350px]">
+            <div>
+              ${firstImage ? `
+                <div class="w-full aspect-[16/10] bg-surface-container overflow-hidden rounded border border-outline-variant/30 mb-4">
+                  <img alt="${proj.title}" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" src="${firstImage}"/>
+                </div>
+              ` : ''}
+              <div class="flex justify-between items-start gap-2 mb-2">
+                <span class="font-label-mono text-[10px] text-on-surface-variant uppercase">${proj.category || 'Project'}</span>
+                <span class="font-label-mono text-[10px] text-outline">${proj.year || '—'}</span>
+              </div>
+              <h3 class="font-headline-lg text-xl text-primary font-semibold mb-2 group-hover:text-primary transition-colors">${proj.title}</h3>
+              <p class="font-body-md text-xs text-on-surface-variant line-clamp-3 mb-4 leading-relaxed">${proj.description || ''}</p>
+            </div>
+            <div class="space-y-4">
+              <div class="flex flex-wrap gap-1.5">
+                ${tagsHTML}
+              </div>
+              <div class="flex gap-4 pt-2">
+                ${proj.project_url ? `
+                  <a href="${proj.project_url}" target="_blank" class="font-button text-[12px] flex items-center gap-1.5 text-primary border-b border-primary/30 hover:border-primary pb-0.5 transition-colors font-medium">
+                    Live Site
+                    <span class="material-symbols-outlined text-[14px]">north_east</span>
+                  </a>
+                ` : ''}
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      archiveList.innerHTML = `<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">${cardsHTML}</div>`;
+      archiveList.className = "block";
+    }
+  }
+
+  function filterArchive(category) {
+    currentCategory = category;
+    const activeProjects = allProjects.filter(p => p.card_size !== 'small');
+    // Render filtered list
+    if (category === 'All') {
+      renderProjects(activeProjects);
+    } else {
+      const filtered = activeProjects.filter(p => getProjectGroup(p) === category);
+      renderProjects(filtered);
+    }
+
+    // Update active filter button styles
+    const categories = ['All', 'Data Analysis', 'Web Development', 'Database'];
+    categories.forEach(cat => {
+      const buttonId = `filter-btn-${cat.replace(/\s+/g, '-')}`;
+      const btn = document.getElementById(buttonId);
+      if (btn) {
+        if (cat === category) {
+          btn.className = "font-label-mono text-label-mono text-primary flex items-center gap-2 font-bold";
+        } else {
+          btn.className = "font-label-mono text-label-mono text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2";
+        }
+      }
+    });
+  }
+
+  function toggleInquiryModal(show) {
+    const modal = document.getElementById('inquiry-modal');
+    if (modal) {
+      modal.style.display = show ? 'flex' : 'none';
+    }
+  }
+  
+  function handleInquirySubmit(event) {
+    event.preventDefault();
+    const name = document.getElementById('modal-name').value;
+    const phone = document.getElementById('modal-phone').value;
+    const message = document.getElementById('modal-message').value;
+    
+    const formattedText = `Hello Opoku Kelvin, my name is ${name}.\n\nMessage: ${message}\n\nMy phone number is: ${phone}`;
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(formattedText)}`;
+    
+    window.open(whatsappUrl, '_blank');
+    toggleInquiryModal(false);
+  }
+
+  function toggleMobileMenu(show) {
+    const menu = document.getElementById('mobile-menu');
+    const drawer = document.getElementById('mobile-menu-drawer');
+    if (menu && drawer) {
+      if (show) {
+        menu.style.display = 'block';
+        setTimeout(() => {
+          drawer.classList.remove('translate-x-full');
+          drawer.classList.add('translate-x-0');
+        }, 10);
+      } else {
+        drawer.classList.remove('translate-x-0');
+        drawer.classList.add('translate-x-full');
+        setTimeout(() => {
+          menu.style.display = 'none';
+        }, 300);
+      }
+    }
+  }
+</script>
+
+<!-- Mobile Menu Drawer -->
+<div id="mobile-menu" class="fixed inset-0 z-[90] hidden bg-black/60">
+  <div id="mobile-menu-drawer" class="fixed top-0 right-0 h-full w-64 bg-white border-l border-outline-variant p-8 flex flex-col justify-between transform translate-x-full transition-transform duration-300">
+    <div>
+      <div class="flex justify-between items-center mb-12">
+        <span class="font-label-mono text-label-mono uppercase tracking-widest text-primary">MENU</span>
+        <button onclick="toggleMobileMenu(false)" class="text-outline hover:text-primary flex items-center justify-center">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <nav class="flex flex-col gap-6">
+        <a class="font-headline-md text-headline-md text-on-surface-variant hover:text-primary transition-colors" href="work.html">Work</a>
+        <a class="font-headline-md text-headline-md text-on-surface-variant hover:text-primary transition-colors" href="archive.html">Archive</a>
+        <a class="font-headline-md text-headline-md text-on-surface-variant hover:text-primary transition-colors" href="index.html">About</a>
+        <a class="font-headline-md text-headline-md text-on-surface-variant hover:text-primary transition-colors" href="mailto:opoku3765@gmail.com">Contact</a>
+      </nav>
+    </div>
+    <div>
+      <button onclick="toggleMobileMenu(false); toggleInquiryModal(true);" class="w-full bg-primary text-on-primary py-3 rounded font-button text-button hover:bg-tertiary transition-colors flex items-center justify-center gap-2">
+        Inquire
+        <span class="material-symbols-outlined text-[18px]">send</span>
+      </button>
+    </div>
+  </div>
+</div>
+</body></html>
