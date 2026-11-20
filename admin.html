@@ -151,7 +151,11 @@
                 <span class="hidden sm:inline-block px-2 py-0.5 bg-primary text-on-primary font-label-mono text-[9px] uppercase tracking-wider rounded">Admin Panel</span>
                 <a href="index.html" class="inline-block sm:hidden px-2 py-0.5 bg-primary text-on-primary font-label-mono text-[9px] uppercase tracking-wider rounded">Mr Rager</a>
             </div>
-            <div class="flex items-center gap-6">
+            <div class="flex items-center gap-4 sm:gap-6">
+                <button type="button" onclick="openPreviewModal()" class="font-label-mono text-label-mono bg-surface-container border border-outline-variant hover:border-primary text-primary px-3 py-1.5 rounded transition-colors flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-[16px]">visibility</span>
+                    <span>Preview Site</span>
+                </button>
                 <a class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary transition-colors" href="index.html">View Site</a>
                 <button id="btn-logout" onclick="handleLogout()" class="hidden font-label-mono text-label-mono text-error hover:underline flex items-center gap-1.5">
                     <span class="material-symbols-outlined">logout</span> Log Out
@@ -502,9 +506,20 @@
                     <label class="font-label-mono text-label-mono uppercase text-outline">Year</label>
                     <input id="cert-year" required class="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-primary font-body-md py-2 px-0" type="number" />
                 </div>
-                <div class="space-y-1">
-                    <label class="font-label-mono text-label-mono uppercase text-outline">Credential URL / PDF File Link</label>
-                    <input id="cert-url" class="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-primary font-body-md py-2 px-0" type="text" placeholder="https://... or certificate filename" />
+                <div class="space-y-2">
+                    <label class="font-label-mono text-label-mono uppercase text-outline block">Credential Image / PDF Link</label>
+                    <div class="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center">
+                        <input id="cert-url" oninput="updateCertPreview()" class="flex-grow w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-primary font-body-md py-2 px-0" type="text" placeholder="https://... or upload image" />
+                        <label class="cursor-pointer bg-surface-container border border-outline-variant hover:border-primary transition-colors py-2 px-3 font-label-mono text-xs uppercase flex items-center justify-center gap-1 shrink-0">
+                            <span class="material-symbols-outlined text-[16px]">cloud_upload</span>
+                            Upload Image
+                            <input type="file" id="cert-image-file" class="hidden" accept="image/*,.pdf" onchange="uploadCertImage(event)" />
+                        </label>
+                    </div>
+                    <div id="cert-upload-status" class="hidden font-label-mono text-[10px] uppercase text-outline">Uploading...</div>
+                    <div id="cert-image-preview" class="hidden pt-2">
+                        <img id="cert-preview-img" src="" alt="Certificate preview" class="h-24 w-auto rounded border border-outline-variant object-cover" />
+                    </div>
                 </div>
                 <div class="flex gap-4 pt-4">
                     <button type="submit" class="flex-grow bg-primary text-on-primary py-3 rounded font-button text-button hover:bg-tertiary transition-colors">
@@ -588,6 +603,60 @@
                     </button>
                 </div>
             </form>
+        </div>
+    </div>
+
+    <!-- Published Site Preview Modal -->
+    <div id="preview-modal" class="fixed inset-0 z-[110] hidden flex-col bg-black/75 backdrop-blur-sm">
+        <!-- Preview Toolbar -->
+        <div class="bg-white border-b border-outline-variant px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3 shrink-0">
+            <div class="flex items-center gap-3">
+                <span class="font-headline-lg text-lg text-primary font-medium">Published Preview</span>
+                <div class="flex bg-surface-container border border-outline-variant p-0.5 rounded-md">
+                    <button type="button" onclick="setPreviewPage('index.html')" id="prev-page-index" class="px-2.5 py-1 text-[11px] font-label-mono uppercase rounded transition-colors bg-primary text-on-primary">About</button>
+                    <button type="button" onclick="setPreviewPage('work.html')" id="prev-page-work" class="px-2.5 py-1 text-[11px] font-label-mono uppercase rounded transition-colors text-on-surface-variant hover:text-primary">Work</button>
+                    <button type="button" onclick="setPreviewPage('archive.html')" id="prev-page-archive" class="px-2.5 py-1 text-[11px] font-label-mono uppercase rounded transition-colors text-on-surface-variant hover:text-primary">Archive</button>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-2 sm:gap-3">
+                <!-- Viewport Switcher -->
+                <div class="hidden sm:flex bg-surface-container border border-outline-variant p-0.5 rounded-md">
+                    <button type="button" onclick="setPreviewViewport('desktop')" id="prev-vp-desktop" title="Desktop View" class="px-2.5 py-1 text-[11px] font-label-mono uppercase rounded transition-colors bg-primary text-on-primary flex items-center gap-1">
+                        <span class="material-symbols-outlined text-[14px]">desktop_windows</span> Desktop
+                    </button>
+                    <button type="button" onclick="setPreviewViewport('tablet')" id="prev-vp-tablet" title="Tablet View" class="px-2.5 py-1 text-[11px] font-label-mono uppercase rounded transition-colors text-on-surface-variant hover:text-primary flex items-center gap-1">
+                        <span class="material-symbols-outlined text-[14px]">tablet_mac</span> Tablet
+                    </button>
+                    <button type="button" onclick="setPreviewViewport('mobile')" id="prev-vp-mobile" title="Mobile View" class="px-2.5 py-1 text-[11px] font-label-mono uppercase rounded transition-colors text-on-surface-variant hover:text-primary flex items-center gap-1">
+                        <span class="material-symbols-outlined text-[14px]">smartphone</span> Mobile
+                    </button>
+                </div>
+
+                <label class="flex items-center gap-1.5 text-[11px] font-label-mono uppercase text-on-surface-variant cursor-pointer select-none px-2 py-1 rounded border border-outline-variant/60 bg-surface-container/50" title="Apply unsaved Profile form edits to the preview">
+                    <input type="checkbox" id="preview-sync-draft" checked onchange="sendProfileDraftToPreview()" class="rounded border-outline-variant text-primary focus:ring-0" />
+                    <span>Sync Draft</span>
+                </label>
+
+                <button type="button" onclick="refreshPreview()" title="Reload Preview" class="p-1.5 rounded border border-outline-variant hover:border-primary text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center">
+                    <span class="material-symbols-outlined text-[18px]">refresh</span>
+                </button>
+
+                <a id="preview-open-tab" href="index.html" target="_blank" title="Open in New Tab" class="p-1.5 rounded border border-outline-variant hover:border-primary text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center">
+                    <span class="material-symbols-outlined text-[18px]">open_in_new</span>
+                </a>
+
+                <button type="button" onclick="closePreviewModal()" title="Close Preview" class="px-3 py-1.5 rounded bg-primary text-on-primary font-label-mono text-[11px] uppercase hover:bg-tertiary transition-colors flex items-center gap-1">
+                    <span class="material-symbols-outlined text-[16px]">close</span> Close
+                </button>
+            </div>
+        </div>
+
+        <!-- Preview Frame Stage -->
+        <div class="flex-grow overflow-auto p-3 sm:p-6 flex justify-center items-start">
+            <div id="preview-frame-shell" class="w-full h-full bg-white rounded-lg shadow-2xl border border-outline-variant overflow-hidden transition-all duration-300">
+                <iframe id="preview-iframe" src="about:blank" onload="onPreviewIframeLoad()" class="w-full h-full border-0 bg-white"></iframe>
+            </div>
         </div>
     </div>
 
@@ -747,26 +816,25 @@
             });
         }
 
-        // Upload Project Image Cover to Supabase Storage
-        async function uploadProjectImage(event) {
-            const file = event.target.files[0];
+        // Shared Supabase Storage Upload Helper
+        async function uploadFileToStorage(file, folder, targetInputId, statusDivId, onComplete) {
             if (!file) return;
 
             if (isFallbackMode) {
-                alert("Cannot upload image in Fallback Mode. Please paste a link directly.");
+                alert("Cannot upload file in Fallback Mode. Please paste a link directly.");
                 return;
             }
 
-            const statusDiv = document.getElementById('image-upload-status');
+            const statusDiv = document.getElementById(statusDivId);
             statusDiv.innerText = 'Uploading...';
             statusDiv.classList.remove('hidden');
 
             try {
                 const fileExt = file.name.split('.').pop();
                 const fileName = `${Date.now()}-${Math.floor(Math.random() * 1000)}.${fileExt}`;
-                const filePath = `covers/${fileName}`;
+                const filePath = `${folder}/${fileName}`;
 
-                let { error: uploadError, data } = await supabaseClient.storage
+                let { error: uploadError } = await supabaseClient.storage
                     .from('portfolio-images')
                     .upload(filePath, file);
 
@@ -776,11 +844,36 @@
                     .from('portfolio-images')
                     .getPublicUrl(filePath);
 
-                document.getElementById('proj-image-url').value = publicUrl;
+                document.getElementById(targetInputId).value = publicUrl;
                 statusDiv.innerText = 'Upload completed successfully!';
+                if (typeof onComplete === 'function') onComplete(publicUrl);
             } catch (err) {
                 console.error("Storage upload failed:", err);
                 statusDiv.innerText = `Upload failed: ${err.message}`;
+            }
+        }
+
+        // Upload Project Image Cover to Supabase Storage
+        async function uploadProjectImage(event) {
+            await uploadFileToStorage(event.target.files[0], 'covers', 'proj-image-url', 'image-upload-status');
+        }
+
+        // Upload Certification Image/PDF to Supabase Storage
+        async function uploadCertImage(event) {
+            await uploadFileToStorage(event.target.files[0], 'certificates', 'cert-url', 'cert-upload-status', updateCertPreview);
+        }
+
+        function updateCertPreview() {
+            const url = (document.getElementById('cert-url').value || '').trim();
+            const previewWrap = document.getElementById('cert-image-preview');
+            const previewImg = document.getElementById('cert-preview-img');
+            const isImage = /\.(png|jpe?g|gif|webp|avif|svg)(\?.*)?$/i.test(url) || url.startsWith('data:image/');
+            if (url && isImage) {
+                previewImg.src = url;
+                previewWrap.classList.remove('hidden');
+            } else {
+                previewImg.src = '';
+                previewWrap.classList.add('hidden');
             }
         }
 
@@ -979,6 +1072,9 @@
             document.getElementById('cert-issuer').value = '';
             document.getElementById('cert-year').value = new Date().getFullYear();
             document.getElementById('cert-url').value = '';
+            document.getElementById('cert-image-file').value = '';
+            document.getElementById('cert-upload-status').classList.add('hidden');
+            updateCertPreview();
             
             document.getElementById('cert-modal-title').innerText = "Add Certification";
             document.getElementById('cert-modal').style.display = 'flex';
@@ -997,6 +1093,9 @@
             document.getElementById('cert-issuer').value = cert.issuer;
             document.getElementById('cert-year').value = cert.year;
             document.getElementById('cert-url').value = cert.url || '';
+            document.getElementById('cert-image-file').value = '';
+            document.getElementById('cert-upload-status').classList.add('hidden');
+            updateCertPreview();
 
             document.getElementById('cert-modal-title').innerText = "Edit Certification";
             document.getElementById('cert-modal').style.display = 'flex';
@@ -1295,6 +1394,107 @@
             } catch (err) {
                 alert("Failed to delete education entry: " + err.message);
             }
+        }
+        // ==========================================
+        // Published Site Previewer Logic
+        // ==========================================
+        let currentPreviewPage = 'index.html';
+
+        function openPreviewModal(page) {
+            const modal = document.getElementById('preview-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            setPreviewPage(page || currentPreviewPage);
+        }
+
+        function closePreviewModal() {
+            const modal = document.getElementById('preview-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function setPreviewPage(page) {
+            currentPreviewPage = page;
+            const pageMap = {
+                'index.html': 'prev-page-index',
+                'work.html': 'prev-page-work',
+                'archive.html': 'prev-page-archive'
+            };
+
+            Object.entries(pageMap).forEach(([key, btnId]) => {
+                const btn = document.getElementById(btnId);
+                if (!btn) return;
+                if (key === page) {
+                    btn.classList.add('bg-primary', 'text-on-primary');
+                    btn.classList.remove('text-on-surface-variant');
+                } else {
+                    btn.classList.remove('bg-primary', 'text-on-primary');
+                    btn.classList.add('text-on-surface-variant');
+                }
+            });
+
+            document.getElementById('preview-open-tab').href = page;
+            refreshPreview();
+        }
+
+        function setPreviewViewport(viewport) {
+            const shell = document.getElementById('preview-frame-shell');
+            const buttons = {
+                desktop: document.getElementById('prev-vp-desktop'),
+                tablet: document.getElementById('prev-vp-tablet'),
+                mobile: document.getElementById('prev-vp-mobile')
+            };
+
+            Object.entries(buttons).forEach(([key, btn]) => {
+                if (!btn) return;
+                if (key === viewport) {
+                    btn.classList.add('bg-primary', 'text-on-primary');
+                    btn.classList.remove('text-on-surface-variant');
+                } else {
+                    btn.classList.remove('bg-primary', 'text-on-primary');
+                    btn.classList.add('text-on-surface-variant');
+                }
+            });
+
+            shell.classList.remove('w-full', 'max-w-[768px]', 'max-w-[390px]');
+            if (viewport === 'mobile') {
+                shell.classList.add('w-full', 'max-w-[390px]');
+            } else if (viewport === 'tablet') {
+                shell.classList.add('w-full', 'max-w-[768px]');
+            } else {
+                shell.classList.add('w-full');
+            }
+        }
+
+        function refreshPreview() {
+            const iframe = document.getElementById('preview-iframe');
+            const cacheBust = `preview=${Date.now()}`;
+            const sep = currentPreviewPage.includes('?') ? '&' : '?';
+            iframe.src = `${currentPreviewPage}${sep}${cacheBust}`;
+        }
+
+        function onPreviewIframeLoad() {
+            setTimeout(sendProfileDraftToPreview, 350);
+        }
+
+        function sendProfileDraftToPreview() {
+            const syncCheckbox = document.getElementById('preview-sync-draft');
+            const iframe = document.getElementById('preview-iframe');
+            if (!syncCheckbox || !syncCheckbox.checked || !iframe || !iframe.contentWindow) return;
+
+            const nameEl = document.getElementById('prof-name');
+            const titleEl = document.getElementById('prof-title');
+            const bioEl = document.getElementById('prof-bio');
+            if (!nameEl || !titleEl || !bioEl || !nameEl.value.trim()) return;
+
+            iframe.contentWindow.postMessage({
+                type: 'PREVIEW_PROFILE_DRAFT',
+                profile: {
+                    name: nameEl.value,
+                    title: titleEl.value,
+                    bio: bioEl.value
+                }
+            }, '*');
         }
     </script>
 </body>

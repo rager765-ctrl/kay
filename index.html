@@ -587,6 +587,16 @@
                                 icon.innerText = isHidden ? 'expand_less' : 'expand_more';
                         };
 
+                        window.addEventListener('message', (event) => {
+                                if (!event.data || event.data.type !== 'PREVIEW_PROFILE_DRAFT' || !event.data.profile) return;
+                                const draft = event.data.profile;
+                                if (draft.name) document.getElementById('profile-name').innerText = draft.name;
+                                if (draft.title) document.getElementById('profile-title').innerText = "— " + draft.title;
+                                if (typeof draft.bio === 'string') {
+                                        document.getElementById('profile-bio').innerHTML = formatBioHTML(draft.bio);
+                                }
+                        });
+
                         // Fetch Dynamic Profile Data from Supabase
                         const profile = await getProfile();
                         if (profile) {
